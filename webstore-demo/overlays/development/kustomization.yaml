@@ -3,6 +3,8 @@ kind: Kustomization
 
 bases:
 - ../../base
-- namespace.yaml
+
+resources:
+- ./namespace.yaml
 
 namespace: demo-development
