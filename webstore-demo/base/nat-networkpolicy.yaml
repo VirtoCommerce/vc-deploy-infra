@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  name: nat
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          io.kompose.network/nat: "true"
+  podSelector:
+    matchLabels:
+      io.kompose.network/nat: "true"
