@@ -1,13 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
-- base/cms-pvc.yaml
-- base/db-deploy.yaml
-- base/db-service.yaml
-- base/modules-pvc.yaml
-- base/nat-networkpolicy.yaml
-- base/platform-deploy.yaml
-- base/platform-service.yaml
-- base/storefront-deploy.yaml
-- base/storefront-service.yaml
+- overlays/development
+namePrefix: webstore-
