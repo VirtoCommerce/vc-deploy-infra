@@ -15,7 +15,7 @@ spec:
       containers:
       - command:
         - /wait-for-it.sh
-        - vc-db:1433
+        - $namePrefixvc-db:1433
         - -t
         - "120"
         - --
