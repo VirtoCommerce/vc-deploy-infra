@@ -3,7 +3,6 @@ resources:
 - db-deploy.yaml
 - db-service.yaml
 - modules-pvc.yaml
-- nat-networkpolicy.yaml
 - platform-deploy.yaml
 - platform-service.yaml
 - storefront-deploy.yaml
