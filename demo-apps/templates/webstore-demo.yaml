@@ -5,7 +5,7 @@ metadata:
   namespace: demo
 spec:
   destination:    
-    namespace: demo
+    namespace: kustomize-guestbook
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
