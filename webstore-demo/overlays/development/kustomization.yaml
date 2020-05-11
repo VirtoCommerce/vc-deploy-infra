@@ -3,5 +3,6 @@ kind: Kustomization
 
 bases:
 - ../../base
+- ./namespace.yml
 
 namespace: demo-development
