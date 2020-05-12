@@ -7,3 +7,4 @@ resources:
 - ./namespace.yaml
 patchesStrategicMerge:
 - platform-service.yaml
+- storefront-service.yaml
