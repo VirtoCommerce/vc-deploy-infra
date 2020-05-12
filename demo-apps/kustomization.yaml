@@ -1,2 +1,3 @@
 resources:
 - base/webstore-demo.yaml
+- base/meds-demo.yaml
