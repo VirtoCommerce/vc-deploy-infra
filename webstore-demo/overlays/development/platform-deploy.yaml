@@ -3,14 +3,9 @@ kind: Deployment
 metadata:
   name: vc-platform-web
 spec:
-  template:
-    metadata:
-      labels:
-        app: vc-platform-web
-    spec:
-      containers:
-        env:
-        - name: Assets__FileSystem__PublicUrl
-          value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
-        - name: Content__FileSystem__PublicUrl
-          value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
+  containers:
+    env:
+    - name: Assets__FileSystem__PublicUrl
+      value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
+    - name: Content__FileSystem__PublicUrl
+      value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
