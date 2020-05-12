@@ -6,8 +6,9 @@ spec:
   template:
     spec:
       containers:
-        env:
-        - name: Assets__FileSystem__PublicUrl
-          value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
-        - name: Content__FileSystem__PublicUrl
-          value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
+        - name: vc-platform-web
+          env:
+          - name: Assets__FileSystem__PublicUrl
+            value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
+          - name: Content__FileSystem__PublicUrl
+            value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
