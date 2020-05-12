@@ -5,3 +5,5 @@ bases:
 - ../../base
 resources:
 - ./namespace.yaml
+patchesStrategicMerge:
+- platform-service.yaml
