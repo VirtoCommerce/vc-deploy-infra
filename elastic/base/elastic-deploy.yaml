@@ -38,8 +38,8 @@ spec:
                 memory: 2Gi
               requests:
                 memory: 2Gi
-   http:
-     service:
-       spec:
-         # expose this cluster Service with a LoadBalancer
-         type: LoadBalancer                
+    http:
+      service:
+        spec:
+          # expose this cluster Service with a LoadBalancer
+          type: LoadBalancer                
