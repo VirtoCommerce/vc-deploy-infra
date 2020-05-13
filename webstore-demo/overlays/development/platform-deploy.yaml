@@ -8,9 +8,14 @@ spec:
       containers:
         - name: vc-platform-web
           env:
+          - name: VC_DEV_DBSERVER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dev-dbserver-password
+                key: password
           - name: Assets__FileSystem__PublicUrl
             value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
           - name: Content__FileSystem__PublicUrl
             value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
           - name: ConnectionStrings__VirtoCommerce
-            value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=VC_DEMO_DEV3;User ID=virto@vc-dev-dbserver;Password=aSDAFF23dasr%#@;Trusted_Connection=False;Encrypt=True;"
+            value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=VC_DEMO_DEV3;User ID=virto@vc-dev-dbserver;Password=$(VC_DEV_DBSERVER_PASSWORD);Trusted_Connection=False;Encrypt=True;"
