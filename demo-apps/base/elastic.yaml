@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/virtocommerce/vc-deployments.git
-    targetRevision: release
+    repoURL: https://github.com/virtocommerce/vc-deployments
+    targetRevision: HEAD
     path: elastic/base
   destination:
     server: https://kubernetes.default.svc
