@@ -14,10 +14,6 @@ spec:
       node.ingest: true
       node.store.allow_mmap: false
     podTemplate:
-      metadata:
-        labels:
-          # additional labels for pods
-          foo: bar
       spec:
         # this changes the kernel setting on the node to allow ES to use mmap
         # if you uncomment this init container you will likely also want to remove the
@@ -33,18 +29,18 @@ spec:
         ports:
         - name: http
           protocol: TCP
-          port: 80
+          port: 9200
           targetPort: 9200
-        containers:
-        - name: elasticsearch
-          # specify resource limits and requests
-          resources:
-            limits:
-              memory: 4Gi
-              cpu: 1
-          env:
-          - name: ES_JAVA_OPTS
-            value: "-Xms2g -Xmx2g"
+        # containers:
+        # - name: elasticsearch
+        #   # specify resource limits and requests
+        #   resources:
+        #     limits:
+        #       memory: 4Gi
+        #       cpu: 1
+        #   env:
+        #   - name: ES_JAVA_OPTS
+        #     value: "-Xms2g -Xmx2g"
   #   # request 2Gi of persistent data storage for pods in this topology element
   #   volumeClaimTemplates:
   #   - metadata:
