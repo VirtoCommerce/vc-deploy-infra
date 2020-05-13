@@ -1,7 +1,7 @@
 resources:
 - cms-pvc.yaml
-- db-deploy.yaml
-- db-service.yaml
+#- db-deploy.yaml
+#- db-service.yaml
 - modules-pvc.yaml
 - platform-deploy.yaml
 - platform-service.yaml
