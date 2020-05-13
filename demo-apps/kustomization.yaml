@@ -1,3 +1,4 @@
 resources:
+- base/elastic.yaml
 - base/webstore-demo.yaml
 - base/meds-demo.yaml

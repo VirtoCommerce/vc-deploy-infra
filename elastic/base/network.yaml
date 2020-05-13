@@ -1,0 +1,16 @@
+apiVersion: crd.projectcalico.org/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-sample
+  namespace: elastic-system
+spec:
+  order: 2000.0
+  selector: elasticsearch.k8s.elastic.co/cluster-name == "search-dev"
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      protocol: TCP
+      destination:
+        ports:
+          - 9200:9400
