@@ -4,7 +4,7 @@ resources:
   - upstream/all-in-one.yaml
 #  - rbac.yaml
   - elastic-deploy.yaml
-  - network.yaml  
+#  - network.yaml  
 patchesStrategicMerge:
   - statefulset.yaml
   - crd.yaml
