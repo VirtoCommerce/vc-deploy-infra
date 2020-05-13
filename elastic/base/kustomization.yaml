@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - upstream/all-in-one.yaml
 #  - rbac.yaml
-  - namespace.yaml
   - elastic-deploy.yaml
   - network.yaml  
 patchesStrategicMerge:
