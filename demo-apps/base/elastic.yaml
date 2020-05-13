@@ -12,15 +12,15 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
-#  ignoreDifferences:
-#  - group: core
-#    kind: Secret
-#    name: webhook-server-secret
-#    namespace: elastic-system
-#   jsonPointers:
-#    - /data
-#    - /type
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
+  ignoreDifferences:
+  - group: core
+    kind: Secret
+    name: webhook-server-secret
+    namespace: elastic-system
+    jsonPointers:
+    - /data
+    - /type
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
