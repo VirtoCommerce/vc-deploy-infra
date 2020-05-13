@@ -96,6 +96,10 @@ resource "azurerm_kubernetes_cluster" "cluster" {
         log_analytics_workspace_id = azurerm_log_analytics_workspace.test.id
       }
   }  
+
+  tags = {
+    environment = "development"
+  }  
 }
 
 output "kube_config" {
