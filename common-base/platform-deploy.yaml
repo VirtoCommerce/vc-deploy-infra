@@ -13,6 +13,15 @@ spec:
         app: vc-platform-web
     spec:
       containers:
+        image: virtocommerce/platform:3.0
+        name: vc-platform-web
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/opt/virtocommerce/platform/wwwroot/cms-content"
+          name: cms-content-data
+        - mountPath: "/opt/virtocommerce/platform/Modules"
+          name: modules-data
 # Needed when running with local db
 #      - command:
 #        - /wait-for-it.sh
@@ -45,15 +54,6 @@ spec:
           value: "App_Data/private.key"
         - name: VirtoCommerce__LocalUploadFolderPath
           value: "App_Data/Uploads"
-        image: virtocommerce/platform:3.0
-        name: vc-platform-web
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - mountPath: "/opt/virtocommerce/platform/wwwroot/cms-content"
-          name: cms-content-data
-        - mountPath: "/opt/virtocommerce/platform/Modules"
-          name: modules-data
       volumes:
       - name: cms-content-data
         persistentVolumeClaim:
