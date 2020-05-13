@@ -11,7 +11,7 @@ spec:
     path: elastic/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
+    namespace: elastic-system
   ignoreDifferences:
   - group: core
     kind: Secret

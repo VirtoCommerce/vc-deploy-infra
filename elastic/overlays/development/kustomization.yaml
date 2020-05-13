@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: elastic-system
 bases:
 - ../../base
-resources:
