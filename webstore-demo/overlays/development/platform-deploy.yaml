@@ -19,3 +19,9 @@ spec:
             value: "http://vc-webstore-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
           - name: ConnectionStrings__VirtoCommerce
             value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=VC_DEMO_DEV3;User ID=virto@vc-dev-dbserver;Password=$(VC_DEV_DBSERVER_PASSWORD);Trusted_Connection=False;Encrypt=True;"
+          - name: Search__Provider
+            value: "ElasticSearch"
+          - name: Search__ElasticSearch__Server
+            value: "https://search-dev-es-http.elastic-system:9200"
+          - name: Search__ElasticSearch__Key
+            value: "HC9Zqkw91E3Tbx722ng67w0m"
