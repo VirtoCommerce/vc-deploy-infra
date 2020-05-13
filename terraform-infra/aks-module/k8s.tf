@@ -1,43 +1,6 @@
-provider "azurerm" {
-    version = "~>2.0"
-    features {}
-}
-
-variable "service_principal_client_id" {
-  description = "The Client ID for the Service Principal"
-}
-
-variable "service_principal_client_secret" {
-  description = "The Client Secret for the Service Principal"
-}
-
-variable "ssh_public_key" {
-    default = "~/.ssh/id_rsa.pub"
-}
-
-variable "name" {}
-
-variable location {
-    default = "westus"
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = "aks-cluster-${var.name}"
   location = var.location
-}
-
-variable log_analytics_workspace_name {
-    default = "testLogAnalyticsWorkspaceName"
-}
-
-# refer https://azure.microsoft.com/global-infrastructure/services/?products=monitor for log analytics available regions
-variable log_analytics_workspace_location {
-    default = "eastus"
-}
-
-# refer https://azure.microsoft.com/pricing/details/monitor/ for log analytics pricing 
-variable log_analytics_workspace_sku {
-    default = "PerGB2018"
 }
 
 resource "random_id" "log_analytics_workspace_name_suffix" {
@@ -100,8 +63,4 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   tags = {
     environment = "development"
   }  
-}
-
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.cluster.kube_config_raw
 }
