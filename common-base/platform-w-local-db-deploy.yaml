@@ -13,15 +13,6 @@ spec:
         app: vc-platform-web
     spec:
       containers:
-        image: virtocommerce/platform:3.0
-        name: vc-platform-web
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - mountPath: "/opt/virtocommerce/platform/wwwroot/cms-content"
-          name: cms-content-data
-        - mountPath: "/opt/virtocommerce/platform/Modules"
-          name: modules-data
       - command:
         - /wait-for-it.sh
         - vc-db:1433
@@ -29,7 +20,7 @@ spec:
         - "120"
         - --
         - dotnet
-        - VirtoCommerce.Platform.Web.dll
+        - VirtoCommerce.Platform.Web.dll      
         env:
         - name: ASPNETCORE_URLS
           value: "http://+"
@@ -53,7 +44,15 @@ spec:
           value: "App_Data/private.key"
         - name: VirtoCommerce__LocalUploadFolderPath
           value: "App_Data/Uploads"
-      volumes:
+        image: virtocommerce/platform:3.0
+        name: vc-platform-web
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/opt/virtocommerce/platform/wwwroot/cms-content"
+          name: cms-content-data
+        - mountPath: "/opt/virtocommerce/platform/Modules"
+          name: modules-data      volumes:
       - name: cms-content-data
         persistentVolumeClaim:
           claimName: cms-content-volume
