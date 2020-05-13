@@ -13,15 +13,7 @@ spec:
         app: vc-platform-web
     spec:
       containers:
-      - command:
-        - /wait-for-it.sh
-        - vc-db:1433
-        - -t
-        - "120"
-        - --
-        - dotnet
-        - VirtoCommerce.Platform.Web.dll
-        env:
+      - env:
         - name: ASPNETCORE_URLS
           value: "http://+"
         - name: Assets__FileSystem__PublicUrl
