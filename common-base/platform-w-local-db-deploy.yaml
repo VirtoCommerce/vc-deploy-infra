@@ -22,6 +22,14 @@ spec:
           name: cms-content-data
         - mountPath: "/opt/virtocommerce/platform/Modules"
           name: modules-data
+      - command:
+        - /wait-for-it.sh
+        - vc-db:1433
+        - -t
+        - "120"
+        - --
+        - dotnet
+        - VirtoCommerce.Platform.Web.dll
         env:
         - name: ASPNETCORE_URLS
           value: "http://+"
