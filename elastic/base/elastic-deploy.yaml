@@ -12,29 +12,30 @@ spec:
       node.master: true
       node.data: true
       node.ingest: true
-    volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-        storageClassName: topolvm-provisioner
-    podTemplate:
-      spec:
-        serviceAccountName: elastic
-        securityContext:
-          runAsUser: 1000
-          fsGroup: 1000
-        containers:
-          - name: elasticsearch
-            env:
-              - name: ES_JAVA_OPTS
-                value: "-Xms1g -Xmx1g"
-            resources:
-              limits:
-                memory: 2Gi
-              requests:
-                memory: 2Gi
+      node.store.allow_mmap: false
+    # volumeClaimTemplates:
+    # - metadata:
+    #     name: elasticsearch-data
+    #   spec:
+    #     accessModes:
+    #     - ReadWriteOnce
+    #     resources:
+    #       requests:
+    #         storage: 1Gi
+    #     storageClassName: topolvm-provisioner
+    # podTemplate:
+    #   spec:
+    #     serviceAccountName: elastic
+    #     securityContext:
+    #       runAsUser: 1000
+    #       fsGroup: 1000
+    #     containers:
+    #       - name: elasticsearch
+    #         env:
+    #           - name: ES_JAVA_OPTS
+    #             value: "-Xms1g -Xmx1g"
+    #         resources:
+    #           limits:
+    #             memory: 2Gi
+    #           requests:
+    #             memory: 2Gi
