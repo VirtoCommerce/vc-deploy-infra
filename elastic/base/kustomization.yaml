@@ -6,5 +6,6 @@ resources:
   - elastic-deploy.yaml
 #  - network.yaml  
 patchesStrategicMerge:
+  - statefulset.yaml
   - crd.yaml
   - validatingwebhookconfiguration.yaml
