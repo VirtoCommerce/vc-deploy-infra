@@ -22,6 +22,6 @@ spec:
           - name: Search__Provider
             value: "ElasticSearch"
           - name: Search__ElasticSearch__Server
-            value: "https://search-dev-es-http.elastic-system:9200"
+            value: "search-dev-es-http.elastic-system:9200"
           - name: Search__ElasticSearch__Key
             value: "HC9Zqkw91E3Tbx722ng67w0m"
