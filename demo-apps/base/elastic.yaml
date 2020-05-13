@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: elastic
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "6"
 spec:
   project: default
   source:
@@ -13,16 +11,16 @@ spec:
     path: elastic/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: elastic-system
-  ignoreDifferences:
-  - group: core
-    kind: Secret
-    name: webhook-server-secret
-    namespace: elastic-system
-    jsonPointers:
-    - /data
-    - /type
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    namespace: demo
+#  ignoreDifferences:
+#  - group: core
+#    kind: Secret
+#    name: webhook-server-secret
+#    namespace: elastic-system
+#   jsonPointers:
+#    - /data
+#    - /type
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
