@@ -16,7 +16,7 @@ spec:
     http:
       service:
         spec:
-          ports:
+          - ports:
             - name: http
               port: 9200
               protocol: TCP        
