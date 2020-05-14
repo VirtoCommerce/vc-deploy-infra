@@ -13,8 +13,17 @@ spec:
       node.data: true
       node.ingest: true
       node.store.allow_mmap: false
-    podTemplate:
-      spec:
+    http:
+      service:
+        spec:
+          # expose this cluster Service with a LoadBalancer
+          type: LoadBalancer 
+          ports:
+            name: http
+            port: 9200
+            protocol: TCP
+    # podTemplate:
+    #   spec:
         # this changes the kernel setting on the node to allow ES to use mmap
         # if you uncomment this init container you will likely also want to remove the
         # "node.store.allow_mmap: false" setting above
@@ -26,11 +35,6 @@ spec:
         ###
         # uncomment the line below if you are using a service mesh such as linkerd2 that uses service account tokens for pod identification.
         # automountServiceAccountToken: true
-        ports:
-        - name: http
-          protocol: TCP
-          port: 9200
-          targetPort: 9200
         # containers:
         # - name: elasticsearch
         #   # specify resource limits and requests
