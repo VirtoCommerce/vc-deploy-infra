@@ -24,4 +24,4 @@ spec:
           - name: Search__ElasticSearch__Server
             value: "http://search-dev-es-http.elastic-system:9200"
           - name: Search__ElasticSearch__Key
-            value: "HC9Zqkw91E3Tbx722ng67w0m"
+            value: "rg454blG8U3W8boflkG50m18"
