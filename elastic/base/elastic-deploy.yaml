@@ -17,9 +17,7 @@ spec:
       service:
         spec:
           ports:
-          - name: "http"
-            port: 9200
-            protocol: TCP        
+          - port: 9200
     # podTemplate:
     #   spec:
         # this changes the kernel setting on the node to allow ES to use mmap
