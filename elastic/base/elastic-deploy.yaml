@@ -16,10 +16,10 @@ spec:
     http:
       service:
         spec:
-          ports:
-          - name: http
-            port: 9200
-            protocol: TCP        
+          - ports:
+            - name: http
+              port: 9200
+              protocol: TCP        
           # expose this cluster Service with a LoadBalancer
           type: LoadBalancer 
     # podTemplate:
