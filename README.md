@@ -1,5 +1,4 @@
-# vc-deployments
-Various public deployments
+# Virto Commerce Continuous Deployments
 
 This repository contains definition of Virto Commerce CD infrastructure:
 
