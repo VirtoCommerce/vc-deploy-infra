@@ -16,12 +16,12 @@ spec:
     http:
       service:
         spec:
+          ports:
+            - name: http
+              port: 9200
+              protocol: TCP        
           # expose this cluster Service with a LoadBalancer
           type: LoadBalancer 
-          ports:
-            name: http
-            port: 9200
-            protocol: TCP
     # podTemplate:
     #   spec:
         # this changes the kernel setting on the node to allow ES to use mmap
