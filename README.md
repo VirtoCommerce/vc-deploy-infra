@@ -8,7 +8,7 @@ This repository contains definition of Virto Commerce CD infrastructure:
 - elastic - contains manifest for setting up elasticsearch in the cluster
 - terraform-infra - contains templates to setup overall infrastructure in azure including k8s and azure sql server, this is a place to start
 
-## Setup K8S
+## Administration - Setup K8S based Virto Commerce CD
 
 ### Step 1 - Terraforming
 During this step, we'll create a infrastructure needed to configure CD.
