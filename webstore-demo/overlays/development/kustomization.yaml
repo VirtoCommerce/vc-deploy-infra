@@ -1,10 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: webstore-demo-dev
 bases:
 - ../../../common-base
-resources:
-- ./namespace.yaml
 patchesStrategicMerge:
 - platform-service.yaml
 - storefront-service.yaml
