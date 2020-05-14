@@ -20,6 +20,10 @@ variable db_login {}
 
 variable db_password {}
 
+variable node_count { default = 1}
+
+variable vm_size { default = "Standard_D2s_v3"}
+
 variable log_analytics_workspace_name {
     default = "testLogAnalyticsWorkspaceName"
 }

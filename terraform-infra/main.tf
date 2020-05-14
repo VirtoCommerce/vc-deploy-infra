@@ -25,6 +25,8 @@ module "dev" {
   name                            = "dev"
   db_login                        = "virto"
   db_password                     = var.db_password
+  node_count                      = 3
+  cm_size                         = "Standard_B2ms" # 8gb ram
   service_principal_client_id     = var.service_principal_client_id
   service_principal_client_secret = var.service_principal_client_secret
 }
