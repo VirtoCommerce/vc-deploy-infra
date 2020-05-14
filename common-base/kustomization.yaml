@@ -16,3 +16,10 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: metadata.name
+- name: VC_STOREFRONT_SERVICE
+  objref:
+    kind: Service
+    name: vc-storefront-web
+    apiVersion: v1
+  fieldref:
+    fieldpath: metadata.name    
