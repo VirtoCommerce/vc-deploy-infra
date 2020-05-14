@@ -16,15 +16,23 @@ During this step, we'll create a infrastructure needed to configure CD.
 1. Download & Configure Terraform on you machine
 2. Initialize state, so it is persisted in azure blob storage.
 // create storage account
-`az storage container create -n tfstate --account-name <account-name> --account-key <account-key>`
+```
+az storage container create -n tfstate --account-name <account-name> --account-key <account-key>
+```
 
 // init state
-`terraform init -backend-config="storage_account_name=<account-name>" -backend-config="container_name=tfstate" -backend-config="access_key=<access-key>" -backend-config="key=codelab.microsoft.tfstate"`
+```
+terraform init -backend-config="storage_account_name=<account-name>" -backend-config="container_name=tfstate" -backend-config="access_key=<access-key>" -backend-config="key=codelab.microsoft.tfstate"
+```
 
 3. Create principal, that you'll use to access azure instance.
-`az ad sp create-for-rbac \ --role="Contributor" \ --scopes="/subscriptions/<subscription_id>"`
+```
+az ad sp create-for-rbac \ --role="Contributor" \ --scopes="/subscriptions/<subscription_id>"
+```
 4. Run the terraform plan.
-`terraform plan -var="service_principal_client_id=<client_id>" -var="service_principal_client_secret=<client_secret>" -var="db_password=<db_password>" -out out.plan`
+```
+terraform plan -var="service_principal_client_id=<client_id>" -var="service_principal_client_secret=<client_secret>" -var="db_password=<db_password>" -out out.plan
+```
 5. Execute the plan
 terraform apply out.plan
 6. Add cluster configuration to your .kube\config file (the output from the previous command).
@@ -43,19 +51,23 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 https://github.com/argoproj/argo-cd/releases/latest
 
 3. Expose ARGO CD public ip
-`kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"`
+```
+kubectl patch svc argocd-server -n argocd -p "{\"spec\": {\"type\": \"LoadBalancer\"}}"
+```
 
 4. Get and change password for ARGO CD (the part after pod/ is a password for user admin)
-`kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name`
-`argocd login <ARGOCD_SERVER>`
-`argocd account update-password`
+```
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name`
+argocd login <ARGOCD_SERVER>
+argocd account update-password
+```
 
 You can get argocd server IP by browsing your k8s:
-`az aks browse --resource-group <resource-group> --name <cluster-name>`
+```
+az aks browse --resource-group <resource-group> --name <cluster-name>
+```
 
 ### Step 3 - Configure apps in Argo CD
-
-
 
 1. Setup secrets
 
@@ -66,4 +78,6 @@ kubectl create secret generic vc-dev-dbserver-password --from-literal=password=<
 ```
 
 2. Install Apps of Apps
-`argocd app create demo-apps --dest-namespace demo --dest-server https://kubernetes.default.svc --repo https://github.com/virtocommerce/vc-deployments.git --path demo-apps`
+```
+argocd app create demo-apps --dest-namespace demo --dest-server https://kubernetes.default.svc --repo https://github.com/virtocommerce/vc-deployments.git --path demo-apps
+```
