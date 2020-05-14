@@ -4,9 +4,15 @@ resources:
   - upstream/all-in-one.yaml
 #  - rbac.yaml
   - elastic-deploy.yaml
-  - secret-password.yaml
 #  - network.yaml  
 patchesStrategicMerge:
   - statefulset.yaml
   - crd.yaml
   - validatingwebhookconfiguration.yaml
+secretGenerator:
+- name: search-dev-es-elastic-user
+  namespace: elastic-system
+  literals:
+  - elastic=virtodevpass
+generatorOptions:
+  disableNameSuffixHash: true
