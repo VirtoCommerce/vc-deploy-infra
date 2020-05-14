@@ -14,3 +14,7 @@ spec:
     path: webstore-demo
     repoURL: https://github.com/virtocommerce/vc-deployments
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true    
