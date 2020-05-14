@@ -17,7 +17,7 @@ spec:
       service:
         spec:
           ports:
-          - name: http
+          - name: "http"
             port: 9200
             protocol: TCP        
     # podTemplate:
