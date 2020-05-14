@@ -9,3 +9,4 @@ patchesStrategicMerge:
 - platform-service.yaml
 - storefront-service.yaml
 - platform-deploy.yaml
+#namePrefix: kustomize-

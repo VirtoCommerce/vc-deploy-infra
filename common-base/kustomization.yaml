@@ -7,3 +7,12 @@ resources:
 - platform-service.yaml
 - storefront-deploy.yaml
 - storefront-service.yaml
+
+vars:
+- name: VC_PLATFORM_SERVICE
+  objref:
+    kind: Service
+    name: vc-platform-web
+    apiVersion: v1
+  fieldref:
+    fieldpath: metadata.name
