@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: default
+  storageClassName: azurefile-premium
   resources:
     requests:
       storage: 200Mi
