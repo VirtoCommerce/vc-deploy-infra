@@ -3,8 +3,8 @@ namespace: development
 kind: Kustomization
 bases:
 - ../../../common-base
-patchesStrategicMerge:
+#patchesStrategicMerge:
 #- platform-service.yaml
-- storefront-service.yaml
-- platform-deploy.yaml
+#- storefront-service.yaml
+#- platform-deploy.yaml
 namePrefix: vc-dev-
