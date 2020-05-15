@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
 - ../../../common-base
 patchesStrategicMerge:
-- platform-service.yaml
+#- platform-service.yaml
 - storefront-service.yaml
 - platform-deploy.yaml
 namePrefix: vc-dev-
