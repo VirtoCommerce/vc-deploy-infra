@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: storefront
   annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: vc-dev-store
+    service.beta.kubernetes.io/azure-dns-label-name: $(VC_STOREFRONT_SERVICE)
 spec:
   ports:
   - port: 80

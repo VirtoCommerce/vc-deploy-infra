@@ -14,18 +14,21 @@ spec:
     spec:
       containers:
       - env:
+        - name: VC_DBSERVER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vc-dev-dbserver-password
+              key: password
         - name: ASPNETCORE_URLS
           value: "http://+"
         - name: Assets__FileSystem__PublicUrl
-          value: "http://vc-dev-backoffice.westus.cloudapp.azure.com/cms-content/assets/"
+          value: "http://$(VC_PLATFORM_SERVICE).westus.cloudapp.azure.com/cms-content/assets/"
         - name: Assets__FileSystem__RootPath
           value: "~/cms-content/assets"
         - name: ConnectionStrings__VirtoCommerce
-          value: "Data Source=vc-db;Initial Catalog=VirtoCommerce3docker;Persist Security Info=True;User ID=sa;Password=v!rto_Labs!;MultipleActiveResultSets=False;"
+          value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=VC_DEMO_DEV3;User ID=virto@vc-dev-dbserver;Password=$(VC_DEV_DBSERVER_PASSWORD);Trusted_Connection=False;Encrypt=True;"
         - name: Content__FileSystem__PublicUrl
-          value: "http://vc-dev-backoffice.westus.cloudapp.azure.com/cms-content/"
-        - name: Search__Provider
-          value: "Lucene"
+          value: "http://$(VC_PLATFORM_SERVICE).westus.cloudapp.azure.com/cms-content/"
         - name: VirtoCommerce__AllowInsecureHttp
           value: "true"
         - name: VirtoCommerce__LicenseFilePath
@@ -36,6 +39,12 @@ spec:
           value: "App_Data/private.key"
         - name: VirtoCommerce__LocalUploadFolderPath
           value: "App_Data/Uploads"
+        - name: Search__Provider
+          value: "ElasticSearch"
+        - name: Search__ElasticSearch__Server
+          value: "http://search-dev-es-http.elastic-system:9200"
+        - name: Search__ElasticSearch__Key
+          value: "virtodevpass"             
         image: virtocommerce/platform:3.0
         name: vc-platform-web
         ports:
@@ -51,4 +60,4 @@ spec:
           claimName: cms-content-volume
       - name: modules-data
         persistentVolumeClaim:
-          claimName: modules-volume
+          claimName: modules-volume       
