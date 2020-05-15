@@ -73,8 +73,8 @@ az aks browse --resource-group <resource-group> --name <cluster-name>
 
 For each namespace, add db password secret used in the earlier step with terraform
 ```
-kubectl create namespace webstore-demo-dev
-kubectl create secret generic vc-dev-dbserver-password --from-literal=password=<db_password> -n webstore-demo-dev
+kubectl create namespace development
+kubectl create secret generic vc-dbserver-password --from-literal=password=<db_password> -n development
 ```
 
 2. Install Apps of Apps
