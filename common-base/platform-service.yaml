@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: platform
   annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: $(VC_PLATFORM_SERVICE)
+    service.beta.kubernetes.io/azure-dns-label-name: vc-dev-backoffice
 spec:
   ports:
   - port: 80
