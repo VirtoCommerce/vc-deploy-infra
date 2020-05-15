@@ -12,14 +12,14 @@ vars:
 - name: VC_PLATFORM_SERVICE
   objref:
     kind: Service
-    name: vc-platform-web
+    name: platform
     apiVersion: v1
   fieldref:
     fieldpath: metadata.name
 - name: VC_STOREFRONT_SERVICE
   objref:
     kind: Service
-    name: vc-storefront-web
+    name: storefront
     apiVersion: v1
   fieldref:
     fieldpath: metadata.name    
