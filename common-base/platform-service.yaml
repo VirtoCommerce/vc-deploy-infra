@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vc-platform-web
+  name: platform
   annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: vc-dev-backoffice
+    service.beta.kubernetes.io/azure-dns-label-name: $(VC_PLATFORM_SERVICE)
 spec:
   ports:
   - port: 80
   selector:
-    app: vc-platform-web
+    app: platform
   type: LoadBalancer

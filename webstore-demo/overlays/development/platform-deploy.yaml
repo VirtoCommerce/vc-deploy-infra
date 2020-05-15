@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vc-platform-web
+  name: platform
 spec:
   template:
     spec:
       containers:
-        - name: vc-platform-web
+        - name: platform
           env:
           - name: VC_DEV_DBSERVER_PASSWORD
             valueFrom:
