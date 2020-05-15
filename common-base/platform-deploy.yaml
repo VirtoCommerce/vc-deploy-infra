@@ -41,6 +41,8 @@ spec:
           value: "App_Data/Uploads"
         - name: Search__Provider
           value: "ElasticSearch"
+        - name: Search__Scope
+          value: "$(VC_PLATFORM_SERVICE)index"          
         - name: Search__ElasticSearch__Server
           value: "http://search-dev-es-http.elastic-system:9200"
         - name: Search__ElasticSearch__Key

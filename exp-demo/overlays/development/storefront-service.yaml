@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: vc-storefront-web
-  annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: vc-exp-dev
