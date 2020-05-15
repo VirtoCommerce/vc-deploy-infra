@@ -4,9 +4,9 @@ metadata:
   name: platform
   annotations:
     service.beta.kubernetes.io/azure-dns-label-name: $(VC_PLATFORM_SERVICE)
- spec:
-   ports:
-   - port: 80
-   selector:
-     app: platform
-#   type: LoadBalancer
+spec:
+  ports:
+  - port: 80
+#  selector:
+#    app: platform
+#  type: LoadBalancer
