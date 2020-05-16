@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vc-storefront-web
+  name: storefront
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vc-storefront-web
+      app: storefront
   template:
     metadata:
       labels:
-        app: vc-storefront-web
+        app: storefront
     spec:
       containers:
       - env:
@@ -19,7 +19,7 @@ spec:
         - name: VirtoCommerce__Endpoint__Password
           value: "store"
         - name: VirtoCommerce__Endpoint__Url
-          value: "http://$(VC_PLATFORM_SERVICE).development"
+          value: "http://$(VC_PLATFORM_SERVICE)"
         - name: VirtoCommerce__Endpoint__UserName
           value: "admin"
         image: virtocommerce/storefront:latest-linux
