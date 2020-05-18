@@ -17,17 +17,17 @@ spec:
         - name: init-sqldatabase
           image: mcr.microsoft.com/mssql-tools
           command:
-            - /opt/mssql-tools/bin/sqlcmd
+            - "/opt/mssql-tools/bin/sqlcmd"
             - "-S"
             - "vc-dev-dbserver.database.windows.net"
             - "-U"
             - "virto@vc-dev-dbserver"
             - "-P"
-            - "$(VC_DBSERVER_PASSWORD)"
+            - "$(VC_DBSERVER_MASTER_PASSWORD)"
             - "-Q"
-            - "If(db_id(N'$(VC_PLATFORM_SERVICE)_DEMO') IS NULL) CREATE DATABASE $(VC_PLATFORM_SERVICE)_DEMO ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = vc-dev-elasticpool ) )"
+            - "If(db_id(N'$(VC_PLATFORM_SERVICE)_DEMO') IS NULL) CREATE DATABASE $(VC_PLATFORM_SERVICE)_DEMO ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = N'vc-dev-elasticpool' ) )"
           env:
-            - name: VC_DBSERVER_PASSWORD
+            - name: VC_DBSERVER_MASTER_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: vc-dbserver-password
