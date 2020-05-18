@@ -12,6 +12,20 @@ spec:
       labels:
         app: platform
     spec:
+      # create database in azure within a sql pool
+      initContainers:
+        - name: init-sqldatabase
+          image: mcr.microsoft.com/mssql-tools
+          command:
+            - "sqlcmd"
+            - "-S"
+            - "vc-dev-dbserver.database.windows.net"
+            - "-U"
+            - "virto@vc-dev-dbserver"
+            - "-P"
+            - "$(VC_DBSERVER_PASSWORD)"
+            - "-Q"
+            - "If(db_id(N'$(VC_PLATFORM_SERVICE)_DEMO') IS NULL) CREATE DATABASE $(VC_PLATFORM_SERVICE)_DEMO ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = vc-dev-elasticpool ) )"
       containers:
       - env:
         - name: VC_DBSERVER_PASSWORD
