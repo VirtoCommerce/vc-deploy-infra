@@ -1,5 +1,5 @@
 resources:
 - base/namespaces.yaml
 - base/elastic.yaml
-#- base/webstore-demo.yaml
+- base/webstore-demo.yaml
 - base/meds-demo.yaml
