@@ -26,7 +26,7 @@ spec:
             - "$(VC_DBSERVER_PASSWORD)"
             - "-Q"
             - "If(db_id(N'$(VC_PLATFORM_SERVICE)_DEMO') IS NULL) CREATE DATABASE $(VC_PLATFORM_SERVICE)_DEMO ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = vc-dev-elasticpool ) )"
-          - env:
+          env:
             - name: VC_DBSERVER_PASSWORD
               valueFrom:
                 secretKeyRef:
