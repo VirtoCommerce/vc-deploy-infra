@@ -26,6 +26,18 @@ resource "azurerm_sql_server" "dbserver" {
   }
 }
 
+resource "azurerm_sql_elasticpool" "pool" {
+  name                = "vc-${var.name}-elasticpool"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  server_name         = azurerm_sql_server.dbserver.name
+  edition             = "Basic"
+  dtu                 = 50
+  db_dtu_min          = 0
+  db_dtu_max          = 5
+  pool_size           = 5000
+}
+
 resource "azurerm_sql_firewall_rule" "main" {
   name                = "AlllowAzureServices"
   resource_group_name = azurerm_resource_group.rg.name
