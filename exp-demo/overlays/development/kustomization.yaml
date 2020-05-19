@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: development
 namePrefix: vc-dev-exp-
 commonLabels:
-  instance: vc-dev-meds
+  instance: vc-dev-exp
 bases:
 - ../../../common-base
