@@ -8,6 +8,9 @@ spec:
     matchLabels:
       app: platform
   template:
+    metadata:
+      labels:
+        app: platform
     spec:
       # create database in azure within a sql pool
       initContainers:

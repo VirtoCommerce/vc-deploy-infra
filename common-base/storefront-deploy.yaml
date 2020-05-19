@@ -8,6 +8,9 @@ spec:
     matchLabels:
       app: storefront
   template:
+    metadata:
+      labels:
+        app: storefront
     spec:
       containers:
       - env:
