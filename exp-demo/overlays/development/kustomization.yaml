@@ -2,5 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: development
 namePrefix: vc-dev-exp-
+commonLabels:
+  instance: vc-dev-meds
 bases:
 - ../../../common-base
