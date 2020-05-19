@@ -4,5 +4,3 @@ namePrefix: vc-dev-webstore-
 kind: Kustomization
 bases:
 - ../../../common-base
-commonLabels:
-  app2: webstore
