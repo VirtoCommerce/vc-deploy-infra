@@ -67,7 +67,7 @@ spec:
           value: "http://search-dev-es-http.elastic-system:9200"
         - name: Search__ElasticSearch__Key
           value: "virtodevpass"             
-        image: virtocommerce/platform:3.0
+        image: virtocommerce/platform:3.0-preview-linux
         name: vc-platform-web
         ports:
         - containerPort: 80
