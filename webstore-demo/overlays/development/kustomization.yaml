@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 namespace: development
 namePrefix: vc-dev-webstore-
+commonLabels:
+  app: webstore
 kind: Kustomization
 bases:
 - ../../../common-base

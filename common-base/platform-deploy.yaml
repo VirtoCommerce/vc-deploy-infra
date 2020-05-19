@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: $(VC_PLATFORM_SERVICE)
+      app: platform
   template:
     spec:
       # create database in azure within a sql pool

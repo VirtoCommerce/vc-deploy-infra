@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: $(VC_STOREFRONT_SERVICE)
+      app: storefront
   template:
     spec:
       containers:

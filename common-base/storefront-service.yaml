@@ -8,5 +8,5 @@ spec:
   ports:
   - port: 80
   selector:
-    app: $(VC_STOREFRONT_SERVICE)
+    app: storefront
   type: LoadBalancer

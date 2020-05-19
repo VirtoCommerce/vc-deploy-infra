@@ -8,5 +8,5 @@ spec:
   ports:
   - port: 80
   selector:
-    app: $(VC_PLATFORM_SERVICE)
+    app: platform
   type: LoadBalancer
