@@ -4,8 +4,8 @@ metadata:
   name: modules-volume
 spec:
   accessModes:
-  - ReadWriteMany
-  storageClassName: azurefile
+  - ReadWriteOnce
+  storageClassName: default
   resources:
     requests:
       storage: 200Mi
