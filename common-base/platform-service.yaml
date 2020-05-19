@@ -7,6 +7,4 @@ metadata:
 spec:
   ports:
   - port: 80
-  selector:
-    app: platform
   type: LoadBalancer
