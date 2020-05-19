@@ -6,11 +6,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: storefront
+      app: $(VC_STOREFRONT_SERVICE)
   template:
-    metadata:
-      labels:
-        app: storefront
     spec:
       containers:
       - env:

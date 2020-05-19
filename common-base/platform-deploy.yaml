@@ -6,11 +6,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: platform
+      app: $(VC_PLATFORM_SERVICE)
   template:
-    metadata:
-      labels:
-        app: platform
     spec:
       # create database in azure within a sql pool
       initContainers:

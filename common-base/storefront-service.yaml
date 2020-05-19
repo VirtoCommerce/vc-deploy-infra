@@ -7,4 +7,6 @@ metadata:
 spec:
   ports:
   - port: 80
+  selector:
+    app: $(VC_STOREFRONT_SERVICE)
   type: LoadBalancer
