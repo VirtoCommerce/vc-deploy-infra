@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: development
 namePrefix: vc-dev-meds-
 commonLabels:
-  app-instance: meds
+  instance: "meds"
 bases:
 - ../../../common-base
