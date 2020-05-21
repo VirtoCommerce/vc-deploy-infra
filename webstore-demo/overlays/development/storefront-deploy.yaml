@@ -4,10 +4,3 @@ metadata:
   name: storefront
 spec:
   replicas: 2
-  selector:
-    matchLabels:
-      app: storefront
-  template:
-    metadata:
-      labels:
-        app: storefront      
