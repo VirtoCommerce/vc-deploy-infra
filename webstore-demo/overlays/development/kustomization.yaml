@@ -6,5 +6,5 @@ commonLabels:
 kind: Kustomization
 bases:
 - ../../../common-base
-patchesStrategicMerge:
-- storefront-deploy.yaml
+#patchesStrategicMerge:
+#- storefront-deploy.yaml
