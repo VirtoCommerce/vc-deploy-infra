@@ -6,4 +6,4 @@ commonLabels:
 kind: Kustomization
 bases:
 - ../../../common-base
-- storefront-deploy.yaml
+#- storefront-deploy.yaml
