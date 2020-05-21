@@ -7,3 +7,7 @@ spec:
   selector:
     matchLabels:
       app: storefront
+  template:
+    metadata:
+      labels:
+        app: storefront      
