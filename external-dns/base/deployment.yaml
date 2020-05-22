@@ -24,7 +24,7 @@ spec:
           - name: azure-config-file         
             mountPath: /etc/kubernetes         
             readOnly: true     
-        volumes:     
-        - name: azure-config-file       
-          secret:
-            secretName: azure-config-file
+      volumes:     
+      - name: azure-config-file       
+        secret:
+          secretName: azure-config-file
