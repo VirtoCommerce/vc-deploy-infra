@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+name: external-dns
+namespace: external-dns
+spec:
+strategy:   
+  type: Recreate
+template:   
+  metadata:     
+    labels:       
+      app: external-dns   
+  spec:     
+    serviceAccountName: external-dns     
+    containers:     
+    - name: external-dns       
+      image: registry.opensource.zalan.do/teapot/external-dns:v0.5.8
+      args:       
+      - --source=service      
+      - --source=ingress       
+      - --domain-filter=govirto.com
+      - --provider=azure       
+      - --azure-resource-group=dns     
+      volumeMounts:       
+        - name: azure-config-file         
+          mountPath: /etc/kubernetes         
+          readOnly: true     
+      volumes:     
+      - name: azure-config-file       
+        secret:
+          secretName: azure-config-file

@@ -11,3 +11,10 @@ metadata:
   name: demo
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: extrenal-dns
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
