@@ -4,7 +4,7 @@ metadata:
   name: storefront
   annotations:
     #service.beta.kubernetes.io/azure-dns-label-name: $(VC_STOREFRONT_SERVICE)
-    external-dns.alpha.kubernetes.io/hostname: $(VC_STOREFRONT_SERVICE)
+    #external-dns.alpha.kubernetes.io/hostname: $(VC_STOREFRONT_SERVICE)
 spec:
   type: ClusterIP
   ports:

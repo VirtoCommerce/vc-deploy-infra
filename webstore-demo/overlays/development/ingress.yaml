@@ -13,3 +13,10 @@ spec:
           serviceName: storefront
           servicePort: 80
         path: /
+  - host: webstore-platform.dev.govirto.com
+    http:
+      paths:
+      - backend:
+          serviceName: platform
+          servicePort: 80
+        path: /        

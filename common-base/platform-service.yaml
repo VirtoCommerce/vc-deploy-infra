@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: platform
   annotations:
-    service.beta.kubernetes.io/azure-dns-label-name: $(VC_PLATFORM_SERVICE)
+    #service.beta.kubernetes.io/azure-dns-label-name: $(VC_PLATFORM_SERVICE)
 spec:
+  type: ClusterIP
   ports:
   - port: 80
   selector:
     app: platform
-  type: LoadBalancer
