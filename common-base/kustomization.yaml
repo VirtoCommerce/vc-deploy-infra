@@ -27,11 +27,4 @@ vars:
     name: storefront
     apiVersion: v1
   fieldref:
-    fieldpath: metadata.namespace
-- name: VC_INSTANCE
-  objref:
-    kind: Service
-    name: storefront
-    apiVersion: v1
-  fieldref:
-    fieldpath: metadata.instance    
+    fieldpath: metadata.namespace  
