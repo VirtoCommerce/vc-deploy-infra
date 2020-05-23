@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: webstore.govirto.com
+  - host: webstore.dev.govirto.com
     http:
       paths:
       - backend:
