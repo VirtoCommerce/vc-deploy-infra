@@ -25,7 +25,7 @@ spec:
             - "-P"
             - "$(VC_DBSERVER_MASTER_PASSWORD)"
             - "-Q"
-            - "CREATE DATABASE [$(VC_PLATFORM_SERVICE)_DEMO] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
+            - "CREATE DATABASE [$(VC_PLATFORM_SERVICE)_$(ARGOCD_APP_NAMESPACE)_DEMO] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
           env:
             - name: VC_DBSERVER_MASTER_PASSWORD
               valueFrom:
@@ -46,7 +46,7 @@ spec:
         - name: Assets__FileSystem__RootPath
           value: "~/cms-content/assets"
         - name: ConnectionStrings__VirtoCommerce
-          value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=$(VC_PLATFORM_SERVICE)_DEMO;User ID=virto@vc-dev-dbserver;Password=$(VC_DBSERVER_PASSWORD);Trusted_Connection=False;Encrypt=True;"
+          value: "Server=tcp:vc-dev-dbserver.database.windows.net,1433;Database=$(VC_PLATFORM_SERVICE)_$(ARGOCD_APP_NAMESPACE)_DEMO;User ID=virto@vc-dev-dbserver;Password=$(VC_DBSERVER_PASSWORD);Trusted_Connection=False;Encrypt=True;"
         - name: Content__FileSystem__PublicUrl
           value: "http://$(VC_PLATFORM_SERVICE).westus.cloudapp.azure.com/cms-content/"
         - name: VirtoCommerce__AllowInsecureHttp
