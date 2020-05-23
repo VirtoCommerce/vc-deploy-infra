@@ -5,7 +5,3 @@ commonLabels:
   instance: webstore
 resources:
 - overlays/development
-
-vars:
-- name: VC_INSTANCE
-  value: webstore
