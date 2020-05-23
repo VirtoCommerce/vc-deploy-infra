@@ -7,6 +7,7 @@ resources:
 - platform-service.yaml
 - storefront-deploy.yaml
 - storefront-service.yaml
+- ingress.yaml
 
 vars:
 - name: VC_PLATFORM_SERVICE

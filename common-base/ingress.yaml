@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: store.virtogo.com
+    http:
+      paths:
+      - backend:
+          serviceName: $(VC_STOREFRONT_SERVICE)
+          servicePort: 80
+        path: /
