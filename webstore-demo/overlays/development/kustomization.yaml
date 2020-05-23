@@ -3,6 +3,6 @@ namespace: development
 kind: Kustomization
 bases:
 - ../../../common-base
-- ingress.yaml
+#- ingress.yaml
 patchesStrategicMerge:
 - storefront-deploy.yaml
