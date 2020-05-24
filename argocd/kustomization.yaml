@@ -18,3 +18,8 @@ patchesJson6902:
     version: v1
 
 namespace: argocd
+
+images:
+- name: argoproj/argocd
+  newName: docker.pkg.github.com/argoproj/argo-cd/argocd
+  newTag: 1.6.0-ac097f14
