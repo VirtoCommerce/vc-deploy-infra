@@ -8,7 +8,7 @@ metadata:
     ingress.kubernetes.io/app-root: "/"
 spec:
   rules:
-  - host: cd.dev.govirto.com
+  - host: cd.govirto.com
     http:
       paths:
       - path: /

@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - cd.dev.govirto.com
+    - cd.govirto.com
     secretName: argocd-secret
   rules:
-  - host: cd.dev.govirto.com
+  - host: cd.govirto.com
     http:
       paths:
       - path: /

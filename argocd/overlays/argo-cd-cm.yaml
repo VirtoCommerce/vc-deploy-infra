@@ -4,24 +4,19 @@ data:
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'true'
   ga.trackingid: 'TODO'
-  url: https://cd.dev.govirto.com
-  configManagementPlugins: |
-    - name: flux
-      generate:
-        command: [sh, -c]
-        args: ["argocd-flux-plugin . --path $GIT_PATH"]
+  url: https://cd.govirto.com
   dex.config: |
     connectors:
     - type: github
       id: github
       name: GitHub
       config:
-        clientID: TODO
+        clientID: ed45580cb97cc9608f25
         clientSecret: $dex.github.clientSecret
         orgs:
         - name: virtocommerce
           teams:
-          - virtocommerce-cd-admins
+          - virto-operations
 kind: ConfigMap
 metadata:
   name: argocd-cm
