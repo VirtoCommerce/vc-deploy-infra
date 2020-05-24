@@ -42,7 +42,7 @@ spec:
         - name: ASPNETCORE_URLS
           value: "http://+"
         - name: Assets__FileSystem__PublicUrl
-          value: "http://$(VC_PLATFORM_SERVICE).westus.cloudapp.azure.com/cms-content/assets/"
+          value: "http://$(VC_PLATFORM_SERVICE).dev.govirto.com/cms-content/assets/"
         - name: Assets__FileSystem__RootPath
           value: "~/cms-content/assets"
         - name: ConnectionStrings__VirtoCommerce

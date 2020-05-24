@@ -3,5 +3,5 @@ resources:
 - base/external-dns.yaml
 - base/elastic.yaml
 - base/webstore-demo.yaml
-#- base/meds-demo.yaml
+- base/meds-demo.yaml
 #- base/exp-demo.yaml
