@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - upstream/install.yaml
   - http01-ingress.yaml
-  - argo-cd-ui-ingress.yaml  
+#  - argo-cd-ui-ingress.yaml  
