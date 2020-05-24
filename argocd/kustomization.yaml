@@ -1,14 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- base
+- base/upstream/install.yaml
+- base/http01-ingress.yaml
+- base/argo-cd-ui-ingress.yaml  
 
 patchesStrategicMerge:
 - overlays/argo-cd-cm.yaml
 - overlays/argocd-server-service.yaml
 
 patchesJson6902:
-- path: overlays/production/argocd-server-deploy-command.yaml
+- path: overlays/argocd-server-deploy-command.yaml
   target:
     group: apps
     kind: Deployment

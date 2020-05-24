@@ -15,8 +15,8 @@ data:
         clientSecret: $dex.github.clientSecret
         orgs:
         - name: virtocommerce
-          teams:
-          - virto-operations
+#          teams:
+#          - virto-operations
 kind: ConfigMap
 metadata:
   name: argocd-cm
