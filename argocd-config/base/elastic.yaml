@@ -1,19 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: elastic
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "2"  
 spec:
   project: default
   source:
     repoURL: https://github.com/virtocommerce/vc-deployments
     targetRevision: HEAD
-    path: external-dns
+    path: elastic/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: external-dns
+    namespace: elastic-system
+  ignoreDifferences:
+  - group: core
+    kind: Secret
+    name: webhook-server-secret
+    namespace: elastic-system
+    jsonPointers:
+    - /data
+    - /type
   syncPolicy:
     automated:
       prune: true

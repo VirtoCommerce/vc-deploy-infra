@@ -30,6 +30,6 @@ metadata:
   name: argocd-rbac-cm
   namespace: argocd
 data:
-  policy.default: role:readonly
+  policy.default: role:admin
   policy.csv: |
     g, virtocommerce:virto operations, role:admin
