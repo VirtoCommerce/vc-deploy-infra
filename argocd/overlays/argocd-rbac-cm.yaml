@@ -9,3 +9,4 @@ data:
   policy.default: role:readonly
   policy.csv: |
     g, VirtoVommerce:Virto Operations, role:admin
+    
