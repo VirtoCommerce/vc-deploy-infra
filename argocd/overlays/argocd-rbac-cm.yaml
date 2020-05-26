@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-rbac-cm
 data:
-  policy.default: role:admin
+  policy.default: role:readonly
   policy.csv: |
     g, virtocommerce:virto operations, role:admin

@@ -8,7 +8,7 @@ metadata:
 data:
   admin.enabled: 'false'
   statusbadge.enabled: 'true'
-  users.anonymous.enabled: 'true'
+  users.anonymous.enabled: 'false'
   ga.trackingid: 'TODO'
   url: https://cd.govirto.com
   dex.config: |
