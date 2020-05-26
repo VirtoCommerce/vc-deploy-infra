@@ -8,4 +8,4 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
-    g, VirtoVommerce:Virto Operations, role:admin
+    g, VirtoCommerce:Virto Operations, role:admin
