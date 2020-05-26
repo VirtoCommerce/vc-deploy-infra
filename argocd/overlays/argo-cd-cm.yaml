@@ -14,9 +14,22 @@ data:
         clientID: ed45580cb97cc9608f25
         clientSecret: $dex.github.clientSecret
         orgs:
-        - name: virtocommerce
-#          teams:
-#          - virto-operations
+        - name: VirtoCommerce
+          teams:
+          - Virto Operations
 kind: ConfigMap
 metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
   name: argocd-cm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    g, virtocommerce:virto operations, role:admin
