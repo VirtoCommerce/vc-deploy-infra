@@ -5,3 +5,4 @@ resources:
 - base/external-dns.yaml
 - base/elastic.yaml
 - base/cert-manager.yaml
+- base/demo-apps.yaml
