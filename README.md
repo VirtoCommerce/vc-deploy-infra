@@ -10,7 +10,7 @@ This repository contains definition of Virto Commerce CD infrastructure:
 
 ## Setup Kubernetes Cluster with ARGO CD
 
-### Step 1 - Terraforming
+### Step 1 - Terraforming (setup azure infrastructure)
 During this step, we'll create a infrastructure needed to configure CD.
 
 1. Download & Configure Terraform on you machine
@@ -34,7 +34,9 @@ az ad sp create-for-rbac \ --role="Contributor" \ --scopes="/subscriptions/<subs
 terraform plan -var="service_principal_client_id=<client_id>" -var="service_principal_client_secret=<client_secret>" -var="db_password=<db_password>" -out out.plan
 ```
 5. Execute the plan
+```
 terraform apply out.plan
+```
 6. Add cluster configuration to your .kube\config file (the output from the previous command).
 
 ### Step 2 - Setup Argo CD in the K8S
