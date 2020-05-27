@@ -4,3 +4,4 @@ resources:
 - base/nginx-ingress.yaml
 - base/external-dns.yaml
 - base/elastic.yaml
+- base/cert-manager.yaml
