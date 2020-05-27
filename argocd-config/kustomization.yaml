@@ -1,6 +1,6 @@
 resources:
 - base/namespaces.yaml
-#- base/argocd.yaml
+- base/argocd.yaml
 - base/nginx-ingress.yaml
 - base/external-dns.yaml
 - base/elastic.yaml
