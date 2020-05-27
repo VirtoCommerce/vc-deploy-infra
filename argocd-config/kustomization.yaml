@@ -1,5 +1,5 @@
 resources:
 - base/namespaces.yaml
-- base/nginx-ingress.yaml
+#- base/nginx-ingress.yaml
 - base/external-dns.yaml
 - base/elastic.yaml
