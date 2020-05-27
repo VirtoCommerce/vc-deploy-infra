@@ -3,11 +3,3 @@ kind: Kustomization
 
 resources:
 - install.yaml
-
-patchesJson6902:
-- target:
-    group: admissionregistration.k8s.io
-    version: v1beta1
-    kind: ClusterIssuer
-    name: cert-manager-webhook
-  path: overlays/cert-manager-webhook-patch.yaml
