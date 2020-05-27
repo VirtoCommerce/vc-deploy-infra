@@ -3,3 +3,6 @@ kind: Kustomization
 
 resources:
 - install.yaml
+
+patchesStrategicMerge:
+- overlays/cert-manager-webhook.yaml
