@@ -13,4 +13,4 @@ spec:
     - selector: {}
       http01:
         ingress:
-          name: argo-cd-ui        
+          class: nginx
