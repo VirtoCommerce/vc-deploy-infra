@@ -6,8 +6,6 @@ metadata:
     ingress.kubernetes.io/proxy-body-size: 100M
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/app-root: "/"
-#    kubernetes.io/tls-acme: "true"
-#    cert-manager.io/issuer: argo-cd-issuer
 spec:
   rules:
   - host: cd.govirto.com
