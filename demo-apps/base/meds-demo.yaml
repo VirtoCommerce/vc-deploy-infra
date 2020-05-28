@@ -7,9 +7,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io  
 spec:
   destination:
-    namespace: demo
+    namespace: development
     server: https://kubernetes.default.svc
-  project: default
+  project: tenant
   source:
     path: meds-demo
     repoURL: https://github.com/virtocommerce/vc-deployments

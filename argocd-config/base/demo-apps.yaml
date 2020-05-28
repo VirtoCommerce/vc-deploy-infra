@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  project: tenant-app-of-apps
+  project: tenant-app
   source:
     path: demo-apps
     repoURL: https://github.com/virtocommerce/vc-deployments
