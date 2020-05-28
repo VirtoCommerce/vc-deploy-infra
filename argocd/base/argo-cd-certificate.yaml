@@ -12,9 +12,3 @@ spec:
   commonName: cd.govirto.com
   dnsNames:
   - cd.govirto.com
-  acme:
-    config:
-    - http01:
-        ingress: http01
-      domains:
-      - cd.govirto.com  
