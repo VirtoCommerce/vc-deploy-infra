@@ -8,7 +8,7 @@ metadata:
     ingress.kubernetes.io/app-root: "/"
     kubernetes.io/tls-acme: "true"
     acme.cert-manager.io/http01-edit-in-place: "true"
-    cert-manager.io/cluster-issuer: argo-cd-issuer
+    cert-manager.io/issuer: argo-cd-issuer
 spec:
   tls:
   - hosts:
