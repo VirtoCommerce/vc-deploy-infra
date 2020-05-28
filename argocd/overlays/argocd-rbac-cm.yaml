@@ -8,5 +8,6 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
+    p, role:virto-developers, applications, *, tenant/*, allow
     g, VirtoCommerce:Virto Operations, role:admin
-    g, VirtoCommerce, role:readonly
+    g, VirtoCommerce, role:virto-developers
