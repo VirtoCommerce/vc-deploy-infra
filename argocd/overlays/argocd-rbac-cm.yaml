@@ -13,4 +13,4 @@ data:
     p, role:virto-developers, applications, delete, tenant/*, allow
     p, role:virto-developers, clusters, get, *, allow
     g, VirtoCommerce:Virto Operations, role:admin
-    g, VirtoCommerce, role:virto-developers
+    g, VirtoCommerce:Virto Commerce, role:virto-developers
