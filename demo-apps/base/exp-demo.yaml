@@ -12,5 +12,5 @@ spec:
   project: default
   source:
     path: exp-demo
-    repoURL: https://github.com/virtocommerce/vc-deployments
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
     targetRevision: HEAD

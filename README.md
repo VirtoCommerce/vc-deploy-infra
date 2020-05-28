@@ -81,5 +81,5 @@ kubectl create secret generic vc-dbserver-password --from-literal=password=<db_p
 
 2. Install Apps of Apps
 ```
-argocd app create demo-apps --dest-namespace demo --dest-server https://kubernetes.default.svc --repo https://github.com/virtocommerce/vc-deployments.git --path demo-apps
+argocd app create demo-apps --dest-namespace demo --dest-server https://kubernetes.default.svc --repo https://github.com/virtocommerce/vc-deploy-infra.git --path demo-apps
 ```
