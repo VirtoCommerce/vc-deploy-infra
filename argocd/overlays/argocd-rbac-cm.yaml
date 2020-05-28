@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-rbac-cm
 data:
-  policy.default: role:readonly
+  policy.default: role:none
   policy.csv: |
     p, role:virto-developers, applications, get, tenant/*, allow
     p, role:virto-developers, applications, sync, tenant/*, allow
