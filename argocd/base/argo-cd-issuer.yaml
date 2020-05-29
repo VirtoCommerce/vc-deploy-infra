@@ -4,11 +4,10 @@ metadata:
   name: argo-cd-issuer
 spec:
   acme:
-    #server: https://acme-v02.api.letsencrypt.org/directory
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: support@virtocommerce.com
     privateKeySecretRef:
-      name: letsencrypt-staging
+      name: letsencrypt-prod
     solvers:
     # An empty 'selector' means that this solver matches all domains
     - selector: {}
