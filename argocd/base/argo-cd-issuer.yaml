@@ -14,4 +14,4 @@ spec:
     - selector: {}
       http01:
         ingress:
-          namee: argo-cd-ui
+          name: argo-cd-ui
