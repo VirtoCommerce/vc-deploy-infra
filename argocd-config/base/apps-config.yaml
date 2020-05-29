@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-apps
+  name: apps-config
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "5"
@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: tenant-app
   source:
-    path: demo-apps
+    path: apps-config
     repoURL: https://github.com/virtocommerce/vc-deploy-apps
     targetRevision: HEAD
   syncPolicy:
