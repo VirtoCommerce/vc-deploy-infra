@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  namespace: topolvm-system
+  name: node
+spec:
+  template:
+    spec:
+      nodeSelector:
+        cke.cybozu.com/role: cs

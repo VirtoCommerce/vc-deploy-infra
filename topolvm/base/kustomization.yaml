@@ -1,0 +1,60 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- upstream/certificates.yaml
+- upstream/controller.yaml
+- upstream/crd.yaml
+- upstream/mutatingwebhooks.yaml
+- upstream/node.yaml
+- upstream/provisioner.yaml
+- upstream/psp.yaml
+- upstream/scheduler.yaml
+- priorityclass.yaml
+- pdb.yaml
+
+patchesStrategicMerge:
+- crd.yaml
+- node.yaml
+- scheduler.yaml
+
+patchesJSON6902:
+- target:
+    group: cert-manager.io
+    version: v1alpha3
+    kind: Issuer
+    name: webhook-selfsign
+    namespace: topolvm-system
+  patch: |-
+    - op: replace
+      path: /apiVersion
+      value: cert-manager.io/v1alpha2
+- target:
+    group: cert-manager.io
+    version: v1alpha3
+    kind: Certificate
+    name: webhook-ca
+    namespace: topolvm-system
+  patch: |-
+    - op: replace
+      path: /apiVersion
+      value: cert-manager.io/v1alpha2
+- target:
+    group: cert-manager.io
+    version: v1alpha3
+    kind: Issuer
+    name: webhook-ca
+    namespace: topolvm-system
+  patch: |-
+    - op: replace
+      path: /apiVersion
+      value: cert-manager.io/v1alpha2
+- target:
+    group: cert-manager.io
+    version: v1alpha3
+    kind: Certificate
+    name: mutatingwebhook
+    namespace: topolvm-system
+  patch: |-
+    - op: replace
+      path: /apiVersion
+      value: cert-manager.io/v1alpha2
