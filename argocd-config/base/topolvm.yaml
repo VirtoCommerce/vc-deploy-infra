@@ -16,5 +16,5 @@ spec:
     namespace: topolvm-system
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
