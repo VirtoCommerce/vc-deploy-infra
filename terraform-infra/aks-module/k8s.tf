@@ -3,13 +3,13 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-resource "random_id" "log_analytics_workspace_name_suffix" {
-    byte_length = 8
-}
+#resource "random_id" "log_analytics_workspace_name_suffix" {
+#    byte_length = 8
+#}
 
 resource "azurerm_log_analytics_workspace" "test" {
     # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
-    name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
+    name                = "${var.log_analytics_workspace_name}-${var.ad_tenant_id}"
     location            = var.log_analytics_workspace_location
     resource_group_name = azurerm_resource_group.rg.name
     sku                 = var.log_analytics_workspace_sku

@@ -29,6 +29,8 @@ module "dev" {
   vm_size                         = "Standard_B2ms"
   service_principal_client_id     = var.service_principal_client_id
   service_principal_client_secret = var.service_principal_client_secret
+  ad_tenant_id                    = "bc03e660-5e3a-45c4-bf5c-b75489f78923" // VirtoWay AD
+  ad_object_id                    = "d1de67d4-8536-4a12-b22d-ae3545be199e" // VirtoCommerce Users
 }
 
 output "kubeconfig_dev" {

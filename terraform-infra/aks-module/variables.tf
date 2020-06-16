@@ -25,7 +25,7 @@ variable node_count { default = 1}
 variable vm_size { default = "Standard_D2s_v3"}
 
 variable log_analytics_workspace_name {
-    default = "testLogAnalyticsWorkspaceName"
+    default = "k8s-log-analytics"
 }
 
 # refer https://azure.microsoft.com/global-infrastructure/services/?products=monitor for log analytics available regions
@@ -37,3 +37,10 @@ variable log_analytics_workspace_location {
 variable log_analytics_workspace_sku {
     default = "PerGB2018"
 }
+
+variable ad_db_login { 
+    default = "sqladmin"
+}
+
+variable ad_tenant_id {}
+variable ad_object_id {}

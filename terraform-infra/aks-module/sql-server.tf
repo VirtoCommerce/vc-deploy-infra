@@ -45,3 +45,19 @@ resource "azurerm_sql_firewall_rule" "main" {
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
 }
+
+resource "azurerm_sql_firewall_rule" "all" {
+  name                = "AlllowAllAccess"
+  resource_group_name = azurerm_resource_group.rg.name
+  server_name         = azurerm_sql_server.dbserver.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "255.255.255.255"
+}
+
+resource "azurerm_sql_active_directory_administrator" "access" {
+  server_name         = azurerm_sql_server.dbserver.name
+  resource_group_name = azurerm_resource_group.rg.name
+  login               = var.ad_db_login
+  tenant_id           = var.ad_tenant_id
+  object_id           = var.ad_object_id
+}
