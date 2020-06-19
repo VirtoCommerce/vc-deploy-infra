@@ -42,7 +42,7 @@ terraform apply out.plan
 ### Step 2 - Setup Argo CD in the K8S
 follow guidance from here https://argoproj.github.io/argo-cd/getting_started/
 
-1. Install Argo CD.
+1. Install Argo CD (non declarativa way).
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
