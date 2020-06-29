@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo-tenant
+  namespace: argocd
+spec:
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: demo
+    server: '*'
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: 'networking.k8s.io'
+    kind: NetworkPolicy
+  orphanedResources:
+    warn: false
+  roles:
+  - name: admin
+    groups:
+    - VirtoCommerce
+    policies:
+    - p, proj:demo-tenant:admin, applications, *, demo-tenant/*, allow

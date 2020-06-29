@@ -8,4 +8,6 @@ resources:
 #- base/topolvm.yaml
 - base/tenant-app-project.yaml
 - base/tenant-project.yaml
+- base/demo-tenant-project.yaml
+
 - base/apps-config.yaml
