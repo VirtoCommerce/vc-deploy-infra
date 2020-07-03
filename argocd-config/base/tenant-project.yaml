@@ -9,6 +9,8 @@ spec:
   destinations:
   - namespace: dev
     server: '*'
+  - namespace: qa
+    server: '*'    
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota
