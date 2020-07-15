@@ -4,7 +4,7 @@ resources:
 - base/argo-cd-issuer.yaml
 - base/argo-cd-certificate.yaml
 - base/upstream/install.yaml
-#- base/http01-ingress.yaml
+- base/http01-ingress.yaml
 - base/argo-cd-ui-ingress.yaml  
 
 patchesStrategicMerge:
