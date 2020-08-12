@@ -36,6 +36,18 @@ spec:
         operation:
           description: Operation contains requested operation parameters.
           properties:
+            info:
+              items:
+                properties:
+                  name:
+                    type: string
+                  value:
+                    type: string
+                required:
+                - name
+                - value
+                type: object
+              type: array
             initiatedBy:
               description: OperationInitiator holds information about the operation
                 initiator
@@ -573,7 +585,7 @@ spec:
                       type: boolean
                   type: object
                 syncOptions:
-                  description: Options allow youe to specify whole app sync-options
+                  description: Options allow you to specify whole app sync-options
                   items:
                     type: string
                   type: array
@@ -614,6 +626,7 @@ spec:
                 message:
                   type: string
                 status:
+                  description: Represents resource health status
                   type: string
               type: object
             history:
@@ -847,6 +860,18 @@ spec:
                 operation:
                   description: Operation is the original requested operation
                   properties:
+                    info:
+                      items:
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                        - name
+                        - value
+                        type: object
+                      type: array
                     initiatedBy:
                       description: OperationInitiator holds information about the
                         operation initiator
@@ -1412,6 +1437,7 @@ spec:
                       message:
                         type: string
                       status:
+                        description: Represents resource health status
                         type: string
                     type: object
                   hook:
@@ -2369,7 +2395,7 @@ spec:
         - "20"
         - --operation-processors
         - "10"
-        image: argoproj/argocd:v1.5.5
+        image: argoproj/argocd:v1.6.2
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -2425,7 +2451,7 @@ spec:
         - -n
         - /usr/local/bin/argocd-util
         - /shared
-        image: argoproj/argocd:v1.5.5
+        image: argoproj/argocd:v1.6.2
         imagePullPolicy: Always
         name: copyutil
         volumeMounts:
@@ -2489,7 +2515,7 @@ spec:
         - argocd-repo-server
         - --redis
         - argocd-redis:6379
-        image: argoproj/argocd:v1.5.5
+        image: argoproj/argocd:v1.6.2
         imagePullPolicy: Always
         livenessProbe:
           initialDelaySeconds: 5
@@ -2540,7 +2566,7 @@ spec:
         - argocd-server
         - --staticassets
         - /shared/app
-        image: argoproj/argocd:v1.5.5
+        image: argoproj/argocd:v1.6.2
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
