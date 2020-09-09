@@ -11,3 +11,4 @@ resources:
 - base/demo-tenant-project.yaml
 - base/redis.yaml
 - base/apps-config.yaml
+- base/reloader.yaml
