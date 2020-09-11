@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-provisioner
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: HEAD
+    path: nfs-provisioner
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nfs
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true  
