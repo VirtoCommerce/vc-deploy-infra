@@ -7,6 +7,7 @@ resource "azurerm_resource_group" "rg" {
 #    byte_length = 8
 #}
 
+/*
 resource "azurerm_log_analytics_workspace" "test" {
     # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
     name                = "${var.log_analytics_workspace_name}-${var.ad_tenant_id}"
@@ -27,6 +28,7 @@ resource "azurerm_log_analytics_solution" "test" {
         product   = "OMSGallery/ContainerInsights"
     }
 }
+*/
 
 resource "azurerm_kubernetes_cluster" "cluster" {
   name       = "aks-${var.name}"
@@ -54,10 +56,15 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 
 
   addon_profile {
+    kube_dashboard {
+      enabled = true
+    }    
+    /*
     oms_agent {
         enabled                    = true
         log_analytics_workspace_id = azurerm_log_analytics_workspace.test.id
-      }
+    }
+    */
   }  
 
   tags = {

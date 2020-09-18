@@ -31,11 +31,11 @@ resource "azurerm_sql_elasticpool" "pool" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   server_name         = azurerm_sql_server.dbserver.name
-  edition             = "Basic"
+  edition             = "Standard"
   dtu                 = 50
   db_dtu_min          = 0
-  db_dtu_max          = 5
-  pool_size           = 5000
+  db_dtu_max          = 10
+  pool_size           = 51200
 }
 
 resource "azurerm_sql_firewall_rule" "main" {
