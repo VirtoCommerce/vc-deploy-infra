@@ -9,7 +9,7 @@ spec:
       memory: 256Mi
     defaultRequest:
       memory: 64Mi
-  - max:
+    max:
       memory: 4Gi
     min:
       memory: 500Mi
