@@ -73,4 +73,11 @@ kind: Namespace
 metadata:
   name: saas
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"    
+    argocd.argoproj.io/sync-wave: "-1" 
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: monitoring
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1" 
