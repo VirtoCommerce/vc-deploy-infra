@@ -16,4 +16,3 @@ resources:
 - base/reloader.yaml
 - base/nfs-provisioner.yaml
 - base/vault.yaml
-- base/monitoring.yaml
