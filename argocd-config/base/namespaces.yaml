@@ -39,17 +39,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: topolvm-system
-  labels:
-    app.kubernetes.io/name: topolvm-system
-    control-plane: "true"
-    topolvm.cybozu.com/webhook: ignore
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"    
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: redis
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
