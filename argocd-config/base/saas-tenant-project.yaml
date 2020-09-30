@@ -25,4 +25,4 @@ spec:
     policies:
     - p, proj:saas-tenant:admin, applications, *, saas-tenant/*, allow
     jwtTokens:
-    - iat: saasci
+    - iat: 1535390316
