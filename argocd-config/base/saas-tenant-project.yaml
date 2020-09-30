@@ -24,3 +24,5 @@ spec:
     - VirtoCommerce
     policies:
     - p, proj:saas-tenant:admin, applications, *, saas-tenant/*, allow
+    jwtTokens:
+    - iat: saasci
