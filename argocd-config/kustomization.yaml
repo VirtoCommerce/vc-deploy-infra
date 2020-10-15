@@ -17,3 +17,4 @@ resources:
 - base/nfs-provisioner.yaml
 - base/vault.yaml
 - base/weave-scope.yaml
+- base/monitoring.yaml
