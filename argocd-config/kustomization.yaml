@@ -16,5 +16,5 @@ resources:
 - base/reloader.yaml
 - base/nfs-provisioner.yaml
 - base/vault.yaml
-- base/weave-scope.yaml
 - base/monitoring.yaml
+- base/traefik.yaml

@@ -67,7 +67,7 @@ metadata:
   apiVersion: v1
   kind: Namespace
   metadata:
-    name: weave-scope
+    name: traefik
     annotations:
       argocd.argoproj.io/sync-wave: "-1" 
 ---
