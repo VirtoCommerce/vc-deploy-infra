@@ -8,6 +8,10 @@ spec:
   source:
     repoURL: 'https://helm.traefik.io/traefik'
     targetRevision: 9.8.0
+    helm:
+      parameters:
+      - name: ingressClass.enabled
+        value: 'true'
     chart: traefik 
   destination:
     server: 'https://kubernetes.default.svc'
