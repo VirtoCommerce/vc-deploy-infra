@@ -16,9 +16,9 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: traefik
-  ignoreDifferences:
-    - group: apiextensions.k8s.io
-      jsonPointers:
-      - /status
-      kind: CustomResourceDefinition  
+  # ignoreDifferences:
+  #   - group: apiextensions.k8s.io
+  #     jsonPointers:
+  #     - /status
+  #     kind: CustomResourceDefinition  
   syncPolicy: {}
