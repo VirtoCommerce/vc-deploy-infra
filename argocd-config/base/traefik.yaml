@@ -12,6 +12,8 @@ spec:
       parameters:
       - name: ingressClass.enabled
         value: 'true'
+      - name: providers.kubernetesIngress.publishedService.enabled
+        value: 'true'
     chart: traefik 
   destination:
     server: 'https://kubernetes.default.svc'
