@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: dev-compute-resources
+  namespace: dev
+spec:
+  hard:
+    limits.memory: 6Gi
+    pods: "20"
+---
