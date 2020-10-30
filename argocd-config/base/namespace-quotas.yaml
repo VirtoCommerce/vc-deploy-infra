@@ -17,3 +17,13 @@ spec:
   hard:
     limits.memory: 4Gi
     pods: "16"
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: qa-compute-resources
+  namespace: qa
+spec:
+  hard:
+    limits.memory: 4Gi
+    pods: "16"
