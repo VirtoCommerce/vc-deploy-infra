@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: ceph-cert
+spec:
+  secretName: ceph-tls
+  issuerRef:
+    name: ceph-issuer
+    kind: Issuer
+  commonName: ceph.govirto.com
+  dnsNames:
+  - ceph.govirto.com

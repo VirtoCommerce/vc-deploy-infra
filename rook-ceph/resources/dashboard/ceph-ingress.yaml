@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ceph-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  tls:
+  - hosts:
+    - ceph.govirto.com
+    secretName: ceph-tls
+  rules:
+  - host: ceph.govirto.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rook-ceph-mgr-dashboard
+          servicePort: https-dashboard

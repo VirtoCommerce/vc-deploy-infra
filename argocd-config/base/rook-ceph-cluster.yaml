@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph-cluster
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: HEAD
+    path: rook-ceph
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-ceph
