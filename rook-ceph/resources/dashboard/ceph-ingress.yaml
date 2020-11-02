@@ -16,5 +16,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: rook-ceph-mgr-dashboard-external-http
+          serviceName: rook-ceph-mgr-dashboard
           servicePort: 7000
