@@ -12,3 +12,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: rook-ceph
+  ignoreDifferences:
+    - group: ceph.rook.io
+      jsonPointers:
+      - /status
+      kind: CephCluster
