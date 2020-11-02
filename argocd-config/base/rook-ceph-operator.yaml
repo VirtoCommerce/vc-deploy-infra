@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.rook.io/master'
+    targetRevision: v1.4.0-alpha.0.534.ga60351a
+    chart: rook-ceph
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: rook-ceph
+syncPolicy: {}
