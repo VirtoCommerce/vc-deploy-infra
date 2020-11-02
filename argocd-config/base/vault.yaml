@@ -12,3 +12,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: hashicorp-vault
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    jsonPointers:
+    - /status
+    kind: MutatingWebhookConfiguration
