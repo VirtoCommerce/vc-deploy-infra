@@ -5,4 +5,4 @@ resources:
     - ./resources/dashboard/ceph-issuer.yaml
     - ./resources/dashboard/ceph-certificate.yaml
     - ./resources/dashboard/ceph-ingress.yaml
-    - ./resources/dashboard/dashboard-external-https.yaml
+    - ./resources/dashboard/dashboard-external-http.yaml
