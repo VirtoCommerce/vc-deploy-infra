@@ -19,7 +19,7 @@ spec:
     allowUnsupported: false
   dashboard:
     enabled: true
-    ssl: true
+    ssl: false
   network:
     hostNetwork: false
   storage:
