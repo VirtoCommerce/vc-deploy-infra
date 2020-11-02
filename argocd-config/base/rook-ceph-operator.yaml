@@ -9,6 +9,10 @@ spec:
     repoURL: 'https://charts.rook.io/master'
     targetRevision: v1.4.0-alpha.0.534.ga60351a
     chart: rook-ceph
+    helm:
+      parameters:
+      - name: image.tag
+        value: v1.4.6
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: rook-ceph
