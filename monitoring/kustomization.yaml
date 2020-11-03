@@ -66,3 +66,4 @@ resources:
     - ./resources/grafana-ui/grafana-certificate.yaml
     - ./resources/grafana-ui/grafana-ingress.yaml
     - ./resources/grafana-ui/grafana-issuer.yaml
+    - ./dashboards/ceph-dashboard.yaml
