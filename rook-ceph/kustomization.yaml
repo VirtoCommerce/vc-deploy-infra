@@ -6,4 +6,5 @@ resources:
     - ./resources/dashboard/ceph-issuer.yaml
     - ./resources/dashboard/ceph-certificate.yaml
     - ./resources/dashboard/ceph-ingress.yaml
+    - ./monitoring/service-monitor.yaml
     
