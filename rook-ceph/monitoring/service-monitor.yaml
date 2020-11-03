@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ceph-monitor
+  labels:
+    component: ceph-storage
+spec:
+  selector:
+    matchLabels:
+      app: rook-ceph-mgr
+  endpoints:
+  - port: 9283
