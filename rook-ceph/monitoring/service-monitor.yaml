@@ -9,4 +9,4 @@ spec:
     matchLabels:
       app: rook-ceph-mgr
   endpoints:
-  - port: 9283
+  - port: http-metrics
