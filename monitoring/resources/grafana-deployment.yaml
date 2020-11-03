@@ -201,3 +201,7 @@ spec:
       - configMap:
           name: grafana-dashboard-workload-total
         name: grafana-dashboard-workload-total
+      - configMap:
+          name: ceph-grafana-dashboard
+        name: ceph-grafana-dashboard  
+              
