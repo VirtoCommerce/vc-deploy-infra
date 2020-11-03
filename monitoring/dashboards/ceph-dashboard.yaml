@@ -98,7 +98,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -199,7 +199,7 @@ data:
             "#f4d598",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 1,
           "format": "Bps",
           "gauge": {
@@ -282,7 +282,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#9ac48a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 1,
           "format": "Bps",
           "gauge": {
@@ -365,7 +365,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "decbytes",
@@ -452,7 +452,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "percentunit",
@@ -539,7 +539,7 @@ data:
             "#052b51",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "format": "short",
           "gauge": {
             "maxValue": 100,
@@ -621,7 +621,7 @@ data:
             "#82b5d8",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 1,
           "format": "decbytes",
           "gauge": {
@@ -704,7 +704,7 @@ data:
             "#aea2e0",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 1,
           "format": "decbytes",
           "gauge": {
@@ -787,7 +787,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#e24d42"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "format": "short",
           "gauge": {
             "maxValue": 100,
@@ -863,7 +863,7 @@ data:
             "#f4d598",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 2,
           "format": "ops",
           "gauge": {
@@ -946,7 +946,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#9ac48a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 2,
           "format": "ops",
           "gauge": {
@@ -1029,7 +1029,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "decbytes",
@@ -1116,7 +1116,7 @@ data:
             "#052b51",
             "#508642"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 2,
           "format": "short",
           "gauge": {
@@ -1200,7 +1200,7 @@ data:
             "#e0752d",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "format": "short",
           "gauge": {
             "maxValue": 100,
@@ -1280,7 +1280,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1381,7 +1381,7 @@ data:
             "rgba(237, 40, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1467,7 +1467,7 @@ data:
             "#eab839",
             "#ea6460"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1553,7 +1553,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1639,7 +1639,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1725,7 +1725,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "none",
@@ -1811,7 +1811,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "ms",
@@ -1897,7 +1897,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "rgba(245, 54, 54, 0.9)"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "format": "ms",
@@ -1983,7 +1983,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": null,
           "format": "ms",
           "gauge": {
@@ -2065,7 +2065,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": null,
           "format": "ms",
           "gauge": {
@@ -2150,7 +2150,7 @@ data:
           "panels": [
             {
               "columns": [],
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fontSize": "100%",
               "gridPos": {
                 "h": 6,
@@ -2205,7 +2205,7 @@ data:
             },
             {
               "columns": [],
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fontSize": "100%",
               "gridPos": {
                 "h": 6,
@@ -2260,7 +2260,7 @@ data:
             },
             {
               "columns": [],
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fontSize": "100%",
               "gridPos": {
                 "h": 6,
@@ -2332,7 +2332,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -2417,7 +2417,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -2502,7 +2502,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -2587,7 +2587,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -2697,7 +2697,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 4,
@@ -2824,7 +2824,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": 0,
           "editable": true,
           "error": false,
@@ -2929,7 +2929,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -3032,7 +3032,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 8,
@@ -3118,7 +3118,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 8,
@@ -3203,7 +3203,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 8,
@@ -3288,7 +3288,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -3373,7 +3373,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -3460,7 +3460,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -3568,7 +3568,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -3666,7 +3666,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -3935,7 +3935,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -4051,7 +4051,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "editable": true,
           "error": false,
           "fill": 1,
@@ -4164,7 +4164,7 @@ data:
             "mode": "opacity"
           },
           "dataFormat": "timeseries",
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -4225,7 +4225,7 @@ data:
             "mode": "opacity"
           },
           "dataFormat": "timeseries",
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -4286,7 +4286,7 @@ data:
             "mode": "opacity"
           },
           "dataFormat": "timeseries",
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -4347,7 +4347,7 @@ data:
             "mode": "opacity"
           },
           "dataFormat": "timeseries",
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "gridPos": {
             "h": 8,
             "w": 12,
@@ -4400,7 +4400,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -4494,7 +4494,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_CEPHTHANOS}",
+          "datasource": "prometheus",
           "decimals": null,
           "fill": 1,
           "gridPos": {
@@ -4607,7 +4607,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -4700,7 +4700,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -4786,7 +4786,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -4872,7 +4872,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -4958,7 +4958,7 @@ data:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "${DS_CEPHTHANOS}",
+              "datasource": "prometheus",
               "fill": 1,
               "gridPos": {
                 "h": 9,
@@ -5145,7 +5145,7 @@ data:
           {
             "allValue": "cephpolbo|cepherin|cephkelly",
             "current": {},
-            "datasource": "${DS_CEPHTHANOS}",
+            "datasource": "prometheus",
             "definition": "",
             "hide": 0,
             "includeAll": false,
