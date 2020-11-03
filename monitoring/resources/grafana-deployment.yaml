@@ -114,6 +114,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
           readOnly: false
+        - mountPath: /ceph-grafana-dashboard/0/ceph
+          name: ceph-grafana-dashboard 
+          readOnly: false  
       nodeSelector:
         beta.kubernetes.io/os: linux
       securityContext:
