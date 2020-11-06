@@ -13,7 +13,7 @@ spec:
     path: external-dns/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: external-dns
+    namespace: default
   syncPolicy:
     automated:
       prune: true
