@@ -1,4 +1,4 @@
-apiVersion: v1
+# apiVersion: v1
 # kind: Namespace
 # metadata:
 #   name: external-dns
@@ -64,12 +64,12 @@ apiVersion: v1
 #   annotations:
 #     argocd.argoproj.io/sync-wave: "-1"    
 ---
-  apiVersion: v1
-  kind: Namespace
-  metadata:
-    name: traefik
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1" 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" 
 ---
 apiVersion: v1
 kind: Namespace
