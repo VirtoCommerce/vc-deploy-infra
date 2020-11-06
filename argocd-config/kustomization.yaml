@@ -1,23 +1,23 @@
 resources:
-- base/namespaces.yaml
-- base/namespace-limits.yaml
-- base/namespace-quotas.yaml
+# - base/namespaces.yaml
+# - base/namespace-limits.yaml
+# - base/namespace-quotas.yaml
 - base/argocd.yaml
-- base/nginx-ingress.yaml
-- base/external-dns.yaml
-- base/elastic.yaml
-- base/cert-manager.yaml
-#- base/topolvm.yaml
-- base/tenant-app-project.yaml
-- base/tenant-project.yaml
-- base/demo-tenant-project.yaml
-- base/saas-tenant-project.yaml
-- base/redis.yaml
-- base/apps-config.yaml
-- base/reloader.yaml
-- base/nfs-provisioner.yaml
-- base/vault.yaml
-- base/monitoring.yaml
-- base/traefik.yaml
-- base/rook-ceph-operator.yaml
-- base/rook-ceph-cluster.yaml
+# - base/nginx-ingress.yaml
+# - base/external-dns.yaml
+# - base/elastic.yaml
+# - base/cert-manager.yaml
+# #- base/topolvm.yaml
+# - base/tenant-app-project.yaml
+# - base/tenant-project.yaml
+# - base/demo-tenant-project.yaml
+# - base/saas-tenant-project.yaml
+# - base/redis.yaml
+# - base/apps-config.yaml
+# - base/reloader.yaml
+# - base/nfs-provisioner.yaml
+# - base/vault.yaml
+# - base/monitoring.yaml
+# - base/traefik.yaml
+# - base/rook-ceph-operator.yaml
+# - base/rook-ceph-cluster.yaml
