@@ -37,7 +37,11 @@ module "gke" {
   ]
 
   node_pools_oauth_scopes = {
-    all = []
+    all = [
+      "https://www.googleapis.com/auth/ndev.clouddns.readwrite",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+    ]
 
     default-node-pool = [
       "https://www.googleapis.com/auth/cloud-platform",
