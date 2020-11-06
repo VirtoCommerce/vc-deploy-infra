@@ -1,12 +1,12 @@
 resources:
-# - base/namespaces.yaml
+- base/namespaces.yaml
 # - base/namespace-limits.yaml
 # - base/namespace-quotas.yaml
 - base/argocd.yaml
 # - base/nginx-ingress.yaml
 # - base/external-dns.yaml
 # - base/elastic.yaml
-# - base/cert-manager.yaml
+- base/cert-manager.yaml
 # #- base/topolvm.yaml
 # - base/tenant-app-project.yaml
 # - base/tenant-project.yaml
@@ -18,6 +18,6 @@ resources:
 # - base/nfs-provisioner.yaml
 # - base/vault.yaml
 # - base/monitoring.yaml
-# - base/traefik.yaml
+- base/traefik.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
