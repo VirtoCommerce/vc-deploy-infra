@@ -7,6 +7,6 @@ spec:
   issuerRef:
     name: grafana-issuer
     kind: Issuer
-  commonName: grafana.govirto.com
+  commonName: grafana.virtoway.us
   dnsNames:
-  - grafana.govirto.com
+  - grafana.virtoway.us
