@@ -361,3 +361,5 @@ FodyWeavers.xsd
 out.plan
 .terraform
 terraform-infra/errored.tfstate
+*.tfvars
+terraform-gke-keyfile.json

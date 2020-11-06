@@ -1,0 +1,12 @@
+credentials        = "./terraform-gke-keyfile.json"
+project_id         = "<project_name>"
+region             = "<region>"
+zones              = ["<region>-a", "<region>-b", "<region>-c"]
+name               = "gke-cluster"
+machine_type       = "<machine_type>"
+min_count          = 1
+max_count          = 3
+disk_size_gb       = 10
+service_account    = "<service_account_name>@<project_name>.iam.gserviceaccount.com"
+initial_node_count = 3
+cluster_name       = "My clusetr"
