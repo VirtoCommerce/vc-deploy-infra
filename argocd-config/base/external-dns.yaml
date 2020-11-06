@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/virtocommerce/vc-deploy-infra
     targetRevision: google-cloud-platform
-    path: external-dns
+    path: external-dns/base
   destination:
     server: https://kubernetes.default.svc
     namespace: external-dns
