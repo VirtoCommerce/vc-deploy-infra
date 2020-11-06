@@ -17,7 +17,7 @@ resources:
 # - base/reloader.yaml
 # - base/nfs-provisioner.yaml
 # - base/vault.yaml
-# - base/monitoring.yaml
+- base/monitoring.yaml
 - base/traefik.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
