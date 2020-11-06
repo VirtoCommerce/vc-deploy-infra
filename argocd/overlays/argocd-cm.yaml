@@ -6,21 +6,21 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
-  admin.enabled: 'false'
+  admin.enabled: 'true'
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'true'
-  ga.trackingid: 'UA-490257-44'
-  url: https://cd.govirto.com
-  dex.config: |
-    connectors:
-    - type: github
-      id: github
-      name: GitHub
-      config:
-        clientID: ed45580cb97cc9608f25
-        clientSecret: $dex.github.clientSecret
-        orgs:
-        - name: VirtoCommerce
-          teams:
-          - Virto Operations
-          - Virto Commerce
+  # ga.trackingid: 'UA-490257-44'
+  # url: https://cd.govirto.com
+  # dex.config: |
+  #   connectors:
+  #   - type: github
+  #     id: github
+  #     name: GitHub
+  #     config:
+  #       clientID: ed45580cb97cc9608f25
+  #       clientSecret: $dex.github.clientSecret
+  #       orgs:
+  #       - name: VirtoCommerce
+  #         teams:
+  #         - Virto Operations
+  #         - Virto Commerce

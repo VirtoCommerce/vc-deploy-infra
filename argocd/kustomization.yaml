@@ -8,7 +8,7 @@ resources:
 # - base/argo-cd-ui-ingress.yaml  
 
 patchesStrategicMerge:
-# - overlays/argocd-cm.yaml
+- overlays/argocd-cm.yaml
 # - overlays/argocd-rbac-cm.yaml
 # - overlays/argocd-server-service.yaml
 
