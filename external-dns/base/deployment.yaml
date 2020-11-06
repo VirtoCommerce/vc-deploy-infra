@@ -3,31 +3,26 @@ kind: Deployment
 metadata:
   name: external-dns
 spec:
-  strategy:   
+  strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: external-dns    
-  template:   
-    metadata:     
-      labels:       
-        app: external-dns   
-    spec:     
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
       serviceAccountName: external-dns
       containers:
-      - name: external-dns       
-        image: registry.opensource.zalan.do/teapot/external-dns:latest
-        args:       
-        - --source=service      
-        - --source=ingress       
-        - --domain-filter=govirto.com
-        - --provider=azure       
-        - --azure-resource-group=dns     
-        volumeMounts:       
-          - name: azure-config-file         
-            mountPath: /etc/kubernetes         
-            readOnly: true     
-      volumes:     
-      - name: azure-config-file       
-        secret:
-          secretName: azure-config-file
+      - name: external-dns
+        image: k8s.gcr.io/external-dns/external-dns:v0.7.3
+        args:
+        - --source=service
+        - --source=ingress
+        - --domain-filter=virtoway.us # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
+        - --provider=google
+#        - --google-project=zalando-external-dns-test # Use this to specify a project different from the one external-dns is running inside
+        - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+        - --registry=txt
+        - --txt-owner-id=k8s-admin
