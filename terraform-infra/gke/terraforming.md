@@ -36,6 +36,8 @@ gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SE
 gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME@$PROJECT_NAME.iam.gserviceaccount.com --role roles/iam.serviceAccountUser
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME@$PROJECT_NAME.iam.gserviceaccount.com --role roles/resourcemanager.projectIamAdmin
+
+gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME@$PROJECT_NAME.iam.gserviceaccount.com --role roles/dns.admin
 ```
 
 ## 5. Enable services
@@ -45,6 +47,7 @@ gcloud services enable compute.googleapis.com
 gcloud services enable servicenetworking.googleapis.com
 gcloud services enable cloudresourcemanager.googleapis.com
 gcloud services enable container.googleapis.com
+gcloud services enable dns.googleapis.com
 ```
 ##
 
