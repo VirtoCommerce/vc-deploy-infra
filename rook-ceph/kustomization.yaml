@@ -4,6 +4,7 @@ resources:
     - ./resources/cluster/storage-class.yaml
     - ./resources/cluster/toolbox.yaml
     - ./resources/cluster/gce-storageclass.yaml
+    - ./resources/cluster/rbd.yaml
     - ./resources/dashboard/ceph-issuer.yaml
     - ./resources/dashboard/ceph-certificate.yaml
     - ./resources/dashboard/ceph-ingress.yaml
