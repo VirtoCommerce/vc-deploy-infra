@@ -48,13 +48,3 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
-  volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 3Gi
-        storageClassName: rook-ceph-block
