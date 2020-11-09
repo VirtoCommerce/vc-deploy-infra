@@ -50,4 +50,4 @@ spec:
           emptyDir: {}
   volumeClaimTemplates:
     spec:
-      storageClassName: rook-cephfs
+      storageClassName: "rook-cephfs"
