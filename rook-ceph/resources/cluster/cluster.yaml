@@ -10,7 +10,7 @@ spec:
     allowMultiplePerNode: false
     volumeClaimTemplate:
       spec:
-        storageClassName: managed-premium
+        storageClassName: fast
         resources:
           requests:
             storage: 10Gi
@@ -91,7 +91,7 @@ spec:
           resources:
             requests:
               storage: 10Gi
-          storageClassName: managed-premium
+          storageClassName: fast
           volumeMode: Block
           accessModes:
             - ReadWriteOnce
