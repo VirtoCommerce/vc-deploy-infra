@@ -26,7 +26,6 @@ metadata:
   name: grafana-ingress-http
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: monitoring-https-redirect@kubernetescrd
 spec:
   rules:
