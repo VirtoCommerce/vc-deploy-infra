@@ -48,3 +48,6 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
+  volumeClaimTemplates:
+    spec:
+      storageClassName: rook-cephfs
