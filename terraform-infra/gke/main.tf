@@ -22,7 +22,7 @@ module "gke" {
     {
       name               = "virto-node-pool"
       local_ssd_count    = 0
-      image_type         = "COS"
+      image_type         = "ubuntu"
       machine_type       = var.machine_type
       min_count          = var.min_count
       max_count          = var.max_count
