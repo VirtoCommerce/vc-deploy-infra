@@ -7,6 +7,6 @@ spec:
   issuerRef:
     name: ceph-issuer
     kind: Issuer
-  commonName: ceph.govirto.com
+  commonName: ceph.virtoway.us
   dnsNames:
-  - ceph.govirto.com
+  - ceph.virtoway.us

@@ -20,4 +20,4 @@ resources:
 - base/monitoring.yaml
 - base/traefik.yaml
 - base/rook-ceph-operator.yaml
-# - base/rook-ceph-cluster.yaml
+- base/rook-ceph-cluster.yaml

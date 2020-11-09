@@ -1,17 +1,36 @@
+---  
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ceph-ingress
+  name: ceph-ingress-https
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: rook-ceph-https-redirect@kubernetescrd
 spec:
   tls:
   - hosts:
-    - ceph.govirto.com
+    - ceph.virtoway.us
     secretName: ceph-tls
   rules:
-  - host: ceph.govirto.com
+  - host: ceph.virtoway.us
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rook-ceph-mgr-dashboard
+          servicePort: 7000
+---  
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ceph-ingress-http
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: rook-ceph-https-redirect@kubernetescrd
+spec:
+  rules:
+  - host: ceph.virtoway.us
     http:
       paths:
       - path: /
