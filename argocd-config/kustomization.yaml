@@ -5,7 +5,7 @@ resources:
 - base/argocd.yaml
 # - base/nginx-ingress.yaml
 - base/external-dns.yaml
-# - base/elastic.yaml
+- base/elastic.yaml
 - base/cert-manager.yaml
 # #- base/topolvm.yaml
 # - base/tenant-app-project.yaml
