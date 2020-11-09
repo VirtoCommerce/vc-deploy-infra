@@ -7,6 +7,6 @@ spec:
   issuerRef:
     name: argo-cd-issuer
     kind: Issuer
-  commonName: cd.govirto.com
+  commonName: cd.virtoway.us
   dnsNames:
-  - cd.govirto.com
+  - cd.virtoway.us
