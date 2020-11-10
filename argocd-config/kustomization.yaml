@@ -13,11 +13,11 @@ resources:
 # - base/demo-tenant-project.yaml
 # - base/saas-tenant-project.yaml
 - base/redis.yaml
-# - base/apps-config.yaml
+- base/apps-config.yaml
 - base/reloader.yaml
 # - base/nfs-provisioner.yaml
 # - base/vault.yaml
-# - base/monitoring.yaml
+- base/monitoring.yaml
 - base/traefik.yaml
 - base/rook-ceph-operator.yaml
 - base/rook-ceph-cluster.yaml
