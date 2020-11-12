@@ -13,7 +13,7 @@ spec:
         storageClassName: managed-premium
         resources:
           requests:
-            storage: 10Gi
+            storage: 8Gi
   cephVersion:
     image: ceph/ceph:v15.2.4
     allowUnsupported: false
@@ -90,7 +90,7 @@ spec:
         spec:
           resources:
             requests:
-              storage: 10Gi
+              storage: 64Gi
           storageClassName: managed-premium
           volumeMode: Block
           accessModes:
