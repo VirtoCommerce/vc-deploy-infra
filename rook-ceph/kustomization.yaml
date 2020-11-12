@@ -2,7 +2,7 @@ resources:
     - ./resources/cluster/cluster.yaml
     - ./resources/cluster/cephfs.yaml
     - ./resources/cluster/storage-class.yaml
-    - ./resources/cluster/snapshotclass.yaml
+    # - ./resources/cluster/snapshotclass.yaml
     - ./resources/cluster/toolbox.yaml
     - ./resources/dashboard/ceph-issuer.yaml
     - ./resources/dashboard/ceph-certificate.yaml
