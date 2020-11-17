@@ -19,7 +19,7 @@ metadata:
   name: rook-nfs
   namespace: rook-nfs
 spec:
-  replicas: 1
+  replicas: 3
   exports:
   - name: share
     server:
