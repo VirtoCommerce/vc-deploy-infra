@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   hard:
-    limits.memory: 6Gi
+    limits.memory: 8Gi
     pods: "20"
 ---
 apiVersion: v1
