@@ -1,0 +1,6 @@
+resources:
+    - ./resources/operator/common.yaml
+    - ./resources/operator/operator.yaml
+    - ./resources/nfs/rbac.yaml
+    - ./resources/nfs/nfs.yaml
+    - ./resources/nfs/sc.yaml

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-nfs-system
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: HEAD
+    path: rook-nfs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-nfs-system
+  # ignoreDifferences:
+  #   - group: ceph.rook.io
+  #     jsonPointers:
+  #     - /status
+  #     kind: CephCluster

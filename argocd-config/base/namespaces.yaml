@@ -84,4 +84,10 @@ metadata:
     name: rook-ceph
     annotations:
       argocd.argoproj.io/sync-wave: "-1" 
-
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: rook-nfs-system
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1" 
