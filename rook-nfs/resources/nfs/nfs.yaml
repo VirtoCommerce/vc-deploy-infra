@@ -7,7 +7,6 @@ metadata:
   namespace: rook-nfs
 spec:
   storageClassName: managed-premium
-  reclaimPolicy: Retain
   accessModes:
   - ReadWriteOnce
   resources:
