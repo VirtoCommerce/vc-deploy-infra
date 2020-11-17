@@ -5,7 +5,7 @@ metadata:
     app: rook-nfs
   name: rook-nfs-share
 parameters:
-  exportName: share1
+  exportName: share
   nfsServerName: rook-nfs
   nfsServerNamespace: rook-nfs
 provisioner: nfs.rook.io/rook-nfs-provisioner
