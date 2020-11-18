@@ -3,4 +3,5 @@ resources:
     - ./resources/operator/operator.yaml
     - ./resources/nfs/rbac.yaml
     - ./resources/nfs/nfs.yaml
-    - ./resources/nfs/sc.yaml
+    - ./resources/nfs/sc-delete.yaml
+    - ./resources/nfs/sc-retain.yaml
