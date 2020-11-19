@@ -25,5 +25,5 @@ metadata:
   namespace: qa
 spec:
   hard:
-    limits.memory: 4Gi
-    pods: "16"
+    limits.memory: 8Gi
+    pods: "20"
