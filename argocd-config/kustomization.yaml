@@ -8,6 +8,7 @@ resources:
 - base/elastic.yaml
 - base/cert-manager.yaml
 #- base/topolvm.yaml
+- base/middlewares.yaml
 - base/tenant-app-project.yaml
 - base/tenant-project.yaml
 - base/demo-tenant-project.yaml
