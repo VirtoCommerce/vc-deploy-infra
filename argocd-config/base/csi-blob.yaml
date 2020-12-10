@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-blob
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: HEAD
+    path: csi-blob
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true  

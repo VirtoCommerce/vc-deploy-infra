@@ -1,0 +1,6 @@
+resources:
+    - ./plugin/rbac-csi-blob-controller.yaml
+    - ./plugin/rbac-csi-blob-node.yaml
+    - ./plugin/csi-blob-driver.yaml
+    - ./plugin/csi-blob-controller.yaml
+    - ./plugin/csi-blob-node.yaml

@@ -21,5 +21,6 @@ resources:
 - base/monitoring.yaml
 - base/traefik.yaml
 - base/rook-nfs-system.yaml
+- base/csi-blob.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
