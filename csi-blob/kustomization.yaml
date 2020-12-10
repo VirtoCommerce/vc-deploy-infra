@@ -4,3 +4,4 @@ resources:
     - ./plugin/csi-blob-driver.yaml
     - ./plugin/csi-blob-controller.yaml
     - ./plugin/csi-blob-node.yaml
+    - ./storage/storageclass-blob-secret.yaml
