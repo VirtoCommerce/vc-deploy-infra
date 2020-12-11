@@ -90,4 +90,11 @@ metadata:
   metadata:
     name: rook-nfs-system
     annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: secret-generator
+    annotations:
       argocd.argoproj.io/sync-wave: "-1" 
