@@ -16,7 +16,7 @@ spec:
         value: 'true'
     chart: traefik 
   destination:
-    server: k8s-cluster
+    server: 'https://k8s-8b6b145d.hcp.eastus2.azmk8s.io:443'
     namespace: default
   # ignoreDifferences:
   #   - group: apiextensions.k8s.io
