@@ -6,4 +6,4 @@ resources:
     - ./plugin/csi-blob-node.yaml
     - ./storage/storageclass-blob-secret.yaml
     - ./storage/storageclass-blob-secret-us.yaml
-    - ./storage/storageclass-blob-secret-files.yaml
+    - ./storage/storageclass-blob-premium.yaml

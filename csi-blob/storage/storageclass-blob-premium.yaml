@@ -5,9 +5,6 @@ metadata:
   name: blob-premium
 provisioner: blob.csi.azure.com
 parameters:
-  csi.storage.k8s.io/provisioner-secret-name: azure-secret-files
-  csi.storage.k8s.io/provisioner-secret-namespace: default
-  csi.storage.k8s.io/node-stage-secret-name: azure-secret-files
-  csi.storage.k8s.io/node-stage-secret-namespace: default
+  skuName: Premium_LRS
 reclaimPolicy: Retain  # if set as "Delete" container would be removed after pvc deletion
 volumeBindingMode: Immediate
