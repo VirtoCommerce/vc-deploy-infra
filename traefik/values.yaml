@@ -57,7 +57,7 @@ podDisruptionBudget:
 # Use ingressClass. Ignored if Traefik version < 2.3 / kubernetes < 1.18.x
 ingressClass:
   # true is not unit-testable yet, pending https://github.com/rancher/helm-unittest/pull/12
-  enabled: true
+  enabled: false
   isDefaultClass: false
 
 # Activate Pilot integration
@@ -176,6 +176,7 @@ globalArguments:
 ## Use curly braces to pass values: `helm install --set="additionalArguments={--providers.kubernetesingress.ingressclass=traefik-internal,--log.level=DEBUG}"`
 additionalArguments:
   - "--metrics.prometheus=true"
+  - "--metrics.prometheus.entrypoint=metrics"
 #  - "--log.level=DEBUG"
 
 # Environment variables to be passed to Traefik's binary
