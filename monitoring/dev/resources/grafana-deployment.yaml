@@ -21,6 +21,12 @@ spec:
         ports:
         - containerPort: 3000
           name: http
+        env:
+        - name: GF_INSTALL_PLUGINS
+          valueFrom:
+            configMapKeyRef:
+              name: grafana-plugins
+              key: plugins
         readinessProbe:
           httpGet:
             path: /api/health

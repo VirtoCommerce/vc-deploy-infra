@@ -63,3 +63,4 @@ resources:
     - ./resources/prometheus-serviceMonitorKubeControllerManager.yaml
     - ./resources/prometheus-serviceMonitorKubeScheduler.yaml
     - ./resources/prometheus-serviceMonitorKubelet.yaml
+    - ./resources/grafana/grafana-plugins.yaml
