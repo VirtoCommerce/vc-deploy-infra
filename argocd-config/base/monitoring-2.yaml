@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/virtocommerce/vc-deploy-infra
     targetRevision: HEAD
-    path: monitoring
+    path: monitoring/dev
   destination:
     server: 'https://k8s-8b6b145d.hcp.eastus2.azmk8s.io:443'
     namespace: monitoring
