@@ -15,6 +15,7 @@ spec:
       helm.sh/chart: {{ template "traefik.chart" . }}
       app.kubernetes.io/managed-by: {{ .Release.Service }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+  jobLabel: traefik
   endpoints:
   - interval: 5s
     path: /metrics
