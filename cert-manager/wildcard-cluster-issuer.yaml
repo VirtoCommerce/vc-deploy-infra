@@ -11,17 +11,14 @@ spec:
     email: support@virtocommerce.com
     privateKeySecretRef:
       name: letsencrypt-wild
-    dns01:
-      providers:
-      - name: azure-dns
-        domains:
-        - '*.wild.govirto.com'
-      azuredns:
-        clientID: "33467df4-b33a-4c8a-b29f-8b5e8ce7916b"
-        clientSecretSecretRef:
-          key: client-secret
-          name: azuredns-config
-        hostedZoneName: "govirto.com"
-        resourceGroupName: "dns"
-        subscriptionID: "63624d02-de44-421b-9d19-306a8e26b322"
-        tenantID: "bc03e660-5e3a-45c4-bf5c-b75489f78923"
+    solvers:
+    - dns01:
+        azureDNS:  
+          clientID: "33467df4-b33a-4c8a-b29f-8b5e8ce7916b"
+          clientSecretSecretRef:
+            key: client-secret
+            name: azuredns-config
+          hostedZoneName: "govirto.com"
+          resourceGroupName: "dns"
+          subscriptionID: "63624d02-de44-421b-9d19-306a8e26b322"
+          tenantID: "bc03e660-5e3a-45c4-bf5c-b75489f78923"
