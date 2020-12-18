@@ -5,3 +5,4 @@ resources:
 - install.yaml
 - cluster-issuer.yaml
 - wildcard-cluster-issuer.yaml
+- wildcard-cert.yaml

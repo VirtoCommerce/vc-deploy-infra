@@ -5,14 +5,14 @@ metadata:
 spec:
   secretName: wildcard-domain-tls-secret
   issuerRef:
-	name: letsencrypt-wild
-	kind: ClusterIssuer
-  commonName: '*.dev.company.de'
+    name: letsencrypt-wild
+    kind: ClusterIssuer
+  commonName: '*.wild.govirto.com'
   dnsNames:
-  - '*.dev.company.de'
+  - '*.wild.govirto.com'
   acme:
-	config:
-	- dns01:
-		provider: azure-dns
-	  domains:  
-	  - '*.dev.company.de'
+    config:
+    - dns01:
+        provider: azuredns
+      domains:
+      - '*.wild.govirto.com'
