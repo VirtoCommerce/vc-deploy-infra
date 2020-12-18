@@ -14,7 +14,7 @@ spec:
         - name: azure-dns
           domains:
           - '*.wild.govirto.com'
-        azureDNS:  
+        azuredns:  
           clientID: "33467df4-b33a-4c8a-b29f-8b5e8ce7916b"
           clientSecretSecretRef:
             key: client-secret
