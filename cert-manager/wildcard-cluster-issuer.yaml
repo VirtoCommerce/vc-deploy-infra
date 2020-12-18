@@ -8,14 +8,14 @@ spec:
   - "*.wild.govirto.com"
   acme:
     server: "https://acme-v02.api.letsencrypt.org/directory"
-	  email: support@virtocommerce.com
-	  privateKeySecretRef:
-	    name: letsencrypt-wild
-	  dns01:
-	    providers:
-	    - name: azure-dns
-		    domains:
-	    	- '*.wild.govirto.com'
+    email: support@virtocommerce.com
+    privateKeySecretRef:
+      name: letsencrypt-wild
+    dns01:
+      providers:
+      - name: azure-dns
+        domains:
+        - '*.wild.govirto.com'
       azuredns:
         clientID: "33467df4-b33a-4c8a-b29f-8b5e8ce7916b"
         clientSecretSecretRef:
