@@ -25,5 +25,6 @@ resources:
 - base/secret-generator.yaml
 - base/traefik-2.yaml
 - base/monitoring-2.yaml
+- base/wildcard-cert-dev.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml

@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: Certificate
+metadata:
+  name: wildcard-domain
+  namespace: saas
+spec:
+  secretName: wildcard-domain-tls-secret
+  issuerRef:
+    name: letsencrypt-wild
+    kind: ClusterIssuer
+  commonName: '*.wild.govirto.com'
+  dnsNames:
+  - '*.wild.govirto.com'
