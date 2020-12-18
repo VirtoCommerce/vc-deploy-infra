@@ -1,4 +1,4 @@
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-wild
@@ -10,10 +10,6 @@ spec:
       name: letsencrypt-wild
     solvers:
     - dns01:
-        providers:
-        - name: azure-dns
-          domains:
-          - '*.wild.govirto.com'
         azuredns:  
           clientID: "33467df4-b33a-4c8a-b29f-8b5e8ce7916b"
           clientSecretSecretRef:
