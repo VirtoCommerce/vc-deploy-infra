@@ -11,3 +11,17 @@ spec:
   commonName: '*.wild.govirto.com'
   dnsNames:
   - '*.wild.govirto.com'
+---
+apiVersion: cert-manager.io/v1alpha3
+kind: Certificate
+metadata:
+  name: wildcard-domain-p
+  namespace: dev
+spec:
+  secretName: wildcard-domain-tls-secret-p
+  issuerRef:
+    name: letsencrypt-wild
+    kind: ClusterIssuer
+  commonName: '*.p.govirto.com'
+  dnsNames:
+  - '*.p.govirto.com'
