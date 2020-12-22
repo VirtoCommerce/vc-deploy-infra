@@ -2378,7 +2378,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-application-controller
@@ -2409,19 +2409,19 @@ spec:
       - command:
         - argocd-application-controller
         - --status-processors
-        - "20"
-        - --operation-processors
         - "10"
+        - --operation-processors
+        - "5"
         image: argoproj/argocd:v1.7.7
         imagePullPolicy: Always
         resources:
             requests:
-              cpu: "50m"
+              cpu: "150m"
             limits:
-              cpu: "350m"
-        env:
-        - name: ARGOCD_CONTROLLER_REPLICAS
-          value: "3"
+              cpu: "750m"
+        # env:
+        # - name: ARGOCD_CONTROLLER_REPLICAS
+        #   value: "3"
         livenessProbe:
           httpGet:
             path: /healthz
