@@ -362,3 +362,4 @@ out.plan
 .terraform
 terraform-infra/errored.tfstate
 terraform-infra/gke/
+*.tfvars
