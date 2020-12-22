@@ -20,7 +20,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     vm_size             = var.vm_size
     availability_zones  = ["1", "2", "3"]
     node_count          = var.node_count
-    vnet_subnet_id = var.subnet_default
+    vnet_subnet_id      = var.subnet_default
+    max_pods            = var.max_pods
   }
 
   service_principal {

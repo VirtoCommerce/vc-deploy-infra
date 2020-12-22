@@ -54,5 +54,5 @@ module "k8s" {
   subnet_default      = module.network.subnet1
   dns_prefix          = var.dns_prefix
   node_count          = "3"
+  max_pods            = "120"
 }
-

@@ -23,3 +23,5 @@ variable min_count {}
 variable max_count {}
 
 variable dns_prefix {}
+
+variable max_pods {}
