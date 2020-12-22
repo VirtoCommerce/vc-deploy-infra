@@ -2378,7 +2378,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-application-controller
@@ -2421,7 +2421,7 @@ spec:
               cpu: "550m"
         env:
         - name: ARGOCD_CONTROLLER_REPLICAS
-          value: "3"
+          value: "4"
         livenessProbe:
           httpGet:
             path: /healthz
