@@ -2418,7 +2418,8 @@ spec:
             requests:
               cpu: "50m"
             limits:
-              cpu: "550m"
+              cpu: "750m"
+              memory: "512Mi"
         env:
         - name: ARGOCD_CONTROLLER_REPLICAS
           value: "4"
