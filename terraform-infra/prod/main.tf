@@ -50,7 +50,7 @@ module "k8s" {
   location            = azurerm_resource_group.k8s.location
   max_count           = "6"
   min_count           = "3"
-  vm_size             = "Standard_E2ds_v4"
+  vm_size             = "Standard_D2ds_v4"
   subnet_default      = module.network.subnet1
   dns_prefix          = var.dns_prefix
   node_count          = "3"
