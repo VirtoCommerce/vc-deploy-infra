@@ -2,25 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: traefik
-  namespace: argocd  
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .  
 spec:
   project: default
   source:
-    repoURL: 'https://helm.traefik.io/traefik'
-    targetRevision: 9.8.0
-    helm:
-      parameters:
-      - name: ingressClass.enabled
-        value: 'true'
-      - name: providers.kubernetesIngress.publishedService.enabled
-        value: 'true'
-    chart: traefik 
+    repoURL: 'https://github.com/virtocommerce/vc-deploy-infra'
+    targetRevision: main
+    path: traefik
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: traefik
-  # ignoreDifferences:
-  #   - group: apiextensions.k8s.io
-  #     jsonPointers:
-  #     - /status
-  #     kind: CustomResourceDefinition  
+    namespace: traefik 
   syncPolicy: {}
