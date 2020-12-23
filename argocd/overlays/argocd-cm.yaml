@@ -6,11 +6,11 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
-  admin.enabled: 'false'
+  admin.enabled: 'true'
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'false'
   ga.trackingid: 'UA-490257-44'
-  url: https://cd.govirto.com
+  url: https://argo.govirto.com
   dex.config: |
     connectors:
     - type: github
