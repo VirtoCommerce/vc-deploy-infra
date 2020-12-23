@@ -2703,19 +2703,19 @@ spec:
         # env:
         # - name: ARGOCD_CONTROLLER_REPLICAS
         #   value: "2"
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 8082
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 8082
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
         name: argocd-application-controller
         ports:
         - containerPort: 8082
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 8082
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 8082
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
       serviceAccountName: argocd-application-controller
