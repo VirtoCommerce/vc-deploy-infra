@@ -1,28 +1,8 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: dev-compute-resources
-  namespace: dev
-spec:
-  hard:
-    limits.memory: 8Gi
-    pods: "20"
----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
   name: saas-compute-resources
   namespace: saas
-spec:
-  hard:
-    limits.memory: 8Gi
-    pods: "20"
----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: qa-compute-resources
-  namespace: qa
 spec:
   hard:
     limits.memory: 8Gi

@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: demo-tenant
+  name: prod-tenant
   namespace: argocd
 spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: demo
+  - namespace: prod
     server: '*'
   namespaceResourceBlacklist:
   - group: ''
@@ -23,4 +23,4 @@ spec:
     groups:
     - VirtoCommerce
     policies:
-    - p, proj:demo-tenant:admin, applications, *, demo-tenant/*, allow
+    - p, proj:prod-tenant:admin, applications, *, prod-tenant/*, allow

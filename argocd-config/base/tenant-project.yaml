@@ -7,9 +7,7 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: dev
-    server: '*'
-  - namespace: qa
+  - namespace: prod
     server: '*'    
   namespaceResourceBlacklist:
   - group: ''

@@ -1,18 +1,18 @@
 resources:
 - base/namespaces.yaml
-# - base/namespace-limits.yaml
-# - base/namespace-quotas.yaml
+- base/namespace-limits.yaml
+- base/namespace-quotas.yaml
 - base/argocd.yaml
 - base/external-dns.yaml
 - base/elastic.yaml
 - base/cert-manager.yaml
 - base/middlewares.yaml
-# - base/tenant-app-project.yaml
-# - base/tenant-project.yaml
-# - base/demo-tenant-project.yaml
+- base/tenant-app-project.yaml
+- base/tenant-project.yaml
+- base/prod-tenant-project.yaml
 # - base/saas-tenant-project.yaml
 - base/redis.yaml
-# - base/apps-config.yaml
+- base/apps-config.yaml
 - base/reloader.yaml
 - base/vault.yaml
 - base/monitoring.yaml

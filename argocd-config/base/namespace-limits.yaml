@@ -1,57 +1,6 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: dev-limit-range
-  namespace: dev
-spec:
-  limits:
-  - default:
-      memory: 256Mi
-    defaultRequest:
-      memory: 64Mi
-    max:
-      memory: 3Gi
-    min:
-      memory: 64Mi
-    type: Container
----
-apiVersion: v1
-kind: LimitRange
-metadata:
-  name: demo-limit-range
-  namespace: demo
-spec:
-  limits:
-  - default:
-      memory: 256Mi
-    defaultRequest:
-      memory: 64Mi
-    max:
-      memory: 3Gi
-    min:
-      memory: 64Mi
-    type: Container
----
-apiVersion: v1
-kind: LimitRange
-metadata:
-  name: qa-limit-range
-  namespace: qa
-spec:
-  limits:
-  - default:
-      memory: 256Mi
-    defaultRequest:
-      memory: 64Mi
-    max:
-      memory: 3Gi
-    min:
-      memory: 64Mi
-    type: Container
----
-apiVersion: v1
-kind: LimitRange
-metadata:
   name: saas-limit-range
   namespace: saas
 spec:
