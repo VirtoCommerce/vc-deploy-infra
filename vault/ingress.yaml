@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.middlewares: vault-https-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: hashicorp-vault-https-redirect@kubernetescrd
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
@@ -27,7 +27,7 @@ metadata:
   name: vault-ui-http
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: vault-https-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: hashicorp-vault-https-redirect@kubernetescrd
 spec:
   rules:
   - host: hcvault.govirto.com
