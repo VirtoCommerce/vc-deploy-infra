@@ -126,3 +126,5 @@ spec:
         - name: ssl
           hostPath:
             path: /etc/ssl/certs
+      nodeSelector:
+        agentpool: primary

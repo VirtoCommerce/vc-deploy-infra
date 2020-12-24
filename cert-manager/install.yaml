@@ -6112,6 +6112,8 @@ spec:
                 fieldPath: metadata.namespace
           resources:
             {}
+      nodeSelector:
+        agentpool: primary
             
 
 ---
@@ -6172,7 +6174,8 @@ spec:
             requests:
               cpu: 10m
               memory: 32Mi
-            
+      nodeSelector:
+        agentpool: primary
 
 ---
 # Source: cert-manager/templates/webhook-deployment.yaml
@@ -6230,6 +6233,8 @@ spec:
       - name: certs
         secret:
           secretName: cert-manager-webhook-tls
+      nodeSelector:
+        agentpool: primary
 ---
 # Source: cert-manager/templates/webhook-apiservice.yaml
 apiVersion: apiregistration.k8s.io/v1beta1

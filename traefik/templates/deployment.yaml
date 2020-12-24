@@ -240,6 +240,8 @@ spec:
       {{- if .Values.deployment.additionalContainers }}
         {{- toYaml .Values.deployment.additionalContainers | nindent 6 }}
       {{- end }}
+      nodeSelector:
+        agentpool: primary
       volumes:
         - name: data
           {{- if .Values.persistence.enabled }}

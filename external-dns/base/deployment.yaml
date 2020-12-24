@@ -32,3 +32,5 @@ spec:
       - name: azure-config-file       
         secret:
           secretName: azure-config-file
+      nodeSelector:
+        agentpool: primary

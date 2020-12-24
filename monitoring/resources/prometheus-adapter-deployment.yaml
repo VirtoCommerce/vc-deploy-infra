@@ -41,6 +41,7 @@ spec:
           readOnly: false
       nodeSelector:
         kubernetes.io/os: linux
+        agentpool: primary
       serviceAccountName: prometheus-adapter
       volumes:
       - emptyDir: {}

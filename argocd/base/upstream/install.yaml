@@ -2874,6 +2874,8 @@ spec:
       volumes:
       - emptyDir: {}
         name: static-files
+      nodeSelector:
+        agentpool: primary
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -2947,7 +2949,8 @@ spec:
           readOnly: true
         - mountPath: /data
           name: data
-      nodeSelector: {}
+      nodeSelector:
+        agentpool: primary
       securityContext:
         fsGroup: 1000
         runAsNonRoot: true
@@ -3033,6 +3036,8 @@ spec:
           name: argocd-gpg-keys-cm
         name: gpg-keys
       - name: gpg-keyring
+      nodeSelector:
+        agentpool: primary
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -3102,6 +3107,8 @@ spec:
       - configMap:
           name: argocd-tls-certs-cm
         name: tls-certs
+      nodeSelector:
+        agentpool: primary
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -3167,6 +3174,8 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
       serviceAccountName: argocd-application-controller
+      nodeSelector:
+        agentpool: primary
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -3274,5 +3283,7 @@ spec:
         name: config
       - emptyDir: {}
         name: data
+      nodeSelector:
+        agentpool: primary
   updateStrategy:
     type: RollingUpdate
