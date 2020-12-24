@@ -8,7 +8,6 @@ resources:
 - base/cert-manager.yaml
 - base/middlewares.yaml
 - base/tenant-app-project.yaml
-- base/tenant-project.yaml
 - base/prod-tenant-project.yaml
 # - base/saas-tenant-project.yaml
 - base/redis.yaml
