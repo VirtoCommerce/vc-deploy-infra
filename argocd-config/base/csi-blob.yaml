@@ -13,6 +13,7 @@ spec:
     path: csi-blob
   destination:
     server: https://kubernetes.default.svc
+    namespace: csi-blob
   syncPolicy:
     automated:
       prune: true
