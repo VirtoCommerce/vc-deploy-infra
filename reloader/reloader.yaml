@@ -94,6 +94,8 @@ spec:
         version: v0.0.68
         
     spec:
+      nodeSelector:
+        agentpool: primary
       containers:
       - image: "stakater/reloader:v0.0.68"
         imagePullPolicy: IfNotPresent

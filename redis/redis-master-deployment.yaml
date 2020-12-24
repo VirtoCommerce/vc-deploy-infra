@@ -16,6 +16,8 @@ spec:
         role: master
         tier: backend
     spec:
+      nodeSelector:
+          agentpool: primary
       containers:
       - name: master
         image: redis:5.0.9

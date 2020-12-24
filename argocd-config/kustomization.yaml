@@ -3,7 +3,6 @@ resources:
 # - base/namespace-limits.yaml
 # - base/namespace-quotas.yaml
 - base/argocd.yaml
-# - base/nginx-ingress.yaml
 - base/external-dns.yaml
 - base/elastic.yaml
 - base/cert-manager.yaml
@@ -14,12 +13,11 @@ resources:
 # - base/saas-tenant-project.yaml
 # - base/redis.yaml
 # - base/apps-config.yaml
-# - base/reloader.yaml
-# - base/nfs-provisioner.yaml
+- base/reloader.yaml
 - base/vault.yaml
 - base/monitoring.yaml
 - base/traefik.yaml
 # - base/rook-nfs-system.yaml
 - base/csi-blob.yaml
-# - base/secret-generator.yaml
+- base/secret-generator.yaml
 # - base/wildcard-cert-dev.yaml
