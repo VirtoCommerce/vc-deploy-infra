@@ -22,7 +22,8 @@ spec:
         - --source=ingress       
         - --domain-filter=govirto.com
         - --provider=azure       
-        - --azure-resource-group=dns     
+        - --azure-resource-group=dns
+        - --txt-owner-id=eastus    
         volumeMounts:       
           - name: azure-config-file         
             mountPath: /etc/kubernetes         
