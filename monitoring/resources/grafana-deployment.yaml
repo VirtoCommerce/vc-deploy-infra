@@ -119,10 +119,7 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
-          readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/ceph
-          name: ceph-grafana-dashboard 
-          readOnly: false  
+          readOnly: false 
       nodeSelector:
         beta.kubernetes.io/os: linux
       securityContext:
@@ -209,8 +206,5 @@ spec:
         name: grafana-dashboard-statefulset
       - configMap:
           name: grafana-dashboard-workload-total
-        name: grafana-dashboard-workload-total
-      - configMap:
-          name: ceph-grafana-dashboard
-        name: ceph-grafana-dashboard  
+        name: grafana-dashboard-workload-total  
               
