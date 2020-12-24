@@ -13,7 +13,7 @@ spec:
     - hcvault.govirto.com
     secretName: vault-tls
   rules:
-  - host: vault.govirto.com
+  - host: hcvault.govirto.com
     http:
       paths:
       - path: /
