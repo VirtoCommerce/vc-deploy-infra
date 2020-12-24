@@ -1,18 +1,36 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: argo-cd-ui
+  name: argo-cd-ui-https
   annotations:
-    ingress.kubernetes.io/proxy-body-size: 100M
-    kubernetes.io/ingress.class: "nginx"
-    ingress.kubernetes.io/app-root: "/"
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: argocd-https-redirect@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
   - hosts:
-    - cd.govirto.com
+    - argo.govirto.com
     secretName: argocd-secret
   rules:
-  - host: cd.govirto.com
+  - host: argo.govirto.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: argocd-server
+          servicePort: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: argo-cd-ui-http
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: argocd-https-redirect@kubernetescrd
+spec:
+  rules:
+  - host: argo.govirto.com
     http:
       paths:
       - path: /
