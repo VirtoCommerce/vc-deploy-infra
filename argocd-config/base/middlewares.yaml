@@ -7,3 +7,13 @@ spec:
   redirectScheme:
     scheme: https
     permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: https-redirect
+  namespace: monitoring
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
