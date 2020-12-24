@@ -4,7 +4,7 @@ resources:
 # - base/namespace-quotas.yaml
 - base/argocd.yaml
 # - base/nginx-ingress.yaml
-#- base/external-dns.yaml
+- base/external-dns.yaml
 # - base/elastic.yaml
 - base/cert-manager.yaml
 # - base/middlewares.yaml
