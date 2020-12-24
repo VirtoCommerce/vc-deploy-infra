@@ -3,11 +3,13 @@ kind: Application
 metadata:
   name: csi-blob
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
 spec:
   project: default
   source:
     repoURL: https://github.com/virtocommerce/vc-deploy-infra
-    targetRevision: HEAD
+    targetRevision: main
     path: csi-blob
   destination:
     server: https://kubernetes.default.svc
