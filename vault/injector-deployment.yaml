@@ -30,6 +30,8 @@ spec:
         runAsNonRoot: true
         runAsGroup: 1000
         runAsUser: 100
+      nodeSelector:
+        agentpool: primary
       containers:
         - name: sidecar-injector
 

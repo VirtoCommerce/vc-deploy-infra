@@ -1,16 +1,39 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nginx
+  name: vault-ui-https
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.org/client-max-body-size: 20m
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: vault-https-redirect@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
+  tls:
+  - hosts:
+    - hcvault.govirto.com
+    secretName: vault-tls
   rules:
   - host: vault.govirto.com
     http:
       paths:
-      - backend:
+      - path: /
+        backend:
           serviceName: vault-ui
           servicePort: 80
-        path: /
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: vault-ui-http
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: vault-https-redirect@kubernetescrd
+spec:
+  rules:
+  - host: hcvault.govirto.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: vault-ui
+          servicePort: 80

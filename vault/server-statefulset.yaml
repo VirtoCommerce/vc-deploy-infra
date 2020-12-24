@@ -55,6 +55,8 @@ spec:
 
         - name: home
           emptyDir: {}
+      nodeSelector:
+        agentpool: primary
       containers:
         - name: vault
 

@@ -5,7 +5,7 @@ resources:
 - base/argocd.yaml
 # - base/nginx-ingress.yaml
 - base/external-dns.yaml
-# - base/elastic.yaml
+- base/elastic.yaml
 - base/cert-manager.yaml
 - base/middlewares.yaml
 # - base/tenant-app-project.yaml
@@ -16,7 +16,7 @@ resources:
 # - base/apps-config.yaml
 # - base/reloader.yaml
 # - base/nfs-provisioner.yaml
-# - base/vault.yaml
+- base/vault.yaml
 - base/monitoring.yaml
 - base/traefik.yaml
 # - base/rook-nfs-system.yaml

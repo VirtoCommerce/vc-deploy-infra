@@ -33,6 +33,8 @@ spec:
               readOnly: true
             - mountPath: /tmp
               name: tmp
+      nodeSelector:
+        agentpool: primary
       initContainers:
         - image: quay.io/cybozu/ubuntu:18.04
           name: symlink-certs

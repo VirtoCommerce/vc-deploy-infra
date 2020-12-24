@@ -3,11 +3,13 @@ kind: Application
 metadata:
   name: vault
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
 spec:
   project: default
   source:
     repoURL: https://github.com/virtocommerce/vc-deploy-infra
-    targetRevision: HEAD
+    targetRevision: main
     path: vault
   destination:
     server: https://kubernetes.default.svc

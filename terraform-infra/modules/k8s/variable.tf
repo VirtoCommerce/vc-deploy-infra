@@ -18,6 +18,8 @@ variable vm_size {}
 
 variable subnet_default {}
 
+variable subnet_2 {}
+
 variable min_count {}
 
 variable max_count {}
