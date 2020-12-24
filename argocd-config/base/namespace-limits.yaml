@@ -13,4 +13,21 @@ spec:
       memory: 3Gi
     min:
       memory: 64Mi
-    type: Container    
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: prod-limit-range
+  namespace: prod
+spec:
+  limits:
+  - default:
+      memory: 256Mi
+    defaultRequest:
+      memory: 64Mi
+    max:
+      memory: 3Gi
+    min:
+      memory: 64Mi
+    type: Container 
