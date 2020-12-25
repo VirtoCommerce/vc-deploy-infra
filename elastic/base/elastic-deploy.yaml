@@ -10,8 +10,12 @@ spec:
       selfSignedCertificate:
         disabled: true
   nodeSets:
-  - count: 1
+  - count: 3
     name: master-nodes
+    podTemplate:
+      spec:
+        nodeSelector:
+          agentpool: primary
     config:
       node.master: true
       node.data: true
