@@ -10,7 +10,7 @@ data:
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'false'
   ga.trackingid: 'UA-490257-44'
-  url: https://argo.govirto.com
+  url: https://argo.govirto.com/
   dex.config: |
     connectors:
     - type: github
