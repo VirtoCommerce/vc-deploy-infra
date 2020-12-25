@@ -12,3 +12,5 @@ data:
     p, role:virto-developers, clusters, get, *, allow
     g, VirtoCommerce:Virto Operations, role:admin
     g, VirtoCommerce:Virto Commerce, role:virto-developers
+    g, VirtoCommerce:Virto Operations, role:admin
+    g, cloud-nation:operations, role:admin
