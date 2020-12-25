@@ -17,10 +17,10 @@ data:
       id: github
       name: GitHub
       config:
-        clientID: d7f47a805b87566e8703
+        clientID: 61056eeda3c53c5e98c8
         clientSecret: $dex.github.clientSecret
         orgs:
-        - name: cloud-nation
+        - name: VirtoCommerce
           teams:
-          - developers
-          - operations
+          - Virto Operations
+          - Virto Commerce
