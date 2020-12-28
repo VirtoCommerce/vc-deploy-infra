@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-govirto
+spec:
+  strategy:   
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns-govirto    
+  template:   
+    metadata:     
+      labels:       
+        app: external-dns-govirto   
+    spec:     
+      serviceAccountName: external-dns
+      containers:
+      - name: external-dns-govirto       
+        image: registry.opensource.zalan.do/teapot/external-dns:latest
+        args:       
+        - --source=service      
+        - --source=ingress       
+        - --domain-filter=govirto.com
+        - --provider=azure       
+        - --azure-resource-group=dns
+        - --txt-owner-id=eastus    
+        volumeMounts:       
+          - name: azure-config-file         
+            mountPath: /etc/kubernetes         
+            readOnly: true     
+      volumes:     
+      - name: azure-config-file       
+        secret:
+          secretName: azure-config-file
+      nodeSelector:
+        agentpool: primary

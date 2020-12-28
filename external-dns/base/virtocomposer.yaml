@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: external-dns
+  name: external-dns-virtocomposer
 spec:
   strategy:   
     type: Recreate
   selector:
     matchLabels:
-      app: external-dns    
+      app: external-dns-virtocomposer    
   template:   
     metadata:     
       labels:       
-        app: external-dns   
+        app: external-dns-virtocomposer   
     spec:     
       serviceAccountName: external-dns
       containers:
-      - name: external-dns       
+      - name: external-dns-virtocomposer      
         image: registry.opensource.zalan.do/teapot/external-dns:latest
         args:       
         - --source=service      
         - --source=ingress       
-        - --domain-filter=govirto.com
+        - --domain-filter=virtocomposer.com
         - --provider=azure       
-        - --azure-resource-group=dns
-        - --txt-owner-id=eastus    
+        - --azure-resource-group=azuredns
+        - --txt-owner-id=eastus-virtocomposer    
         volumeMounts:       
-          - name: azure-config-file         
+          - name: azure-config-file-virtocomposer        
             mountPath: /etc/kubernetes         
             readOnly: true     
       volumes:     
-      - name: azure-config-file       
+      - name: azure-config-file-virtocomposer      
         secret:
-          secretName: azure-config-file
+          secretName: azure-config-file-virtocomposer
       nodeSelector:
         agentpool: primary
