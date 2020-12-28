@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: Certificate
+metadata:
+  name: wildcard-domain-composer
+  namespace: dev
+spec:
+  secretName: wildcard-domain-tls-secret-composer
+  issuerRef:
+    name: letsencrypt-wild-composer
+    kind: ClusterIssuer
+  commonName: '*.virtocomposer.com'
+  dnsNames:
+  - '*.virtocomposer.com'
