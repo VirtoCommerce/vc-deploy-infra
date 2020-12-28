@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-wild-composer
+spec:
+  acme:
+    server: "https://acme-v02.api.letsencrypt.org/directory"
+    email: support@virtocommerce.com
+    privateKeySecretRef:
+      name: letsencrypt-wild-composer
+    solvers:
+    - dns01:
+        azuredns:  
+          clientID: "624614c5-53a7-4d35-bf3e-4f9d92f00e01"
+          clientSecretSecretRef:
+            key: client-secret
+            name: azuredns-config-composer
+          hostedZoneName: "virtocomposer.com"
+          resourceGroupName: "azuredns"
+          subscriptionID: "a6522b3e-cc34-41c8-bf38-a5ff3080186a"
+          tenantID: "bc03e660-5e3a-45c4-bf5c-b75489f78923"
