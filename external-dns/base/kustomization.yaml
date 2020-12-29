@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - rbac.yaml
 - govirto.yaml
-- virtocomposer.yaml
+#- virtocomposer.yaml
