@@ -12,8 +12,8 @@ spec:
   project: tenant-app
   source:
     path: apps-config/overlays/prod
-    repoURL: https://github.com/virtocommerce/vc-deploy-apps
-    targetRevision: prod
+    repoURL: https://github.com/VirtoCommerce/vc-composer-deploy
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
