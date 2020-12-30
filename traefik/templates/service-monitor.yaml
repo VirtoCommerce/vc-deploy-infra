@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ template "traefik.name" . }}
+    helm.sh/chart: {{ template "traefik.chart" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  name: traefik
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ template "traefik.name" . }}
+      helm.sh/chart: {{ template "traefik.chart" . }}
+      app.kubernetes.io/managed-by: {{ .Release.Service }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  jobLabel: traefik
+  endpoints:
+  - interval: 5s
+    path: /metrics
+    targetPort: 9000

@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - base/upstream/install.yaml
 - base/argo-cd-ui-ingress.yaml
-# - base/service-monitors.yaml
+- base/service-monitors.yaml
 
 patchesStrategicMerge:
 - overlays/argocd-cm.yaml
