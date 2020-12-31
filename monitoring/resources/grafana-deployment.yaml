@@ -119,7 +119,10 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
-          readOnly: false 
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/argocd
+          name: argocd-grafana-dashboard
+          readOnly: false
       nodeSelector:
         beta.kubernetes.io/os: linux
         agentpool: primary
@@ -207,5 +210,8 @@ spec:
         name: grafana-dashboard-statefulset
       - configMap:
           name: grafana-dashboard-workload-total
-        name: grafana-dashboard-workload-total  
+        name: grafana-dashboard-workload-total
+      - configMap:
+          name: argocd-grafana-dashboard
+        name: argocd-grafana-dashboard   
               
