@@ -9,6 +9,8 @@ spec:
   destinations:
   - namespace: dev
     server: 'https://aks-f783f1e0.hcp.westus.azmk8s.io:443'
+  - namespace: qa
+    server: 'https://aks-f783f1e0.hcp.westus.azmk8s.io:443'
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota
