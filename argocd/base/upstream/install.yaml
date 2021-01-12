@@ -2692,6 +2692,8 @@ spec:
         - "20"
         - --operation-processors
         - "10"
+        - --repo-server-timeout-seconds
+        - "180"
         image: argoproj/argocd:v1.8.1
         imagePullPolicy: Always
         resources:
