@@ -24,7 +24,7 @@ spec:
         - --provider=azure       
         - --azure-resource-group=dns
         - --txt-owner-id=eastus
-        - --debug    
+        - --log-level=debug    
         volumeMounts:       
           - name: azure-config-file         
             mountPath: /etc/kubernetes         
