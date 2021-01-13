@@ -11,6 +11,8 @@ spec:
     server: 'https://aks-f783f1e0.hcp.westus.azmk8s.io:443'
   - namespace: qa
     server: 'https://aks-f783f1e0.hcp.westus.azmk8s.io:443'
+  - namespace: dev
+    server: 'https://kubernetes.default.svc'
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota
