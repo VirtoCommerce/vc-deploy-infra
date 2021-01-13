@@ -23,7 +23,8 @@ spec:
         - --domain-filter=govirto.com
         - --provider=azure       
         - --azure-resource-group=dns
-        - --txt-owner-id=eastus    
+        - --txt-owner-id=eastus
+        - --debug    
         volumeMounts:       
           - name: azure-config-file         
             mountPath: /etc/kubernetes         
