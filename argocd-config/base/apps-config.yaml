@@ -53,7 +53,7 @@ spec:
     server: https://kubernetes.default.svc
   project: tenant-app
   source:
-    path: apps-config/overlays/dev
+    path: apps-config/overlays/develop
     repoURL: https://github.com/omnidark/sandbox
     targetRevision: HEAD
   syncPolicy:
