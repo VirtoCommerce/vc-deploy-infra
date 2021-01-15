@@ -29,3 +29,13 @@ resource "azurerm_subnet_network_security_group_association" "subnet2asso" {
   subnet_id                 = azurerm_subnet.subnet2.id
   network_security_group_id = "/subscriptions/a6522b3e-cc34-41c8-bf38-a5ff3080186a/resourceGroups/mc_cloud-platform_vc-master_eastus/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-34239724-nsg"
 }
+
+resource "azurerm_subnet_network_security_group_association" "subnet1asso" {
+  subnet_id                 = azurerm_subnet.subnet1.id
+  network_security_group_id = "/subscriptions/a6522b3e-cc34-41c8-bf38-a5ff3080186a/resourceGroups/mc_cloud-platform_vc-master_eastus/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-34239724-nsg"
+}
+
+resource "azurerm_subnet_network_security_group_association" "subnet3asso" {
+  subnet_id                 = azurerm_subnet.subnet3.id
+  network_security_group_id = "/subscriptions/a6522b3e-cc34-41c8-bf38-a5ff3080186a/resourceGroups/mc_cloud-platform_vc-master_eastus/providers/Microsoft.Network/networkSecurityGroups/aks-agentpool-34239724-nsg"
+}

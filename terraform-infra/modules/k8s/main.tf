@@ -57,7 +57,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "app" {
   vm_size               = "Standard_E2ds_v4"
   availability_zones    = ["1", "2", "3"]
   node_count            = "1"
-  vnet_subnet_id        = var.subnet_2
+  vnet_subnet_id        = var.subnet_default
   max_pods              = var.max_pods
 
   tags = {
