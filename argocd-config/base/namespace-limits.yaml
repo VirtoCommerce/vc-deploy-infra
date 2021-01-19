@@ -30,4 +30,21 @@ spec:
       memory: 3Gi
     min:
       memory: 64Mi
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: demo-limit-range
+  namespace: demo
+spec:
+  limits:
+  - default:
+      memory: 1024Mi
+    defaultRequest:
+      memory: 512Mi
+    max:
+      memory: 3Gi
+    min:
+      memory: 256Mi
     type: Container 
