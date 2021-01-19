@@ -16,7 +16,7 @@ spec:
   - host: kibana.govirto.com
     http:
       paths:
-      - path: /
+      - path: /app
         backend:
           serviceName: kibana-kb-http
           servicePort: 5601
@@ -33,7 +33,7 @@ spec:
   - host: kibana.govirto.com
     http:
       paths:
-      - path: /
+      - path: /app
         backend:
           serviceName: kibana-kb-http
           servicePort: 5601
