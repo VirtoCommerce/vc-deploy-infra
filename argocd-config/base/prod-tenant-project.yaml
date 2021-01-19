@@ -9,6 +9,8 @@ spec:
   destinations:
   - namespace: prod
     server: '*'
+  - namespace: demo
+    server: '*'
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota

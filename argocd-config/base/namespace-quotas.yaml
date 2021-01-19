@@ -17,3 +17,13 @@ spec:
   hard:
     limits.memory: 8Gi
     pods: "20"
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: demo-compute-resources
+  namespace: demo
+spec:
+  hard:
+    limits.memory: 8Gi
+    pods: "20"
