@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana-ui-https
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: monitoring-https-redirect@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+  - hosts:
+    - kibana.govirto.com
+    secretName: kibana-tls
+  rules:
+  - host: kibana.govirto.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kibana-kb-http
+          servicePort: 5601
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana-ui-http
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: monitoring-https-redirect@kubernetescrd
+spec:
+  rules:
+  - host: kibana.govirto.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kibana-kb-http
+          servicePort: 5601
