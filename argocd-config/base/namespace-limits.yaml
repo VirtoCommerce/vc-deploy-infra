@@ -46,5 +46,5 @@ spec:
     max:
       memory: 3Gi
     min:
-      memory: 256Mi
+      memory: 64Mi
     type: Container 
