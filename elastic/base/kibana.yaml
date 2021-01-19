@@ -8,3 +8,19 @@ spec:
   count: 1
   elasticsearchRef:
     name: search-dev
+  podTemplate:
+    spec:
+      nodeSelector:
+        agentpool: primary
+      containers:
+      - name: kibana
+        resources:
+          limits:
+            memory: 2Gi
+        env:
+          - name: SERVER_BASEPATH
+            value: /
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
