@@ -25,5 +25,5 @@ metadata:
   namespace: demo
 spec:
   hard:
-    limits.memory: 8Gi
+    limits.memory: 16Gi
     pods: "20"
