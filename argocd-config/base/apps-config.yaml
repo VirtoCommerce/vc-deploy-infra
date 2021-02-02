@@ -11,9 +11,9 @@ spec:
     server: https://kubernetes.default.svc
   project: tenant-app
   source:
-    path: apps-config/overlays/prod
+    path: apps-config/overlays/demo
     repoURL: https://github.com/VirtoCommerce/vc-composer-deploy
-    targetRevision: HEAD
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
