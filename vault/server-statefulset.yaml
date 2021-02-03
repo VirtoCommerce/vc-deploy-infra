@@ -169,8 +169,8 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
-        storageClassName: azurefile    
+            storage: 4Gi
+        storageClassName: managed-premium    
 
     - metadata:
         name: audit
@@ -180,5 +180,5 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
-        storageClassName: azurefile    
+            storage: 4Gi
+        storageClassName: managed-premium    
