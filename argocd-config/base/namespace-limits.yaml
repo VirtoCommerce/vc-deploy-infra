@@ -6,9 +6,9 @@ metadata:
 spec:
   limits:
   - default:
-      memory: 256Mi
+      memory: 512Mi
     defaultRequest:
-      memory: 64Mi
+      memory: 256Mi
     max:
       memory: 3Gi
     min:
