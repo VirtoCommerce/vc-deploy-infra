@@ -115,6 +115,8 @@ spec:
         app: rook-nfs-operator
     spec:
       serviceAccountName: rook-nfs-operator
+      nodeSelector:
+          agentpool: primary
       containers:
       - name: rook-nfs-operator
         image: rook/nfs:v1.5.0
