@@ -20,4 +20,5 @@ resources:
 - base/tenant-project.yaml
 - base/csi-blob.yaml
 - base/secret-generator.yaml
+- bae/secrets.yaml
 #- base/wildcard-certs.yaml
