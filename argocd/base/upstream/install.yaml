@@ -3010,9 +3010,9 @@ spec:
         name: argocd-repo-server
         resources:
             requests:
-              cpu: "750m"
+              cpu: "550m"
             limits:
-              cpu: "750m"
+              cpu: "550m"
         ports:
         - containerPort: 8081
         - containerPort: 8084
