@@ -28,6 +28,8 @@ spec:
     # A Persistent Volume Claim must be created before creating NFS CRD instance.
     persistentVolumeClaim:
       claimName: nfs-default-claim
+    nodeSelector:
+      agentpool: primary
   # A key/value list of annotations
   annotations:
     rook: nfs

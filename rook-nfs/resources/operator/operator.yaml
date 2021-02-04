@@ -119,6 +119,8 @@ spec:
       - name: rook-nfs-operator
         image: rook/nfs:v1.5.0
         imagePullPolicy: IfNotPresent
+        nodeSelector:
+          agentpool: primary
         args: ["nfs", "operator"]
         env:
         - name: POD_NAME

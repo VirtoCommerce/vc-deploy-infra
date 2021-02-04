@@ -16,7 +16,7 @@ resources:
 - base/vault.yaml
 - base/monitoring.yaml
 - base/traefik.yaml
-# - base/rook-nfs-system.yaml
+- base/rook-nfs-system.yaml
 - base/tenant-project.yaml
 - base/csi-blob.yaml
 - base/secret-generator.yaml
