@@ -3008,6 +3008,11 @@ spec:
         image: argoproj/argocd:v1.8.1
         imagePullPolicy: Always
         name: argocd-repo-server
+        resources:
+            requests:
+              cpu: "750m"
+            limits:
+              cpu: "750m"
         ports:
         - containerPort: 8081
         - containerPort: 8084
