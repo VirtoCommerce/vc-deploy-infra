@@ -2,7 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1beta1
 kind: Elasticsearch
 metadata:
   name: search-dev
-  namespace: elastic-system
+  namespace: elastic-system-dev
 spec:
   version: 7.4.2
   http:
@@ -17,3 +17,13 @@ spec:
       node.data: true
       node.ingest: true
       node.store.allow_mmap: false
+    volumeClaimTemplates:
+      - metadata:
+          name: elasticsearch-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 16Gi
+          storageClassName: managed-premium
