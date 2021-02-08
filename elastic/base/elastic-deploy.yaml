@@ -2,7 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1beta1
 kind: Elasticsearch
 metadata:
   name: search-dev
-  namespace: elastic-system-dev
+  namespace: elastic-system
 spec:
   version: 7.4.2
   http:
