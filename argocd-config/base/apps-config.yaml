@@ -85,7 +85,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: webstore-develop-config
+  name: webstore-dev-config
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "5"
@@ -95,9 +95,9 @@ spec:
     server: https://kubernetes.default.svc
   project: tenant-app
   source:
-    path: apps-config/overlays/develop
+    path: apps-config/overlays/dev
     repoURL: https://github.com/VirtoCommerce/vc-webstore-deploy
-    targetRevision: develop
+    targetRevision: dev
   syncPolicy:
     automated:
       prune: true
