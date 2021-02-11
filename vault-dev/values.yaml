@@ -27,7 +27,7 @@ injector:
   # True if you want to enable vault agent injection.
   enabled: true
 
-  replicas: 1
+  replicas: 4
 
   # If multiple replicas are specified, by default a leader-elector side-car
   # will be created so that only one injector attempts to create TLS certificates.
