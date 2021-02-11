@@ -106,14 +106,13 @@ injector:
     certName: tls.crt
     keyName: tls.key
 
-  resources: {}
-  # resources:
-  #   requests:
-  #     memory: 256Mi
-  #     cpu: 250m
-  #   limits:
-  #     memory: 256Mi
-  #     cpu: 250m
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 50m
+    limits:
+      memory: 128Mi
+      cpu: 50m
 
   # extraEnvironmentVars is a list of extra environment variables to set in the
   # injector deployment.
@@ -179,14 +178,13 @@ server:
   # See https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
   updateStrategyType: "OnDelete"
 
-  resources: {}
-  # resources:
-  #   requests:
-  #     memory: 256Mi
-  #     cpu: 250m
-  #   limits:
-  #     memory: 256Mi
-  #     cpu: 250m
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 150m
+    limits:
+      memory: 256Mi
+      cpu: 150m
 
   # Ingress allows ingress services to be created to allow external access
   # from Kubernetes to access Vault pods.
