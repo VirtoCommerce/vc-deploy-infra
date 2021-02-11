@@ -27,7 +27,7 @@ injector:
   # True if you want to enable vault agent injection.
   enabled: true
 
-  replicas: 4
+  replicas: 3
 
   # If multiple replicas are specified, by default a leader-elector side-car
   # will be created so that only one injector attempts to create TLS certificates.
@@ -502,7 +502,7 @@ server:
   # different HA backend.
   ha:
     enabled: true
-    replicas: 4
+    replicas: 3
 
     # Set the api_addr configuration for Vault HA
     # See https://www.vaultproject.io/docs/configuration#api_addr
