@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault-dev
+  namespace: argocd  
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/virtocommerce/vc-deploy-infra'
+    targetRevision: master
+    path: vault-dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vault-dev 
+  syncPolicy: {}
