@@ -553,6 +553,11 @@ server:
           path = "/vault/data"
         }
 
+        seal "azurekeyvault" {
+        vault_name     = "az-vaultkey"
+        key_name       = "vaulter"
+        }
+    
         service_registration "kubernetes" {}
 
     # config is a raw string of default configuration when using a Stateful
@@ -576,6 +581,11 @@ server:
         address = "HOST_IP:8500"
       }
 
+      seal "azurekeyvault" {
+        vault_name     = "az-vaultkey"
+        key_name       = "vaulter"
+      }
+      
       service_registration "kubernetes" {}
 
       # Example configuration for using auto-unseal, using Google Cloud KMS. The
