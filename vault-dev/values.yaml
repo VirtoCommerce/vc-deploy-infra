@@ -314,12 +314,15 @@ server:
     - envName: AZURE_CLIENT_SECRET
       secretName: aks-creds
       secretKey: AZURE_CLIENT_SECRET
-    # - envName: VAULT_AZUREKEYVAULT_VAULT_NAME
-    #   secretName: aks-creds
-    #   secretKey: VAULT_AZUREKEYVAULT_VAULT_NAME
-    # - envName: VAULT_AZUREKEYVAULT_KEY_NAME
-    #   secretName: aks-creds
-    #   secretKey: VAULT_AZUREKEYVAULT_KEY_NAME
+    - envName: VAULT_AZUREKEYVAULT_VAULT_NAME
+      secretName: aks-creds
+      secretKey: VAULT_AZUREKEYVAULT_VAULT_NAME
+    - envName: VAULT_AZUREKEYVAULT_KEY_NAME
+      secretName: aks-creds
+      secretKey: VAULT_AZUREKEYVAULT_KEY_NAME
+    - envName: VAULT_SEAL_TYPE
+      secretName: aks-creds
+      secretKey: VAULT_SEAL_TYPE
 
   # extraVolumes is a list of extra volumes to mount. These will be exposed
   # to Vault in the path `/vault/userconfig/<name>/`. The value below is
@@ -585,7 +588,7 @@ server:
         vault_name     = "az-vaultkey"
         key_name       = "vaulter"
       }
-      
+
       service_registration "kubernetes" {}
 
       # Example configuration for using auto-unseal, using Google Cloud KMS. The
