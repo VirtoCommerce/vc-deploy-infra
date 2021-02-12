@@ -191,24 +191,22 @@ server:
   # If deployment is on OpenShift, the following block is ignored.
   # In order to expose the service, use the route section below
   ingress:
-    enabled: false
+    enabled: true
     labels: {}
       # traffic: external
-    annotations: {}
-      # |
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-      #   or
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    annotations: |
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.middlewares: argocd-https-redirect@kubernetescrd
+      cert-manager.io/cluster-issuer: letsencrypt-wild
     hosts:
-      - host: chart-example.local
-        paths: []
+      - host: "vault-dev.govirto.com"
+        paths: /
 
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
+    tls:
+     - secretName: vault-dev-tls
+       hosts:
+         - "vault-dev.govirto.com"
 
   # OpenShift only - create a route to expose the service
   # The created route will be of type passthrough
