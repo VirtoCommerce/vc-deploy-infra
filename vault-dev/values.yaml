@@ -201,7 +201,7 @@ server:
       cert-manager.io/cluster-issuer: letsencrypt-wild
     hosts:
       - host: "vault-dev.govirto.com"
-        paths: /
+        # paths: /
 
     tls:
      - secretName: vault-dev-tls
