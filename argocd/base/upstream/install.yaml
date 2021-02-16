@@ -2698,11 +2698,6 @@ spec:
         - "debug"
         image: argoproj/argocd:v1.8.1
         imagePullPolicy: Always
-        resources:
-            requests:
-              cpu: "50m"
-            limits:
-              cpu: "750m"
               # memory: "512Mi"
         env:
         - name: ARGOCD_CONTROLLER_REPLICAS

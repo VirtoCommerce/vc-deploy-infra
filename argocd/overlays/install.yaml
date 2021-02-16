@@ -39,8 +39,3 @@ spec:
     spec:
       containers:
       - name: argocd-application-controller
-        resources:
-          requests:
-            cpu: "150m"
-          limits:
-            cpu: "750m"
