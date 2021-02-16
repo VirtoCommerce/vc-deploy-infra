@@ -18,10 +18,10 @@ spec:
       containers:
         name: argocd-repo-server
         resources:
-            requests:
-              cpu: "350m"
-            limits:
-              cpu: "750m"
+          requests:
+            cpu: "350m"
+          limits:
+            cpu: "750m"
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -40,7 +40,7 @@ spec:
       containers:
         name: argocd-application-controller
         resources:
-            requests:
-              cpu: "350m"
-            limits:
-              cpu: "750m"
+          requests:
+            cpu: "350m"
+          limits:
+            cpu: "750m"
