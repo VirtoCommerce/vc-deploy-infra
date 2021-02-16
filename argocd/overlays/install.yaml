@@ -19,7 +19,7 @@ spec:
       - name: argocd-repo-server
         resources:
           requests:
-            cpu: "350m"
+            cpu: "150m"
           limits:
             cpu: "750m"
 ---
@@ -41,6 +41,6 @@ spec:
       - name: argocd-application-controller
         resources:
           requests:
-            cpu: "350m"
+            cpu: "150m"
           limits:
             cpu: "750m"
