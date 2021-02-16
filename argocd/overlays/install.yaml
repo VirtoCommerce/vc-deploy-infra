@@ -16,7 +16,7 @@ spec:
         app.kubernetes.io/name: argocd-repo-server
     spec:
       containers:
-        name: argocd-repo-server
+      - name: argocd-repo-server
         resources:
           requests:
             cpu: "350m"
@@ -38,7 +38,7 @@ spec:
         app.kubernetes.io/name: argocd-application-controller
     spec:
       containers:
-        name: argocd-application-controller
+      - name: argocd-application-controller
         resources:
           requests:
             cpu: "350m"
