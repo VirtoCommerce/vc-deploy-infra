@@ -39,3 +39,13 @@ spec:
     spec:
       containers:
       - name: argocd-application-controller
+        command:
+        - argocd-application-controller
+        - --status-processors
+        - "20"
+        - --operation-processors
+        - "10"
+        - --repo-server-timeout-seconds
+        - "180"
+        - --app-resync
+        - "3600"
