@@ -83,3 +83,8 @@ kubectl create secret generic vc-dbserver-password --from-literal=password=<db_p
 ```
 argocd app create demo-apps --dest-namespace demo --dest-server https://kubernetes.default.svc --repo https://github.com/virtocommerce/vc-deploy-infra.git --path demo-apps
 ```
+
+
+## Infrastructure map
+
+![image info](./docs/k8s-map.png)
