@@ -7,3 +7,4 @@ resources:
     - ./storage/storageclass-blob-secret.yaml
     - ./storage/storageclass-blob-secret-us.yaml
     - ./storage/storageclass-blob-premium.yaml
+    - ./storage/storageclass-blob-premium-dynamic.yaml
