@@ -5,3 +5,4 @@ resources:
     - ./plugin/csi-blob-controller.yaml
     - ./plugin/csi-blob-node.yaml
     - ./storage/storageclass-blob-premium.yaml
+    - ./storage/storageclass-blob-premium-dynamic.yaml
