@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+data:
+  fluent.conf: |-
+    
+metadata:
+  name: fluentd-config-v0.1.1
+  namespace: kube-logging
