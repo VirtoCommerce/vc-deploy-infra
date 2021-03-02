@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: HEAD
+    path: fluentd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-logging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true  
