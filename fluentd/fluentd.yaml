@@ -49,7 +49,7 @@ spec:
           mountPath: /var/lib/docker/containers
           readOnly: true
         - name: config-volume
-          mountPath: /etc/fluent/config.d
+          mountPath: /home/fluent/fluentd/etc
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
