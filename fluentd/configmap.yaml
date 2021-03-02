@@ -328,6 +328,7 @@ data:
       read_from_head true
       tag bootkube
     </source>
+  disable.conf: |-
 
 metadata:
   name: fluentd-config-v0.1.1
