@@ -29,12 +29,14 @@ spec:
             value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
             value: "http"
-          - name: FLUENTD_SYSTEMD_CONF
-            value: disable
+          # - name: FLUENTD_SYSTEMD_CONF
+          #   value: disable
           - name: ELASTICSEARCH_USER
             value: elastic
           - name: ELASTICSEARCH_PASSWORD
             value: virtodevpass
+          - name: FLUENT_UID
+            value: "0"
         resources:
           limits:
             memory: 512Mi
