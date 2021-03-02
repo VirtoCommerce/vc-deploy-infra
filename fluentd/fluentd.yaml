@@ -31,6 +31,10 @@ spec:
             value: "http"
           - name: FLUENTD_SYSTEMD_CONF
             value: disable
+          - name: ELASTICSEARCH_USER
+            value: elastic
+          - name: ELASTICSEARCH_PASSWORD
+            value: virtodevpass
         resources:
           limits:
             memory: 512Mi
