@@ -13,7 +13,6 @@ resources:
 - base/redis.yaml
 - base/apps-config.yaml
 - base/reloader.yaml
-- base/vault.yaml
 - base/monitoring.yaml
 - base/traefik.yaml
 - base/rook-nfs-system.yaml
