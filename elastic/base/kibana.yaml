@@ -1,45 +1,73 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: kibana
-  namespace: elastic-system
-  labels:
-    app: kibana
-spec:
-  ports:
-  - port: 5601
-  selector:
-    app: kibana
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: kibana
+#   namespace: elastic-system
+#   labels:
+#     app: kibana
+# spec:
+#   ports:
+#   - port: 5601
+#   selector:
+#     app: kibana
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: kibana
+#   namespace: elastic-system
+#   labels:
+#     app: kibana
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: kibana
+#   template:
+#     metadata:
+#       labels:
+#         app: kibana
+#     spec:
+#       containers:
+#       - name: kibana
+#         image: docker.elastic.co/kibana/kibana:7.2.0
+#         resources:
+#           limits:
+#             cpu: 250m
+#           requests:
+#             cpu: 100m
+#         env:
+#           - name: ELASTICSEARCH_URL
+#             value: http://search-dev-es-http.elastic-system:9200
+#           - name: SERVER_BASEPATH
+#             value: ""
+#         ports:
+#         - containerPort: 5601
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
 metadata:
   name: kibana
   namespace: elastic-system
-  labels:
-    app: kibana
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: kibana
-  template:
-    metadata:
-      labels:
-        app: kibana
+  version: 7.4.2
+  count: 1
+  elasticsearchRef:
+    name: search-dev
+  podTemplate:
     spec:
+      nodeSelector:
+        agentpool: agentpool
       containers:
       - name: kibana
-        image: docker.elastic.co/kibana/kibana:7.2.0
         resources:
           limits:
+            memory: 1Gi
             cpu: 250m
-          requests:
-            cpu: 100m
         env:
-          - name: ELASTICSEARCH_URL
-            value: http://search-dev-es-http.elastic-system:9200
           - name: SERVER_BASEPATH
             value: ""
-        ports:
-        - containerPort: 5601
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
