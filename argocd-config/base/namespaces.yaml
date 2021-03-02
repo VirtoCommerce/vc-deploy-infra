@@ -111,4 +111,11 @@ metadata:
   metadata:
     name: vault-dev
     annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: kube-logging
+    annotations:
       argocd.argoproj.io/sync-wave: "-1" 
