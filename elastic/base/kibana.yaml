@@ -39,5 +39,7 @@ spec:
         env:
           - name: ELASTICSEARCH_URL
             value: http://search-dev-es-http.elastic-system:9200
+          - name: SERVER_BASEPATH
+            value: ""
         ports:
         - containerPort: 5601
