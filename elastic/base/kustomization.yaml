@@ -5,6 +5,8 @@ resources:
 #  - rbac.yaml
   - elastic-deploy.yaml
   - kibana.yaml
+  - curator-configmap.yaml
+  - curator-cronjob.yaml
   - kibana-ingress.yaml
 #  - network.yaml  
 patchesStrategicMerge:
