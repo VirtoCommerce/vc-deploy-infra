@@ -5,8 +5,8 @@ metadata:
   namespace: dev
 spec:
   hard:
-    limits.memory: 10Gi
-    pods: "24"
+    limits.memory: 16Gi
+    pods: "32"
 ---
 apiVersion: v1
 kind: ResourceQuota
