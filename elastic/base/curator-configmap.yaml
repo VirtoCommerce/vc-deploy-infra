@@ -47,9 +47,8 @@ data:
       use_ssl: False
       username: elastic
       password: virtodevpass
-      ssl_no_validate: True
       timeout: 30
-      master_only: False
+      master_only: True
     logging:
       loglevel: INFO
       logfile:
