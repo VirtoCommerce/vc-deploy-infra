@@ -24,7 +24,7 @@ spec:
         image: fluent/fluentd-kubernetes-daemonset:v1.12.0-debian-elasticsearch7-1.0
         env:
           - name: FLUENT_ELASTICSEARCH_HOST
-            value: "search-dev-es-http-test.elastic-system.svc.cluster.local"
+            value: "search-dev-es-http.elastic-system.svc.cluster.local"
           - name: FLUENT_ELASTICSEARCH_PORT
             value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
@@ -39,8 +39,10 @@ spec:
             value: "0"
         resources:
           limits:
+            cpu: 125m
             memory: 512Mi
           requests:
+            cpu: 75m
             memory: 200Mi
         volumeMounts:
         - name: varlog
