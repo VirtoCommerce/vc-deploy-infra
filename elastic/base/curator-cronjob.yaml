@@ -15,7 +15,7 @@ spec:
       template:
         spec:
           containers:
-          - image: bobrik/curator:5.1.1
+          - image: bobrik/curator:5.8.1
             name: curator
             args: ["--config", "/etc/config/config.yml", "/etc/config/action_file.yml"]
             volumeMounts:
