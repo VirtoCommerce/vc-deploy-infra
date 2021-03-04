@@ -5,7 +5,7 @@ metadata:
   labels:
     app: curator
 spec:
-  schedule: "*/3 * * * *"
+  schedule: "* */1 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 3
   concurrencyPolicy: Forbid
