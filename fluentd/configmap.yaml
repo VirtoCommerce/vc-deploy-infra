@@ -332,4 +332,4 @@ data:
 
 metadata:
   name: fluentd-config-v0.1.1
-  namespace: kube-logging
+  namespace: kube-system
