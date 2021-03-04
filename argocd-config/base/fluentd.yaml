@@ -11,7 +11,7 @@ spec:
     path: fluentd
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-logging
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
