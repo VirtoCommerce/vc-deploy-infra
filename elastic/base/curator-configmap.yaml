@@ -42,10 +42,12 @@ data:
     # not a Python "NoneType"
     client:
       hosts:
-        - search-dev-es-http.elastic-system.svc.cluster.local
+        - search-dev-es-http.elastic-system
       port: 9200
       use_ssl: False
       http_auth: elastic:virtodevpass
+      username: elastic
+      password: virtodevpass
       timeout: 30
       master_only: False
     logging:
