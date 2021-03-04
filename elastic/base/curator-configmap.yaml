@@ -45,8 +45,7 @@ data:
         - search-dev-es-http.elastic-system.svc.cluster.local
       port: 9200
       use_ssl: False
-      username: elastic 
-      password: virtodevpass
+      http_auth: elastic:virtodevpass
       timeout: 30
       master_only: False
     logging:
