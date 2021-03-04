@@ -46,7 +46,10 @@ data:
       port: 9200
       use_ssl: False
       http_auth: elastic:virtodevpass
-      password: virtodevpass
+      certificate:
+      client_cert:
+      client_key:
+      ssl_no_validate: False
       timeout: 30
       master_only: False
     logging:
