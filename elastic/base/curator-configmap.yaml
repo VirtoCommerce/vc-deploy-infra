@@ -28,14 +28,14 @@ data:
           direction: older
           timestring: '%Y.%m.%d'
           unit: days
-          unit_count: 7
+          unit_count: 30
           field:
           stats_result:
           epoch:
           exclude: False
         - filtertype: pattern
           kind: prefix
-          value: logstash-*
+          value: logstash-
   config.yml: |-
     ---
     # Remember, leave a key empty if there is no value.  None will be a string,
@@ -45,6 +45,8 @@ data:
         - search-dev-es-http.elastic-system.svc.cluster.local
       port: 9200
       use_ssl: False
+      username: elastic 
+      password: virtodevpass
       timeout: 30
       master_only: False
     logging:
