@@ -99,7 +99,7 @@ subscriptions:
 templates:
   # For more information: https://argocd-notifications.readthedocs.io/en/stable/templates/
 
-  template.app-deployed: |-
+  template.app-deployed: |
     webhook:
       msteams:
         method: POST 
