@@ -28,5 +28,6 @@ resources:
 #- base/monitoring-2.yaml
 - base/wildcard-cert-dev.yaml
 - base/fluentd.yaml
+- base/argo-notifications.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
