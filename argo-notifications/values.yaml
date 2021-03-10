@@ -100,48 +100,48 @@ templates:
   # For more information: https://argocd-notifications.readthedocs.io/en/stable/templates/
 
   template.app-deployed: |
-    webhook:
-      msteams:
-        method: POST 
-        body: |     
-          {
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "themeColor": "0076D7",
-            "summary": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
-            "sections": [
-              {
-                "activityTitle": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
-                "facts": [
-                  {
-                    "name": "Repository",
-                    "value": "{{.app.spec.source.repoURL}}"
-                  },
-                  {
-                    "name": "Synced at",
-                    "value": "{{.app.status.operationState.finishedAt}}"
-                  },
-                  {
-                    "name": "Sync status",
-                    "value": "{{.app.status.sync.status}}"
-                  }
-                ],
-                "markdown": true
-              }
-            ],
-            "potentialAction": [
-              {
-                "@type": "OpenUri",
-                "name": "Details",
-                "targets": [
-                  {
-                    "os": "default",
-                    "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
-                  }
-                ]
-              }
-            ]
-          }
+      webhook:
+        msteams:
+          method: POST 
+          body: |     
+            {
+              "@type": "MessageCard",
+              "@context": "http://schema.org/extensions",
+              "themeColor": "0076D7",
+              "summary": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+              "sections": [
+                {
+                  "activityTitle": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+                  "facts": [
+                    {
+                      "name": "Repository",
+                      "value": "{{.app.spec.source.repoURL}}"
+                    },
+                    {
+                      "name": "Synced at",
+                      "value": "{{.app.status.operationState.finishedAt}}"
+                    },
+                    {
+                      "name": "Sync status",
+                      "value": "{{.app.status.sync.status}}"
+                    }
+                  ],
+                  "markdown": true
+                }
+              ],
+              "potentialAction": [
+                {
+                  "@type": "OpenUri",
+                  "name": "Details",
+                  "targets": [
+                    {
+                      "os": "default",
+                      "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+                    }
+                  ]
+                }
+              ]
+            }
   # template.app-health-degraded: |
   #   email:
   #     subject: Application {{.app.metadata.name}} has degraded.
