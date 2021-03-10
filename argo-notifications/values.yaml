@@ -34,7 +34,7 @@ secret:
     # grafana-apiKey:
     #   # For more information: https://argocd-notifications.readthedocs.io/en/stable/services/grafana/
 
-    msteams-kubernetes: {}
+    msteams-kubernetes: ZGVmcmRhc2Zz
 
     # email-username:
     # email-password:
