@@ -124,6 +124,10 @@ templates:
                   {
                     "name": "Sync status",
                     "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "App status",
+                    "value": "[![App Status]({{.context.argocdUrl}}/api/badge?name={{.app.metadata.name}}&revision=true)]({{.context.argocdUrl}}/applications/{{.app.metadata.name}})"
                   }
                 ],
                 "markdown": true
