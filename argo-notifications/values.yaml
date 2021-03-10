@@ -127,7 +127,7 @@ templates:
                   },
                   {
                     "name": "App",
-                    "value": "[(Go to environment)]({{.context.argocdUrl}}/applications/{{.app.metadata.name}})"
+                    "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
                   }
                 ],
                 "markdown": true
