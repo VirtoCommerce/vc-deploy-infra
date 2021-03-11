@@ -227,10 +227,6 @@ templates:
                   {
                     "name": "Author:",
                     "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
-                  },
-                  {
-                    "name": "Test:",
-                    "value": "{{.app.status.sync.revision}}"
                   }
                 ],
                 "markdown": true
@@ -244,6 +240,16 @@ templates:
                   {
                     "os": "default",
                     "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
                   }
                 ]
               }
