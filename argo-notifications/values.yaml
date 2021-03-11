@@ -235,11 +235,11 @@ templates:
             "potentialAction": [
               {
                 "@type": "OpenUri",
-                "name": "Details",
+                "name": "Go to environment",
                 "targets": [
                   {
                     "os": "default",
-                    "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
                   }
                 ]
               }
