@@ -235,10 +235,6 @@ templates:
                   {
                     "name": "Sync status",
                     "value": "{{.app.status.sync.status}}"
-                  },
-                  {
-                    "name": "Author:",
-                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author | default "None" }}"
                   }
                 ],
                 "markdown": true
@@ -296,10 +292,6 @@ templates:
                   {
                     "name": "Sync status",
                     "value": "{{.app.status.sync.status}}"
-                  },
-                  {
-                    "name": "Author:",
-                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
                   }
                 ],
                 "markdown": true
