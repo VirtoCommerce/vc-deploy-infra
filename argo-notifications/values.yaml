@@ -225,8 +225,8 @@ templates:
                     "value": "{{.app.status.sync.status}}"
                   },
                   {
-                    "name": "App",
-                    "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
                   }
                 ],
                 "markdown": true
