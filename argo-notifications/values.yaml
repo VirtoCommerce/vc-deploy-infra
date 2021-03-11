@@ -166,16 +166,20 @@ templates:
                     "value": "{{.app.spec.source.repoURL}}"
                   },
                   {
-                    "name": "Synced at",
+                    "name": "The sync operation at",
                     "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Error:",
+                    "value": "{{.app.status.operationState.message}}"
                   },
                   {
                     "name": "Sync status",
                     "value": "{{.app.status.sync.status}}"
                   },
                   {
-                    "name": "App",
-                    "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
                   }
                 ],
                 "markdown": true
@@ -184,11 +188,21 @@ templates:
             "potentialAction": [
               {
                 "@type": "OpenUri",
-                "name": "Details",
+                "name": "Go to environment",
                 "targets": [
                   {
                     "os": "default",
-                    "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
                   }
                 ]
               }
