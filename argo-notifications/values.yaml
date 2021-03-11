@@ -90,6 +90,7 @@ subscriptions:
     triggers: 
     - on-health-degraded
     - on-sync-failed
+    - on-sync-status-unknown
     selector: instance=sandbox, instance=webstore
   # # subscription restricted to applications with matching labels only
   # - recipients:
@@ -206,6 +207,67 @@ templates:
             ]
           }
   template.app-sync-failed: |
+    webhook:
+      msteams:
+        method: POST 
+        body: |     
+          {
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "#eb2f3d",
+            "summary": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+            "sections": [
+              {
+                "activityTitle": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+                "facts": [
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}"
+                  },
+                  {
+                    "name": "The sync operation at",
+                    "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Error:",
+                    "value": "{{.app.status.operationState.message}}"
+                  },
+                  {
+                    "name": "Sync status",
+                    "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                  }
+                ],
+                "markdown": true
+              }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OpenUri",
+                "name": "Go to environment",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
+                  }
+                ]
+              }
+            ]
+          }
+  template.app-sync-status-unknown: |
     webhook:
       msteams:
         method: POST 
@@ -443,11 +505,11 @@ triggers:
   #     send:
   #     - app-sync-running
   #     when: app.status.operationState.phase in ['Running']
-  # trigger.on-sync-status-unknown: |
-  #   - description: Application status is 'Unknown'
-  #     send:
-  #     - app-sync-status-unknown
-  #     when: app.status.sync.status == 'Unknown'
+  trigger.on-sync-status-unknown: |
+    - description: Application status is 'Unknown'
+      send:
+      - app-sync-status-unknown
+      when: app.status.sync.status == 'Unknown'
   # trigger.on-sync-succeeded: |
   #   - description: Application syncing has succeeded
   #     send:
