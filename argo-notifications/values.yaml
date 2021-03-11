@@ -62,6 +62,8 @@ notifiers:
 
   service.webhook.msteams: |
     url: $msteams-kubernetes
+  service.webhook.msteams-webstore: |
+    url: $msteams-kubernetes
 
 podAnnotations: {}
 
@@ -93,7 +95,7 @@ subscriptions:
     - on-sync-status-unknown
     selector: instance=sandbox
   - recipients:
-    - msteams
+    - msteams-webstore
     triggers: 
     - on-health-degraded
     - on-sync-failed
