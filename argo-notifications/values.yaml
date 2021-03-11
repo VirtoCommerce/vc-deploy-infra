@@ -238,7 +238,7 @@ templates:
                   },
                   {
                     "name": "Author:",
-                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author | default "None" }}"
                   }
                 ],
                 "markdown": true
