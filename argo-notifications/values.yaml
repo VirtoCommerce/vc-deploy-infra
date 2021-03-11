@@ -215,9 +215,123 @@ templates:
               }
             ]
           }
+      msteams-webstore:
+        method: POST 
+        body: |     
+          {
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "#eb2f3d",
+            "summary": "Application {.app.spec.destination.namespace}}/{{.app.metadata.name}} has degraded",
+            "sections": [
+              {
+                "activityTitle": "Application {{.app.spec.destination.namespace}}/{{.app.metadata.name}} has degraded",
+                "facts": [
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}"
+                  },
+                  {
+                    "name": "The sync operation at",
+                    "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Sync status",
+                    "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                  }
+                ],
+                "markdown": true
+              }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OpenUri",
+                "name": "Go to environment",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
+                  }
+                ]
+              }
+            ]
+          }
   template.app-sync-failed: |
     webhook:
       msteams:
+        method: POST 
+        body: |     
+          {
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "#eb2f3d",
+            "summary": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+            "sections": [
+              {
+                "activityTitle": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+                "facts": [
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}"
+                  },
+                  {
+                    "name": "The sync operation at",
+                    "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Error:",
+                    "value": "{{.app.status.operationState.message}}"
+                  },
+                  {
+                    "name": "Sync status",
+                    "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                  }
+                ],
+                "markdown": true
+              }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OpenUri",
+                "name": "Go to environment",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
+                  }
+                ]
+              }
+            ]
+          }
+      msteams-webstore:
         method: POST 
         body: |     
           {
@@ -337,6 +451,66 @@ templates:
               }
             ]
           }
+      msteams-webstore:
+        method: POST 
+        body: |     
+          {
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "#eb2f3d",
+            "summary": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+            "sections": [
+              {
+                "activityTitle": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+                "facts": [
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}"
+                  },
+                  {
+                    "name": "The sync operation at",
+                    "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Error:",
+                    "value": "{{.app.status.operationState.message}}"
+                  },
+                  {
+                    "name": "Sync status",
+                    "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "Author:",
+                    "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                  }
+                ],
+                "markdown": true
+              }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OpenUri",
+                "name": "Go to environment",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "https://argo.govirto.com/applications/{{.app.metadata.name}}"
+                  }
+                ]
+              },
+              {
+                "@type": "OpenUri",
+                "name": "Go to revision",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.app.spec.source.repoURL}}/commit/{{.app.status.sync.revision}}"
+                  }
+                ]
+              }
+            ]
+          }
+      
   # template.app-health-degraded: |
   #   email:
   #     subject: Application {{.app.metadata.name}} has degraded.
