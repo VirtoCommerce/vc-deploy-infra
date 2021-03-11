@@ -213,7 +213,7 @@ templates:
                     "value": "{{.app.spec.source.repoURL}}"
                   },
                   {
-                    "name": "The sync operation has failed at",
+                    "name": "The sync operation at",
                     "value": "{{.app.status.operationState.finishedAt}}"
                   },
                   {
