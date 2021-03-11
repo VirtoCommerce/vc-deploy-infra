@@ -91,7 +91,14 @@ subscriptions:
     - on-health-degraded
     - on-sync-failed
     - on-sync-status-unknown
-    selector: instance=sandbox, instance=webstore
+    selector: instance=sandbox
+  - recipients:
+    - msteams
+    triggers: 
+    - on-health-degraded
+    - on-sync-failed
+    - on-sync-status-unknown
+    selector: instance=webstore
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
