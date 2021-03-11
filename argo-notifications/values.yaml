@@ -88,7 +88,9 @@ subscriptions:
   - recipients:
     - msteams
     triggers: 
-    - on-deployed
+    - on-health-degraded
+    - on-sync-failed
+    selector: instance=sandbox
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
@@ -99,7 +101,54 @@ subscriptions:
 templates:
   # For more information: https://argocd-notifications.readthedocs.io/en/stable/templates/
 
-  template.app-deployed: |
+  # template.app-deployed: |
+  #   webhook:
+  #     msteams:
+  #       method: POST 
+  #       body: |     
+  #         {
+  #           "@type": "MessageCard",
+  #           "@context": "http://schema.org/extensions",
+  #           "themeColor": "0076D7",
+  #           "summary": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+  #           "sections": [
+  #             {
+  #               "activityTitle": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+  #               "facts": [
+  #                 {
+  #                   "name": "Repository",
+  #                   "value": "{{.app.spec.source.repoURL}}"
+  #                 },
+  #                 {
+  #                   "name": "Synced at",
+  #                   "value": "{{.app.status.operationState.finishedAt}}"
+  #                 },
+  #                 {
+  #                   "name": "Sync status",
+  #                   "value": "{{.app.status.sync.status}}"
+  #                 },
+  #                 {
+  #                   "name": "App",
+  #                   "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
+  #                 }
+  #               ],
+  #               "markdown": true
+  #             }
+  #           ],
+  #           "potentialAction": [
+  #             {
+  #               "@type": "OpenUri",
+  #               "name": "Details",
+  #               "targets": [
+  #                 {
+  #                   "os": "default",
+  #                   "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+  #                 }
+  #               ]
+  #             }
+  #           ]
+  #         }
+  template.app-health-degraded: |
     webhook:
       msteams:
         method: POST 
@@ -107,11 +156,11 @@ templates:
           {
             "@type": "MessageCard",
             "@context": "http://schema.org/extensions",
-            "themeColor": "0076D7",
-            "summary": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+            "themeColor": "#eb2f3d",
+            "summary": "Application {.app.spec.destination.namespace}}/{{.app.metadata.name}} has degraded",
             "sections": [
               {
-                "activityTitle": "{{.app.spec.destination.namespace}}/{{.app.metadata.name}} sync status is {{.app.status.sync.status}}",
+                "activityTitle": "Application {{.app.spec.destination.namespace}}/{{.app.metadata.name}} has degraded",
                 "facts": [
                   {
                     "name": "Repository",
@@ -129,6 +178,65 @@ templates:
                     "name": "App",
                     "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
                   }
+                ],
+                "markdown": true
+              }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OpenUri",
+                "name": "Details",
+                "targets": [
+                  {
+                    "os": "default",
+                    "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true"
+                  }
+                ]
+              }
+            ]
+          }
+  template.app-sync-failed: |
+    webhook:
+      msteams:
+        method: POST 
+        body: |     
+          {
+            "@type": "MessageCard",
+            "@context": "http://schema.org/extensions",
+            "themeColor": "#eb2f3d",
+            "summary": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+            "sections": [
+              {
+                "activityTitle": "Failed to sync application {{.app.spec.destination.namespace}}/{{.app.metadata.name}}",
+                "facts": [
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}"
+                  },
+                  {
+                    "name": "The sync operation of application has failed at",
+                    "value": "{{.app.status.operationState.finishedAt}}"
+                  },
+                  {
+                    "name": "Error:",
+                    "value": "{{.app.status.operationState.message}}"
+                  },
+                  {
+                    "name": "Sync status",
+                    "value": "{{.app.status.sync.status}}"
+                  },
+                  {
+                    "name": "App",
+                    "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
+                  }
+                  {{range $index, $c := .app.status.conditions}}
+                  {{if not $index}},{{end}}
+                  {{if $index}},{{end}}
+                  {
+                  "name": "{{$c.type}}",
+                  "value": "{{$c.message}}"
+                  }
+                  {{end}}
                 ],
                 "markdown": true
               }
@@ -302,22 +410,22 @@ tolerations: []
 triggers:
   # For more information: https://argocd-notifications.readthedocs.io/en/stable/triggers/
 
-  trigger.on-deployed: |
-    - description: Application is synced and healthy. Triggered once per commit.
-      oncePer: app.status.sync.revision
+  # trigger.on-deployed: |
+  #   - description: Application is synced and healthy. Triggered once per commit.
+  #     oncePer: app.status.sync.revision
+  #     send:
+  #     - app-deployed
+  #     when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+  trigger.on-health-degraded: |
+    - description: Application has degraded
       send:
-      - app-deployed
-      when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-  # trigger.on-health-degraded: |
-  #   - description: Application has degraded
-  #     send:
-  #     - app-health-degraded
-  #     when: app.status.health.status == 'Degraded'
-  # trigger.on-sync-failed: |
-  #   - description: Application syncing has failed
-  #     send:
-  #     - app-sync-failed
-  #     when: app.status.operationState.phase in ['Error', 'Failed']
+      - app-health-degraded
+      when: app.status.health.status == 'Degraded'
+  trigger.on-sync-failed: |
+    - description: Application syncing has failed
+      send:
+      - app-sync-failed
+      when: app.status.operationState.phase in ['Error', 'Failed']
   # trigger.on-sync-running: |
   #   - description: Application is being synced
   #     send:
