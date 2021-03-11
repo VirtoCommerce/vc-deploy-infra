@@ -227,6 +227,10 @@ templates:
                   {
                     "name": "Author:",
                     "value": "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}"
+                  },
+                  {
+                    "name": "Test:",
+                    "value": "{{.app.status.sync.revision}}"
                   }
                 ],
                 "markdown": true
