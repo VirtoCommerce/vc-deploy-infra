@@ -90,7 +90,6 @@ subscriptions:
     triggers: 
     - on-health-degraded
     - on-sync-failed
-    selector: instance=sandbox
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
@@ -214,7 +213,7 @@ templates:
                     "value": "{{.app.spec.source.repoURL}}"
                   },
                   {
-                    "name": "The sync operation of application has failed at",
+                    "name": "The sync operation has failed at",
                     "value": "{{.app.status.operationState.finishedAt}}"
                   },
                   {
@@ -229,14 +228,6 @@ templates:
                     "name": "App",
                     "value": "[Go to environment](https://argo.govirto.com/applications/{{.app.metadata.name}})"
                   }
-                  {{range $index, $c := .app.status.conditions}}
-                  {{if not $index}},{{end}}
-                  {{if $index}},{{end}}
-                  {
-                  "name": "{{$c.type}}",
-                  "value": "{{$c.message}}"
-                  }
-                  {{end}}
                 ],
                 "markdown": true
               }
