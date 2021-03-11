@@ -90,6 +90,7 @@ subscriptions:
     triggers: 
     - on-health-degraded
     - on-sync-failed
+    selector: instance=sandbox, instance=webstore
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
@@ -168,10 +169,6 @@ templates:
                   {
                     "name": "The sync operation at",
                     "value": "{{.app.status.operationState.finishedAt}}"
-                  },
-                  {
-                    "name": "Error:",
-                    "value": "{{.app.status.operationState.message}}"
                   },
                   {
                     "name": "Sync status",
