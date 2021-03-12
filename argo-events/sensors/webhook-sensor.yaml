@@ -1,50 +1,3 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Sensor
-# metadata:
-#   name: webhook
-# spec:
-#   template:
-#     serviceAccountName: argo-events-sa
-#   dependencies:
-#     - name: test-dep
-#       eventSourceName: webhook
-#       eventName: example
-#   triggers:
-#     - template:
-#         name: webhook-workflow-trigger
-#         k8s:
-#           group: argoproj.io
-#           version: v1alpha1
-#           resource: workflows
-#           operation: create
-#           source:
-#             resource:
-#               apiVersion: argoproj.io/v1alpha1
-#               kind: Workflow
-#               metadata:
-#                 generateName: webhook-
-#               spec:
-#                 entrypoint: whalesay
-#                 arguments:
-#                   parameters:
-#                   - name: message
-#                     # the value will get overridden by event payload from test-dep
-#                     value: hello world
-#                 templates:
-#                 - name: whalesay
-#                   serviceAccountName: argo-events-sa
-#                   inputs:
-#                     parameters:
-#                     - name: message
-#                   container:
-#                     image: docker/whalesay:latest
-#                     command: [cowsay]
-#                     args: ["{{inputs.parameters.message}}"]
-#           parameters:
-#             - src:
-#                 dependencyName: test-dep
-#               dest: spec.arguments.parameters.0.value
-
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
@@ -58,32 +11,79 @@ spec:
       eventName: example
   triggers:
     - template:
-        name: webhook-pod-trigger
+        name: webhook-workflow-trigger
         k8s:
-          group: batch
-          version: v1
-          resource: jobs
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
           operation: create
           source:
             resource:
-              apiVersion: batch/v1
-              kind: Job
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
               metadata:
-                generateName: cowsay-
+                generateName: webhook-
               spec:
-                successfulJobsHistoryLimit: 3
-                failedJobsHistoryLimit: 3
-                template:
-                  spec:
-                    restartPolicy: Never
-                    containers:
-                      - name: hello-container
-                        args:
-                          - "hello-world"
-                        command:
-                          - cowsay
-                        image: "docker/whalesay:latest"
+                entrypoint: workflow-template-submittable
+                arguments:
+                  parameters:
+                  - name: message
+                    # the value will get overridden by event payload from test-dep
+                    value: hello world
+                templates:
+                - name: whalesay-template
+                  serviceAccountName: argo-events-sa
+                  inputs:
+                    parameters:
+                    - name: message
+                  container:
+                    image: docker/whalesay:latest
+                    command: [cowsay]
+                    args: ["{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
-              dest: spec.containers.0.args.0
+              dest: spec.arguments.parameters.0.value
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: Sensor
+# metadata:
+#   name: webhook
+# spec:
+#   template:
+#     serviceAccountName: argo-events-sa
+#   dependencies:
+#     - name: test-dep
+#       eventSourceName: webhook
+#       eventName: example
+#   triggers:
+#     - template:
+#         name: webhook-pod-trigger
+#         k8s:
+#           group: batch
+#           version: v1
+#           resource: jobs
+#           operation: create
+#           source:
+#             resource:
+#               apiVersion: batch/v1
+#               kind: Job
+#               metadata:
+#                 generateName: cowsay-
+#               spec:
+#                 successfulJobsHistoryLimit: 3
+#                 failedJobsHistoryLimit: 3
+#                 template:
+#                   spec:
+#                     restartPolicy: Never
+#                     containers:
+#                       - name: hello-container
+#                         args:
+#                           - "hello-world"
+#                         command:
+#                           - cowsay
+#                         image: "docker/whalesay:latest"
+#           parameters:
+#             - src:
+#                 dependencyName: test-dep
+#               dest: spec.containers.0.args.0
