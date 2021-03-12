@@ -62,7 +62,7 @@ spec:
         k8s:
           group: ""
           version: v1
-          resource: pods
+          resource: jobs
           operation: create
           source:
             resource:
