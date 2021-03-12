@@ -67,7 +67,7 @@ spec:
           source:
             resource:
               apiVersion: v1
-              kind: Pod
+              kind: job
               metadata:
                 generateName: hello-world-
               spec:
