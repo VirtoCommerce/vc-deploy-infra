@@ -60,7 +60,7 @@ spec:
     - template:
         name: webhook-pod-trigger
         k8s:
-          group: ""
+          group: batch
           version: v1
           resource: jobs
           operation: create
