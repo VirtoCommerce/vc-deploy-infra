@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - base/install.yaml
 - sensors/webhook-sensor.yaml
+- event-sources/webhook.yaml
