@@ -24,14 +24,16 @@ spec:
               metadata:
                 generateName: webhook-
               spec:
-                entrypoint: workflow-template-submittable
+                entrypoint: whalesay-template
                 arguments:
                   parameters:
                   - name: message
                     # the value will get overridden by event payload from test-dep
                     value: hello world
+                workflowTemplateRef:
+                  name: workflow-template-submittable
                 templates:
-                - name: whalesay-template
+                - name: whalesay
                   serviceAccountName: argo-events-sa
                   inputs:
                     parameters:
