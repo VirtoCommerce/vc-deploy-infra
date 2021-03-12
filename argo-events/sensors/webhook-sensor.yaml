@@ -61,13 +61,13 @@ spec:
         name: webhook-pod-trigger
         k8s:
           group: ""
-          version: batch/v1
-          resource: job
+          version: v1
+          resource: pods
           operation: create
           source:
             resource:
               apiVersion: batch/v1
-              kind: job
+              kind: Job
               metadata:
                 generateName: cowsay-
               spec:
