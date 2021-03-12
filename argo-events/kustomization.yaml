@@ -4,3 +4,4 @@ resources:
 - base/install.yaml
 - sensors/webhook-sensor.yaml
 - event-sources/webhook.yaml
+- event-bus/native.yaml
