@@ -78,9 +78,11 @@ spec:
                     restartPolicy: Never
                     containers:
                       - name: hello-container
+                        args:
+                          - "hello-world"
+                        command:
+                          - cowsay
                         image: "docker/whalesay:latest"
-                        command: [cowsay]
-                        args: ["{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
