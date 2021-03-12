@@ -29,5 +29,6 @@ resources:
 - base/wildcard-cert-dev.yaml
 - base/fluentd.yaml
 - base/argo-notifications.yaml
+- base/argo-workflows.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
