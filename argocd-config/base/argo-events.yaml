@@ -12,4 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argo
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
