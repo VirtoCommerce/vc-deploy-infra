@@ -29,9 +29,19 @@ spec:
                   parameters:
                   - name: message
                     # the value will get overridden by event payload from test-dep
-                    value: "from workflow"
-                workflowTemplateRef:
-                  name: workflow-template-submittable
+                    value: hello world
+                # workflowTemplateRef:
+                #   name: workflow-template-submittable
+                templates:
+                - name: whalesay
+                  serviceAccountName: argo-events-sa
+                  inputs:
+                    parameters:
+                    - name: message
+                  container:
+                    image: docker/whalesay:latest
+                    command: [cowsay]
+                    args: ["{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
