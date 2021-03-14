@@ -24,7 +24,7 @@ spec:
               metadata:
                 generateName: webhook-
               spec:
-                entrypoint: workflow-template-submittable
+                entrypoint: whalesay
                 arguments:
                   parameters:
                   - name: message
