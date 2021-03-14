@@ -5,3 +5,4 @@ resources:
 - sensors/webhook-sensor.yaml
 - event-sources/webhook.yaml
 - event-bus/native.yaml
+- rbac.yaml
