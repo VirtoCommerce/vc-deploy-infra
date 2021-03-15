@@ -33,14 +33,14 @@ spec:
                 # # workflowTemplateRef:
                 # #   name: workflow-template-submittable
                 templates:
-                - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
-                  steps:                    # The type of this "template" is "steps"
-                  - - name: hello
-                      template: whalesay    # We reference our second "template" here
-                      arguments:
-                        parameters:
-                        - name: message
-                          value: "hello1"
+                # - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
+                #   steps:                    # The type of this "template" is "steps"
+                #   - - name: hello
+                #       template: whalesay    # We reference our second "template" here
+                #       arguments:
+                #         parameters:
+                #         - name: message
+                #           value: "hello1"
                 - name: whalesay
                   serviceAccountName: argo-events-sa
                   inputs:
