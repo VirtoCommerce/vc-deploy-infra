@@ -14,7 +14,7 @@ spec:
       eventName: app-create
   triggers:
     - template:
-        conditions: "test-dep|| test-dep" # && - AND / || - OR
+        conditions: "test-dep || test-dep1" # && - AND / || - OR
         name: webhook-workflow-trigger
         k8s:
           group: argoproj.io
