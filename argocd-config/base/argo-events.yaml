@@ -12,10 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argo
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  syncPolicy: {}
   ignoreDifferences:
     - group: eventbus.argoproj.io
       jsonPointers:
