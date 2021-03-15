@@ -26,8 +26,8 @@ spec:
                   image: bobrik/curator:5.8.1
                   name: curator
                   env:
-                    name: SCOPE
-                    value: "{{inputs.parameters.scope}}"
+                    - name: SCOPE
+                      value: "{{inputs.parameters.scope}}"
                   args: ["--config", "/etc/config/config.yml", "/etc/config/action_file.yml"]
                   volumeMounts:
                   - name: config
