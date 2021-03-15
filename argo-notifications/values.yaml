@@ -85,10 +85,10 @@ subscriptions:
   # For more information: https://argocd-notifications.readthedocs.io/en/stable/subscriptions/
 
   # # subscription for on-sync-status-unknown trigger notifications
-  - recipients:
-    - msteams
-    triggers: 
-    - on-deployed
+  # - recipients:
+  #   - msteams
+  #   triggers: 
+  #   - on-deployed
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
