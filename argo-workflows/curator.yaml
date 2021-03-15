@@ -25,7 +25,7 @@ spec:
                 - name: curator
                   image: bobrik/curator:5.8.1
                   name: curator
-                  env: /bin/sh
+                  env:
                     - name: SCOPE
                       value: "{{inputs.parameters.scope}}"
                   command:
