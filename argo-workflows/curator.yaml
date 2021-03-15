@@ -17,6 +17,8 @@ spec:
           metadata:
             generateName: curator-
           spec:
+            successfulJobsHistoryLimit: 1
+            failedJobsHistoryLimit: 3
             template:
               metadata:
                 name: curator
@@ -25,10 +27,15 @@ spec:
                 - name: curator
                   image: bobrik/curator:5.8.1
                   name: curator
-                  env:
-                    - name: SCOPE
-                      value: "{{inputs.parameters.scope}}"
-                  args: ["--config", "/etc/config/config.yml", "/etc/config/action_file.yml"]
+                  # env: /bin/sh
+                  #   - name: SCOPE
+                  #     value: "{{inputs.parameters.scope}}"
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - " export SCOPE={{inputs.parameters.scope}}
+                    && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
                   - name: config
                     mountPath: /etc/config
