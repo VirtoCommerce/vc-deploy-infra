@@ -32,8 +32,9 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "cat /etc/config/action_file.yml 
-                    && echo $SCOPE
+                    - "apk add gettext
+                    && envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
+                    && cat /etc/config/action_file.yml
                     && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml -E SCOPE=${SCOPE}"
                   volumeMounts:
                   - name: config

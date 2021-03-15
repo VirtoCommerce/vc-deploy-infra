@@ -4,7 +4,7 @@ metadata:
   name: curator-config
   namespace: argo
 data:
-  action_file.yml: |-
+  action_file.yml.template: |-
     ---
     # Remember, leave a key empty if there is no value.  None will be a string,
     # not a Python "NoneType"
