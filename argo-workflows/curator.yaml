@@ -11,16 +11,12 @@ spec:
     - name: curator-template
       resource:
         action: create
-        successCondition: status.succeeded > 0
-        failureCondition: status.failed > 3
         manifest: |
           apiVersion: batch/v1
           kind: Job
           metadata:
             generateName: curator-
           spec:
-            completions: 10
-            parallelism: 10
             template:
               metadata:
                 name: curator
