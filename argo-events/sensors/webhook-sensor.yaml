@@ -24,35 +24,35 @@ spec:
               metadata:
                 generateName: webhook-
               spec:
-                entrypoint: whalesay
-                arguments:
-                  parameters:
-                  - name: message
-                    # the value will get overridden by event payload from test-dep
-                    value: "hello world"
-                # # workflowTemplateRef:
-                # #   name: workflow-template-submittable
-                templates:
-                # - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
-                #   steps:                    # The type of this "template" is "steps"
-                #   - - name: hello
-                #       template: whalesay    # We reference our second "template" here
-                #       arguments:
-                #         parameters:
-                #         - name: message
-                #           value: "hello1"
-                - name: whalesay
-                  serviceAccountName: argo-events-sa
-                  inputs:
-                    parameters:
-                    - name: message
-                  # container:
-                  #   image: docker/whalesay:latest
-                  #   command: [cowsay]
-                  #   args: ["{{inputs.parameters.message}}"]
-                  container:
-                    image: alpine:3.7
-                    command: [echo, "{{inputs.parameters.message}}"]
+                # entrypoint: whalesay
+                # arguments:
+                #   parameters:
+                #   - name: message
+                #     # the value will get overridden by event payload from test-dep
+                #     value: "hello world"
+                workflowTemplateRef:
+                  name: workflow-template-submittable
+                # templates:
+                # # - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
+                # #   steps:                    # The type of this "template" is "steps"
+                # #   - - name: hello
+                # #       template: whalesay    # We reference our second "template" here
+                # #       arguments:
+                # #         parameters:
+                # #         - name: message
+                # #           value: "hello1"
+                # - name: whalesay
+                #   serviceAccountName: argo-events-sa
+                #   inputs:
+                #     parameters:
+                #     - name: message
+                #   # container:
+                #   #   image: docker/whalesay:latest
+                #   #   command: [cowsay]
+                #   #   args: ["{{inputs.parameters.message}}"]
+                #   container:
+                #     image: alpine:3.7
+                #     command: [echo, "{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
