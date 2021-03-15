@@ -24,7 +24,7 @@ spec:
               metadata:
                 generateName: webhook-
               spec:
-                # entrypoint: whalesay
+                entrypoint: whalesay-template
                 arguments:
                   parameters:
                   - name: message
