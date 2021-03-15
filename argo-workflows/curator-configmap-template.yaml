@@ -15,7 +15,7 @@ data:
     actions:
       1:
         action: delete_indices
-        description: "Clean up ES by deleting old indices"
+        description: "Clean up ${SCOPE} scope"
         options:
           timeout_override:
           continue_if_exception: False
