@@ -16,3 +16,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  ignoreDifferences:
+    - group: eventbus.argoproj.io
+      jsonPointers:
+      - /status
+      kind: EventBus 
