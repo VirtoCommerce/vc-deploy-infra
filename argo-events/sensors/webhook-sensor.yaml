@@ -7,8 +7,8 @@ spec:
     serviceAccountName: argo-events-sa
   dependencies:
     - name: test-dep
-      eventSourceName: webhook
-      eventName: example
+      eventSourceName: resource
+      eventName: app-delete
   triggers:
     - template:
         name: webhook-workflow-trigger
@@ -32,72 +32,8 @@ spec:
                     value: "hello world"
                 workflowTemplateRef:
                   name: workflow-template-submittable
-                # templates:
-                # # - name: hello               # The first "template" in this Workflow, it is referenced by "entrypoint"
-                # #   steps:                    # The type of this "template" is "steps"
-                # #   - - name: hello
-                # #       template: whalesay    # We reference our second "template" here
-                # #       arguments:
-                # #         parameters:
-                # #         - name: message
-                # #           value: "hello1"
-                # - name: whalesay
-                #   serviceAccountName: argo-events-sa
-                #   inputs:
-                #     parameters:
-                #     - name: message
-                #   # container:
-                #   #   image: docker/whalesay:latest
-                #   #   command: [cowsay]
-                #   #   args: ["{{inputs.parameters.message}}"]
-                #   container:
-                #     image: alpine:3.7
-                #     command: [echo, "{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
                 dataKey: body.message
               dest: spec.arguments.parameters.0.value
-
-# apiVersion: argoproj.io/v1alpha1
-# kind: Sensor
-# metadata:
-#   name: webhook
-# spec:
-#   template:
-#     serviceAccountName: argo-events-sa
-#   dependencies:
-#     - name: test-dep
-#       eventSourceName: webhook
-#       eventName: example
-#   triggers:
-#     - template:
-#         name: webhook-pod-trigger
-#         k8s:
-#           group: batch
-#           version: v1
-#           resource: jobs
-#           operation: create
-#           source:
-#             resource:
-#               apiVersion: batch/v1
-#               kind: Job
-#               metadata:
-#                 generateName: cowsay-
-#               spec:
-#                 successfulJobsHistoryLimit: 3
-#                 failedJobsHistoryLimit: 3
-#                 template:
-#                   spec:
-#                     restartPolicy: Never
-#                     containers:
-#                       - name: hello-container
-#                         args:
-#                           - "hello-world"
-#                         command:
-#                           - cowsay
-#                         image: "docker/whalesay:latest"
-#           parameters:
-#             - src:
-#                 dependencyName: test-dep
-#               dest: spec.containers.0.args.0

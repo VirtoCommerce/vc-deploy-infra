@@ -6,7 +6,7 @@ spec:
   template:
     serviceAccountName: argo-events-sa # assign a service account with `get`, `list` and `watch` permissions on the resource being watched.
   resource:
-    example:
+    app-delete:
       # namespace to listen events within
       namespace: argocd
       # resource group

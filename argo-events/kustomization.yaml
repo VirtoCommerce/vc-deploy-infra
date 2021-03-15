@@ -6,4 +6,5 @@ resources:
 - sensors/curator.yaml
 - sensors/db-remover.yaml
 - event-sources/webhooks.yaml
+- event-sources/resources.yaml
 - event-bus/native.yaml
