@@ -36,6 +36,19 @@ spec:
             # optional.
             operation: "=="
             value: managed
+    app-create:
+      namespace: argocd
+      group: argoproj.io
+      version: v1alpha1
+      resource: applications
+      eventTypes:
+        - ADD
+      filter:
+        labels:
+          - key: workflow
+            operation: "=="
+            value: managed  
+            
 
 #        # fields provide listing options to K8s API to watch objects
 #        fields:

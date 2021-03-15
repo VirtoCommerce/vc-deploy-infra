@@ -9,6 +9,9 @@ spec:
     - name: test-dep
       eventSourceName: resource
       eventName: app-delete
+    - name: test-dep1
+      eventSourceName: resource
+      eventName: app-create
   triggers:
     - template:
         name: webhook-workflow-trigger
