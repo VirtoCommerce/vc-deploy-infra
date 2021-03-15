@@ -37,7 +37,7 @@ spec:
                     && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
                   - name: config
-                    mountPath: /mnt
+                    mountPath: /etc/config
                     readOnly: false
                 volumes:
                 - name: config
