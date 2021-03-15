@@ -51,8 +51,8 @@ spec:
                   #   command: [cowsay]
                   #   args: ["{{inputs.parameters.message}}"]
                   container:
-                  image: alpine:3.7
-                  command: [echo, "{{inputs.parameters.message}}"]
+                    image: alpine:3.7
+                    command: [echo, "{{inputs.parameters.message}}"]
           parameters:
             - src:
                 dependencyName: test-dep
