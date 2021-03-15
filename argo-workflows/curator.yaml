@@ -46,7 +46,3 @@ spec:
       inputs:
         parameters:
           - name: scope
-      # container:
-      #   image: bobrik/curator:5.8.1
-      #   command: [cowsay]
-      #   args: ["{{inputs.parameters.message}}"]

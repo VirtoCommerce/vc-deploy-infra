@@ -20,6 +20,10 @@ spec:
       port: "12000"
       endpoint: /curator
       method: POST
+    db-remover:
+      port: "12000"
+      endpoint: /db-remover
+      method: POST
 
 #    example-foo:
 #      port: "12000"

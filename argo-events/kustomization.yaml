@@ -4,5 +4,6 @@ resources:
 - base/install.yaml
 - sensors/webhook-sensor.yaml
 - sensors/curator.yaml
+- sensors/db-remover.yaml
 - event-sources/webhooks.yaml
 - event-bus/native.yaml
