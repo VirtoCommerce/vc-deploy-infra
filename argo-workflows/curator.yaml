@@ -32,7 +32,7 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - " export SCOPE={{inputs.parameters.scope}}
+                    - "export SCOPE={{inputs.parameters.scope}}
                     && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
                   - name: config
