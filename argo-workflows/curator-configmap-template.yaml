@@ -24,7 +24,7 @@ data:
         filters:
         - filtertype: pattern
           kind: prefix
-          value: ${SCOPE}-platformdev-
+          value: ${SCOPE}-platformdev
   config.yml: |-
     ---
     # Remember, leave a key empty if there is no value.  None will be a string,
