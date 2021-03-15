@@ -32,9 +32,7 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "cp /mnt/config.yml /etc/config
-                    && envsubst '$${SCOPE}'< /mnt/action_file.yml.template > /mnt/action_file.yml
-                    && cp /mnt/action_file.yml /etc/config 
+                    - "sudo envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
                     && cat /etc/config/action_file.yml
                     && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
