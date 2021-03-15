@@ -23,7 +23,7 @@ spec:
               spec:
                 containers:
                 - name: curator
-                  image: bobrik/curator:5.8.1
+                  image: kkisilevsky/curator
                   name: curator
                   env:
                     - name: SCOPE
@@ -32,10 +32,9 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "apk add gettext
-                    && envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
+                    - "envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
                     && cat /etc/config/action_file.yml
-                    && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml -E SCOPE=${SCOPE}"
+                    && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
                   - name: config
                     mountPath: /etc/config
