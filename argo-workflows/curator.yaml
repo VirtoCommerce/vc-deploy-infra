@@ -27,7 +27,7 @@ spec:
                   name: curator
                   env:
                     name: SCOPE
-                    value: {{inputs.parameters.scope}}
+                    value: "{{inputs.parameters.scope}}"
                   args: ["--config", "/etc/config/config.yml", "/etc/config/action_file.yml"]
                   volumeMounts:
                   - name: config
