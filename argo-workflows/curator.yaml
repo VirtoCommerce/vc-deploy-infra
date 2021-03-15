@@ -23,7 +23,7 @@ spec:
               spec:
                 containers:
                 - name: curator
-                  image: kkisilevsky/curator
+                  image: kkisilevsky/curator:v1
                   name: curator
                   env:
                     - name: SCOPE
@@ -32,7 +32,7 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "sudo envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
+                    - "envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /etc/config/action_file.yml 
                     && cat /etc/config/action_file.yml
                     && /usr/bin/curator --config /etc/config/config.yml /etc/config/action_file.yml"
                   volumeMounts:
