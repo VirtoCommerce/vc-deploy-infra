@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: curator
+spec:
+  service:
+    ports:
+      - port: 12001
+        targetPort: 12001
+  webhook:
+    # event-source can run multiple HTTP servers. Simply define a unique port to start a new HTTP server
+    curator:
+      # port to run HTTP server on
+      port: "12001"
+      # endpoint to listen to
+      endpoint: /curator
+      # HTTP request method to allow. In this case, only POST requests are accepted
+      method: POST

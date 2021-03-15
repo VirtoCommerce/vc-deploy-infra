@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: curator
+spec:
+  arguments:
+    parameters:
+      - name: scope
+        value: hello world
+  templates:
+    - name: curator-template
+      resource:
+        action: create
+        successCondition: status.succeeded > 0
+        failureCondition: status.failed > 3
+        manifest: |
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: curator-
+          spec:
+            completions: 10
+            parallelism: 10
+            template:
+              metadata:
+                name: curator
+              spec:
+                containers:
+                - name: rand
+                  image: docker/whalesay
+                  command: [cowsay]
+                  args: ["{{inputs.parameters.scope}}"]
+                restartPolicy: Never
+      inputs:
+        parameters:
+          - name: scope
+      # container:
+      #   image: docker/whalesay
+      #   command: [cowsay]
+      #   args: ["{{inputs.parameters.message}}"]

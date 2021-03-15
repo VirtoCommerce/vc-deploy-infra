@@ -3,5 +3,7 @@ kind: Kustomization
 resources:
 - base/install.yaml
 - sensors/webhook-sensor.yaml
+- sensors/curator.yaml
 - event-sources/webhook.yaml
+- event-sources/curator.yaml
 - event-bus/native.yaml
