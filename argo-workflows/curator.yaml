@@ -23,9 +23,8 @@ spec:
               spec:
                 containers:
                 - name: rand
-                  image: docker/whalesay
-                  command: [cowsay]
-                  args: ["{{inputs.parameters.scope}}"]
+                  image: alpine:3.7
+                  command: [echo, "{{inputs.parameters.scope}}"]
                 restartPolicy: Never
       inputs:
         parameters:
