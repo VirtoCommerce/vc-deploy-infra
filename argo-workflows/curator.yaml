@@ -12,6 +12,56 @@ spec:
       resource:
         action: create
         manifest: |
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: curator-config
+            labels:
+              app: curator
+          data:
+            action_file.yml: |-
+              ---
+              # Remember, leave a key empty if there is no value.  None will be a string,
+              # not a Python "NoneType"
+              #
+              # Also remember that all examples have 'disable_action' set to True.  If you
+              # want to use this action as a template, be sure to set this to False after
+              # copying it.
+              actions:
+                1:
+                  action: delete_indices
+                  description: "Clean up ES by deleting old indices"
+                  options:
+                    timeout_override:
+                    continue_if_exception: False
+                    disable_action: False
+                    ignore_empty_list: True
+                  filters:
+                  - filtertype: pattern
+                    kind: prefix
+                    value: {{inputs.parameters.scope}}-platformdev-
+            config.yml: |-
+              ---
+              # Remember, leave a key empty if there is no value.  None will be a string,
+              # not a Python "NoneType"
+              client:
+                hosts:
+                  - search-dev-es-http.elastic-system
+                port: 9200
+                use_ssl: False
+                http_auth: elastic:virtodevpass
+                certificate:
+                client_cert:
+                client_key:
+                ssl_no_validate: False
+                timeout: 30
+                master_only: False
+              logging:
+                loglevel: INFO
+                logfile:
+                logformat: default
+                blacklist: ['elasticsearch', 'urllib3']
+          ---
           apiVersion: batch/v1
           kind: Job
           metadata:
@@ -22,9 +72,17 @@ spec:
                 name: curator
               spec:
                 containers:
-                - name: rand
-                  image: alpine:3.7
-                  command: [echo, "{{inputs.parameters.scope}}"]
+                - name: curator
+                  image: bobrik/curator:5.8.1
+                  name: curator
+                  args: ["--config", "/etc/config/config.yml", "/etc/config/action_file.yml"]
+                  volumeMounts:
+                  - name: config
+                    mountPath: /etc/config
+                volumes:
+                - name: config
+                  configMap:
+                    name: curator-config
                 restartPolicy: Never
       inputs:
         parameters:
