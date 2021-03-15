@@ -17,8 +17,6 @@ spec:
           metadata:
             generateName: curator-
           spec:
-            successfulJobsHistoryLimit: 1
-            failedJobsHistoryLimit: 3
             template:
               metadata:
                 name: curator
