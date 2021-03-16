@@ -5,9 +5,42 @@ metadata:
 spec:
   arguments:
     parameters:
-      - name: message
-        value: hello world
+      - name: resource
+        value: "JSON"
   templates:
+    - name: main
+      dag:
+        tasks:
+          - name: a
+            template: parser
+            arguments:
+              parameters:
+                - name: resource
+                  value: "{{inputs.parameters.resource}}"
+          - name: b
+            template: whalesay-template
+            arguments:
+              parameters:
+                - name: message
+                  value: "{{tasks.a.outputs.result}}"
+            dependencies:
+              - a
+
+    - name: parser
+      inputs:
+        parameters:
+          - name: resource
+      containerSet:
+        containers:
+          - name: parser
+            image: kkisilevsky/alpine-jq
+            command:
+            - "/bin/sh"
+            - "-c"
+            args:
+              - "echo {{inputs.parameters.resource}} | jq -r '.metadata.name' 
+              && echo {{inputs.parameters.resource}} | jq -r '.spec.destination.namespace'"
+
     - name: whalesay-template
       inputs:
         parameters:

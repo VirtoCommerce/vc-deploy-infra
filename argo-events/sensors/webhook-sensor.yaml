@@ -28,18 +28,17 @@ spec:
               metadata:
                 generateName: webhook-
               spec:
-                entrypoint: whalesay-template
+                entrypoint: main
                 arguments:
                   parameters:
-                  - name: message
-                    # the value will get overridden by event payload from test-dep
-                    value: "hello world"
+                  - name: resource
+                    value: "JSON"
                 workflowTemplateRef:
                   name: workflow-template-submittable
           parameters:
             - src:
                 dependencyName: test-dep
-                dataKey: body.{.metadata.name}
+                dataKey: body
               dest: spec.arguments.parameters.0.value
             - src:
                 dependencyName: test-dep1
