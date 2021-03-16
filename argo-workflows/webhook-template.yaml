@@ -3,12 +3,12 @@ kind: WorkflowTemplate
 metadata:
   name: workflow-template-submittable
 spec:
-  arguments:
-    parameters:
-      - name: resource
-        value: "JSON"
   templates:
     - name: main
+      arguments:
+        parameters:
+          - name: resource
+            value: "JSON"
       steps:
       - - name: parse
           template: parser
