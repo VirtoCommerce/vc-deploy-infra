@@ -14,8 +14,8 @@ spec:
       eventName: app-create
   triggers:
     - template:
-        conditions: "test-dep" # && - AND / || - OR "test-dep || test-dep1"
-        name: webhook-workflow-trigger
+        conditions: "test-dep1" # && - AND / || - OR "test-dep || test-dep1"
+        name: creator-workflow-trigger
         k8s:
           group: argoproj.io
           version: v1alpha1
@@ -26,9 +26,9 @@ spec:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                generateName: webhook-
+                generateName: creator-
               spec:
-                entrypoint: main
+                entrypoint: creator
                 arguments:
                   parameters:
                   - name: resource
@@ -36,10 +36,33 @@ spec:
                 workflowTemplateRef:
                   name: workflow-template-submittable
           parameters:
-            # - src:
-            #     dependencyName: test-dep1
-            #     dataKey: body
-            #   dest: spec.arguments.parameters.0.value
+            - src:
+                dependencyName: test-dep1
+                dataKey: body
+              dest: spec.arguments.parameters.0.value
+    - template:
+        conditions: "test-dep" # && - AND / || - OR "test-dep || test-dep1"
+        name: remover-workflow-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: remover-
+              spec:
+                entrypoint: remover
+                arguments:
+                  parameters:
+                  - name: resource
+                    value: "JSON"
+                workflowTemplateRef:
+                  name: workflow-template-submittable
+          parameters:
             - src:
                 dependencyName: test-dep
                 dataKey: body

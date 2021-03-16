@@ -8,7 +8,7 @@ spec:
       - name: resource
         value: "JSON"
   templates:
-    - name: main
+    - name: creator
       inputs:
         parameters:
           - name: resource
@@ -25,6 +25,24 @@ spec:
             parameters:
             - name: db_name
               value: "{{steps.parse.outputs.result}}"
+
+      - name: remover
+        inputs:
+          parameters:
+            - name: resource
+        steps:
+        - - name: parse
+            template: parser
+            arguments:
+              parameters:
+              - name: json
+                value: "{{inputs.parameters.resource}}"
+        - - name: remove-database
+            template: remove-database-template
+            arguments:
+              parameters:
+              - name: db_name
+                value: "{{steps.parse.outputs.result}}"
 
     - name: parser
       inputs:
@@ -54,6 +72,29 @@ spec:
           - "$(VC_DBSERVER_MASTER_PASSWORD)"
           - "-q"
           - "CREATE DATABASE [{{inputs.parameters.db_name}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
+  
+    - name: remove-database-template
+      inputs:
+        parameters:
+        - name: db_name
+      container:
+        image: mcr.microsoft.com/mssql-tools
+        command:
+          - "/opt/mssql-tools/bin/sqlcmd"
+          - "-S"
+          - "vc-dev-dbserver.database.windows.net"
+          - "-U"
+          - "virto@vc-dev-dbserver"
+          - "-P"
+          - "$(VC_DBSERVER_MASTER_PASSWORD)"
+          - "-q"
+          - "DROP DATABASE [{{inputs.parameters.db_name}}]"
         env: 
           - name: VC_DBSERVER_MASTER_PASSWORD
             valueFrom:
