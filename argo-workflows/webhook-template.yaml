@@ -34,8 +34,9 @@ spec:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
-          - "echo '{{inputs.parameters.json}}' | jq -r '.metadata.name'
-          && echo '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace'"
+          - "export APP_NAME=$(echo '{{inputs.parameters.json}}' | jq -r '.metadata.name')
+          && export NAMESPACE=$(echo '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace')
+          && echo $APP_NAME'-platform_'$NAMESPACE"
 
     - name: print-message
       inputs:
