@@ -79,25 +79,25 @@ spec:
                 name: vc-dbserver-password
                 key: password
   
-    - name: remove-database-template
-      inputs:
-        parameters:
-        - name: db_name
-      container:
-        image: mcr.microsoft.com/mssql-tools
-        command:
-          - "/opt/mssql-tools/bin/sqlcmd"
-          - "-S"
-          - "vc-dev-dbserver.database.windows.net"
-          - "-U"
-          - "virto@vc-dev-dbserver"
-          - "-P"
-          - "$(VC_DBSERVER_MASTER_PASSWORD)"
-          - "-q"
-          - "DROP DATABASE [{{inputs.parameters.db_name}}]"
-        env: 
-          - name: VC_DBSERVER_MASTER_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: vc-dbserver-password
-                key: password
+    # - name: remove-database-template
+    #   inputs:
+    #     parameters:
+    #     - name: db_name
+    #   container:
+    #     image: mcr.microsoft.com/mssql-tools
+    #     command:
+    #       - "/opt/mssql-tools/bin/sqlcmd"
+    #       - "-S"
+    #       - "vc-dev-dbserver.database.windows.net"
+    #       - "-U"
+    #       - "virto@vc-dev-dbserver"
+    #       - "-P"
+    #       - "$(VC_DBSERVER_MASTER_PASSWORD)"
+    #       - "-q"
+    #       - "DROP DATABASE [{{inputs.parameters.db_name}}]"
+    #     env: 
+    #       - name: VC_DBSERVER_MASTER_PASSWORD
+    #         valueFrom:
+    #           secretKeyRef:
+    #             name: vc-dbserver-password
+    #             key: password
