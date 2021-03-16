@@ -30,12 +30,12 @@ spec:
       inputs:
         parameters:
           - name: json
-      script:
+      container:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
-        source: |
-          echo {{inputs.parameters.json}} | jq -r '.metadata.name' \
-          && echo {{inputs.parameters.json}} | jq -r '.spec.destination.namespace'
+        args:
+          - "echo {{inputs.parameters.json}} | jq -r '.metadata.name'
+          && echo {{inputs.parameters.json}} | jq -r '.spec.destination.namespace'"
 
     - name: print-message
       inputs:
