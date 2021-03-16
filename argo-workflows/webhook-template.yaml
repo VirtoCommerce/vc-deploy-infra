@@ -44,4 +44,4 @@ spec:
       container:
         image: alpine:latest
         command: [sh, -c]
-        args: ["echo result was: {{inputs.parameters.message}}"]
+        args: ["echo '{{inputs.parameters.message}}'"]
