@@ -14,7 +14,7 @@ spec:
       eventName: app-create
   triggers:
     - template:
-        conditions: "test-dep || test-dep1" # && - AND / || - OR
+        conditions: "test-dep1" # && - AND / || - OR "test-dep || test-dep1"
         name: webhook-workflow-trigger
         k8s:
           group: argoproj.io
@@ -36,10 +36,10 @@ spec:
                 workflowTemplateRef:
                   name: workflow-template-submittable
           parameters:
-            - src:
-                dependencyName: test-dep
-                dataKey: body
-              dest: spec.arguments.parameters.0.value
+            # - src:
+            #     dependencyName: test-dep
+            #     dataKey: body
+            #   dest: spec.arguments.parameters.0.value
             - src:
                 dependencyName: test-dep1
                 dataKey: body
