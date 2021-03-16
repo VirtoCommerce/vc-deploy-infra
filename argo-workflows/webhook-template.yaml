@@ -19,11 +19,11 @@ spec:
             parameters:
             - name: json
               value: "{{inputs.parameters.resource}}"
-      - - name: print
-          template: print-message
+      - - name: create-database
+          template: create-database-template
           arguments:
             parameters:
-            - name: message
+            - name: db_name
               value: "{{steps.parse.outputs.result}}"
 
     - name: parser
@@ -38,11 +38,25 @@ spec:
           && export NAMESPACE=$(echo '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace')
           && echo $APP_NAME'-platform_'$NAMESPACE"
 
-    - name: print-message
+    - name: create-database-template
       inputs:
         parameters:
-        - name: message
+        - name: db_name
       container:
-        image: alpine:latest
-        command: [sh, -c]
-        args: ["echo '{{inputs.parameters.message}}'"]
+        image: mcr.microsoft.com/mssql-tools
+        command:
+          - "/opt/mssql-tools/bin/sqlcmd"
+          - "-S"
+          - "vc-dev-dbserver.database.windows.net"
+          - "-U"
+          - "virto@vc-dev-dbserver"
+          - "-P"
+          - "$(VC_DBSERVER_MASTER_PASSWORD)"
+          - "-q"
+          - "CREATE DATABASE [{{inputs.parameters.db_name}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
