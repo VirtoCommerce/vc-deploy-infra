@@ -39,9 +39,9 @@ spec:
           parameters:
             - src:
                 dependencyName: test-dep
-                dataKey: body
+                dataKey: body.metadata.name
               dest: spec.arguments.parameters.0.value
             - src:
                 dependencyName: test-dep1
-                dataKey: body
+                dataKey: body.metadata.name
               dest: spec.arguments.parameters.0.value
