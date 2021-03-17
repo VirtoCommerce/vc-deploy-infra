@@ -64,6 +64,8 @@ notifiers:
     url: $msteams-kubernetes
   service.webhook.msteams-webstore: |
     url: $msteams-kubernetes
+  service.webhook.msteams-public: |
+    url: $msteams-kubernetes
 
 podAnnotations: {}
 
@@ -88,19 +90,19 @@ subscriptions:
 
   # # subscription for on-sync-status-unknown trigger notifications
   - recipients:
-    - msteams
-    triggers: 
-    - on-health-degraded
-    - on-sync-failed
-    - on-sync-status-unknown
-    selector: instance=sandbox
-  - recipients:
     - msteams-webstore
     triggers: 
     - on-health-degraded
     - on-sync-failed
     - on-sync-status-unknown
     selector: instance=webstore
+  - recipients:
+    - msteams-public
+    triggers: 
+    - on-health-degraded
+    - on-sync-failed
+    - on-sync-status-unknown
+    selector: instance=public
   # # subscription restricted to applications with matching labels only
   # - recipients:
   #   - slack:test3
