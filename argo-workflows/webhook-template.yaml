@@ -24,9 +24,9 @@ spec:
           arguments:
             parameters:
             - name: app_name
-              value: "{{steps.parse.outputs.parameters.app_name}"
-            # - name: app_namespace
-            #   value: "{{steps.parse.outputs.parameters.app_namespace}}"
+              value: "{{steps.parse.outputs.parameters.app_name}}"
+            - name: app_namespace
+              value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
     - name: remover
       inputs:
@@ -44,7 +44,7 @@ spec:
           arguments:
             parameters:
             - name: app_name
-              value: "{{steps.parse.outputs.parameters.app_name}"
+              value: "{{steps.parse.outputs.parameters.app_name}}"
             - name: app_namespace
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
       - - name: clean-up-indexes
@@ -52,7 +52,7 @@ spec:
           arguments:
             parameters:
             - name: app_name
-              value: "{{steps.parse.outputs.parameters.app_name}"
+              value: "{{steps.parse.outputs.parameters.app_name}}"
             - name: app_namespace
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
