@@ -25,8 +25,8 @@ spec:
             parameters:
             - name: app_name
               value: "{{steps.parse.outputs.parameters.app_name}"
-            - name: app_namespace
-              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+            # - name: app_namespace
+            #   value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
     - name: remover
       inputs:
