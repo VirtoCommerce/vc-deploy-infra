@@ -23,9 +23,9 @@ spec:
           template: create-database-template
           arguments:
             parameters:
-            - name: creator_app_name
+            - name: app_name
               value: "{{steps.parse.outputs.parameters.app_name}"
-            - name: creator_app_namespace
+            - name: app_namespace
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
     - name: remover
@@ -43,17 +43,17 @@ spec:
           template: remove-database-template
           arguments:
             parameters:
-            - name: remover_app_name
+            - name: app_name
               value: "{{steps.parse.outputs.parameters.app_name}"
-            - name: remover_app_namespace
+            - name: app_namespace
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
       - - name: clean-up-indexes
           template: curator-template
           arguments:
             parameters:
-            - name: curator_app_name
+            - name: app_name
               value: "{{steps.parse.outputs.parameters.app_name}"
-            - name: curator_app_namespace
+            - name: app_namespace
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
     - name: parser
@@ -78,8 +78,8 @@ spec:
     - name: create-database-template
       inputs:
         parameters:
-        - name: creator_app_name
-        - name: creator_app_namespace
+          - name: app_name
+          - name: app_namespace
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
@@ -91,7 +91,7 @@ spec:
           - "-P"
           - "$(VC_DBSERVER_MASTER_PASSWORD)"
           - "-q"
-          - "CREATE DATABASE [{{inputs.parameters.creator_app_name}}-platform_{{inputs.parameters.creator_app_namespace}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
+          - "CREATE DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )"
         env: 
           - name: VC_DBSERVER_MASTER_PASSWORD
             valueFrom:
@@ -102,8 +102,8 @@ spec:
     - name: remove-database-template
       inputs:
         parameters:
-        - name: remover_app_name
-        - name: remover_app_namespace
+          - name: app_name
+          - name: app_namespace
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
@@ -115,7 +115,7 @@ spec:
           - "-P"
           - "$(VC_DBSERVER_MASTER_PASSWORD)"
           - "-q"
-          - "DROP DATABASE [{{inputs.parameters.remover_app_name}}-platform_{{inputs.parameters.remover_app_namespace}}]"
+          - "DROP DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}]"
         env: 
           - name: VC_DBSERVER_MASTER_PASSWORD
             valueFrom:
@@ -126,8 +126,8 @@ spec:
     - name: curator-template
       inputs:
         parameters:
-        - name: curator_app_name
-        - name: curator_app_namespace
+          - name: app_name
+          - name: app_namespace
       resource:
         action: create
         manifest: |
@@ -146,7 +146,7 @@ spec:
                   name: curator
                   env:
                     - name: SCOPE
-                      value: "{{inputs.parameters.curator_app_name}}-platform{{inputs.parameters.curator_app_namespace}}"
+                      value: "{{inputs.parameters.app_name}}-platform{{inputs.parameters.app_namespace}}"
                   command:
                     - "/bin/sh"
                     - "-c"
