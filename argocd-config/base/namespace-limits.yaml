@@ -6,6 +6,7 @@ metadata:
 spec:
   limits:
   - default:
+      cpu: 125m
       memory: 512Mi
     defaultRequest:
       memory: 256Mi
@@ -23,6 +24,7 @@ metadata:
 spec:
   limits:
   - default:
+      cpu: 125m
       memory: 256Mi
     defaultRequest:
       memory: 64Mi
@@ -40,6 +42,7 @@ metadata:
 spec:
   limits:
   - default:
+      cpu: 125m
       memory: 1024Mi
     defaultRequest:
       memory: 512Mi
