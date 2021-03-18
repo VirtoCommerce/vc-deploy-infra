@@ -27,3 +27,23 @@ spec:
   rateLimit:
     average: 50
     burst: 100
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: ratelimit
+  namespace: demo
+spec:
+  rateLimit:
+    average: 50
+    burst: 100
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: ratelimit
+  namespace: saas
+spec:
+  rateLimit:
+    average: 50
+    burst: 100
