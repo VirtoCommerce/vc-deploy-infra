@@ -45,5 +45,5 @@ metadata:
   namespace: saas
 spec:
   rateLimit:
-    average: 50
-    burst: 100
+    average: 500
+    burst: 1000

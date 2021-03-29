@@ -5,7 +5,7 @@ metadata:
   namespace: saas
 spec:
   hard:
-    limits.memory: 16Gi
+    limits.memory: 32Gi
     pods: "32"
 ---
 apiVersion: v1
