@@ -5,8 +5,8 @@ metadata:
   namespace: saas
 spec:
   hard:
-    limits.memory: 8Gi
-    pods: "16"
+    limits.memory: 16Gi
+    pods: "32"
 ---
 apiVersion: v1
 kind: ResourceQuota
