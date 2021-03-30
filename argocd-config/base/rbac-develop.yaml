@@ -242,11 +242,9 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: argo-role
-  namespace: develop
 subjects:
 - kind: ServiceAccount
   name: argo
-  namespace: develop
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -257,11 +255,9 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: argo-server-role
-  namespace: develop
 subjects:
 - kind: ServiceAccount
   name: argo-server
-  namespace: develop
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -272,12 +268,10 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: submit-workflow-template
-  namespace: develop
 subjects:
 - kind: ServiceAccount
   name: github.com
   namespace: argo
-  namespace: develop
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -288,8 +282,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: workflow-role
-  namespace: develop
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: develop
