@@ -54,7 +54,7 @@ spec:
       version: v1
       resource: configmaps
       eventTypes:
-        - UPDATE
+        - DELETE
       filter:
         labels:
           - key: init-platform
