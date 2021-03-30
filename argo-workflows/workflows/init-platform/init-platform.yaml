@@ -89,7 +89,7 @@ spec:
                 volumes:
                 - name: modules-volume
                   persistentVolumeClaim:
-                    claimName: "{{steps.parse.outputs.parameters.instance}}-modules-volume"
+                    claimName: "{{inputs.parameters.instance}}-modules-volume"
             
     # - name: install-modules
     #   inputs:
