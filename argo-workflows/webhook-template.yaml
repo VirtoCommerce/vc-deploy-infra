@@ -61,6 +61,10 @@ spec:
         parameters:
           - name: json
       container:
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
