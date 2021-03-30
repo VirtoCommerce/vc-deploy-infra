@@ -23,10 +23,12 @@ spec:
           template: install-modules 
           arguments:
             parameters:
-            - name: app_name
-              value: "{{steps.parse.outputs.parameters.app_name}}"
-            - name: app_namespace
-              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+            - name: namespace
+              value: "{{steps.parse.outputs.parameters.namespace}}"
+            - name: instance
+              value: "{{steps.parse.outputs.parameters.instance}}"
+            - name: modules.json
+              value: "{{steps.parse.outputs.parameters.modules.json}}"
 
     - name: parser
       inputs:
@@ -36,25 +38,31 @@ spec:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
-          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/app_name.txt
-          && echo '{{inputs.parameters.json}}' | jq -r '.spec.metadata.namespace' > /tmp/app_namespace.txt"
+          - "echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.namespace' > /tmp/namespace.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.labels.instance' > /tmp/instance.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r 'data.modules.json' > /tmp/modules.json"
       outputs:
         parameters:
-          - name: app_name
+          - name: namespace
             valueFrom:
-              path: /tmp/app_name.txt
-          - name: app_namespace       
+              path: /tmp/namespace.txt
+          - name: instance
             valueFrom:
-              path: /tmp/app_namespace.txt
+              path: /tmp/instance.txt
+          - name: modules.json
+            valueFrom:
+              path: /tmp/modules.json
 
     - name: install-modules
       inputs:
         parameters:
-          - name: app_name
-          - name: app_namespace
+          - name: namespace
+          - name: instance
+          - name: modules.json
       container:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
-          - "echo '{{inputs.parameters.app_name}}'
-          && echo '{{inputs.parameters.app_namespace}}'"
+          - "echo '{{inputs.parameters.namespace}}'
+          && echo '{{inputs.parameters.instance}}'
+          && echo '{{inputs.parameters.modules.json}}'"
