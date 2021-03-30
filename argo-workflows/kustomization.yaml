@@ -5,4 +5,5 @@ resources:
 - workflows/curator/curator-configmap-template.yaml
 - workflows/curator/curator.yaml
 - workflows/db-remover/db-remover.yaml
+- workflows/init-platform/init-platform.yaml
 - webhook-template.yaml

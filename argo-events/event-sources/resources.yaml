@@ -47,7 +47,19 @@ spec:
         labels:
           - key: workflow
             operation: "=="
-            value: managed  
+            value: managed
+    platform-configmap-update:
+      namespace: develop
+      group: core
+      version: v1
+      resource: ConfigMap
+      eventTypes:
+        - UPDATE
+      filter:
+        labels:
+          - key: init-platform
+            operation: "=="
+            value: workflow   
             
 
 #        # fields provide listing options to K8s API to watch objects
