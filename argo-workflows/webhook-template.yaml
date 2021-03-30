@@ -57,14 +57,14 @@ spec:
               value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
     - name: parser
+      resources:
+        requests:
+          memory: 256Mi
+          cpu: 100m
       inputs:
         parameters:
           - name: json
       container:
-        resources:
-          requests:
-            memory: 256Mi
-            cpu: 100m
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
