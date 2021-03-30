@@ -38,9 +38,9 @@ spec:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
-          - "echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.namespace' > /tmp/namespace.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.labels.instance' > /tmp/instance.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r 'data.modules_json' > /tmp/modules_json.txt"
+          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.namespace' > /tmp/namespace.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.data.modules_json' > /tmp/modules_json.txt"
       outputs:
         parameters:
           - name: namespace
