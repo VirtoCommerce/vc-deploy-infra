@@ -20,7 +20,7 @@ spec:
             - name: json
               value: "{{inputs.parameters.resource}}"
       - - name: install-modules
-          template: 
+          template: install-modules 
           arguments:
             parameters:
             - name: app_name
