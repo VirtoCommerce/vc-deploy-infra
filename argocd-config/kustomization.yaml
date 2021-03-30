@@ -31,5 +31,6 @@ resources:
 - base/argo-notifications.yaml
 - base/argo-workflows.yaml
 - base/argo-events.yaml
+- base/rbac-develop.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
