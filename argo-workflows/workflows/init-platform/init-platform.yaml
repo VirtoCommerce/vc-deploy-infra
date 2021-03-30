@@ -77,9 +77,11 @@ spec:
                 name: install-modules
               spec:
                 containers:
-                - name: curator
+                - name: install-modules
                   image: kkisilevsky/alpine-jq
-                  command: [sh, -c]
+                  command:
+                    - "/bin/sh"
+                    - "-c"
                   args:
                     - "echo '{{inputs.parameters.modules_json}}' > /mnt/modules/json.txt"
                   volumeMounts:
@@ -90,6 +92,7 @@ spec:
                 - name: modules-volume
                   persistentVolumeClaim:
                     claimName: "{{inputs.parameters.instance}}-modules-volume"
+                restartPolicy: Never
             
     # - name: install-modules
     #   inputs:
