@@ -65,6 +65,7 @@ spec:
           - name: modules_json
       container:
         image: kkisilevsky/alpine-jq
+        namespace: "{{inputs.parameters.namespace}}"
         command: [sh, -c]
         args:
           - "echo '{{inputs.parameters.namespace}}'
