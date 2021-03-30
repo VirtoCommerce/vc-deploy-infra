@@ -23,7 +23,7 @@ spec:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                generateName: init-platform--
+                generateName: init-platform-
               spec:
                 entrypoint: init-platform
                 arguments:
