@@ -52,7 +52,7 @@ spec:
       namespace: develop
       group: core
       version: v1
-      resource: ConfigMap
+      resource: configmaps
       eventTypes:
         - UPDATE
       filter:
