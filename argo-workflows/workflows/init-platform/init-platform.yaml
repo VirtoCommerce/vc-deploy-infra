@@ -10,7 +10,7 @@ spec:
   volumes:
   - name: workdir
     persistentVolumeClaim:
-      claimName: {{steps.parse.outputs.parameters.instance}}-modules-volume
+      claimName: "{{steps.parse.outputs.parameters.instance}}-modules-volume"
   templates:
     - name: init-platform
       inputs:
