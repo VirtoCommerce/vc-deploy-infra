@@ -63,14 +63,48 @@ spec:
           - name: namespace
           - name: instance
           - name: modules_json
-      container:
-        image: kkisilevsky/alpine-jq
-        namespace: "{{inputs.parameters.namespace}}"
-        command: [sh, -c]
-        args:
-          - "echo '{{inputs.parameters.namespace}}'
-          && echo '{{inputs.parameters.instance}}'
-          && echo '{{inputs.parameters.modules_json}}'"
-        volumeMounts:
-        - name: workdir
-          mountPath: /mnt/vol
+      resource:
+        action: create
+        manifest: |
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: install-modules-
+            namespace: "{{inputs.parameters.namespace}}"
+          spec:
+            template:
+              metadata:
+                name: install-modules
+              spec:
+                containers:
+                - name: curator
+                  image: kkisilevsky/alpine-jq
+                  command: [sh, -c]
+                  args:
+                    - "echo '{{inputs.parameters.modules_json}}' > /mnt/modules/json.txt"
+                  volumeMounts:
+                  - name: modules-volume
+                    mountPath: /mnt/modules
+                    readOnly: false
+                volumes:
+                - name: modules-volume
+                  persistentVolumeClaim:
+                    claimName: "{{steps.parse.outputs.parameters.instance}}-modules-volume"
+            
+    # - name: install-modules
+    #   inputs:
+    #     parameters:
+    #       - name: namespace
+    #       - name: instance
+    #       - name: modules_json
+    #   container:
+    #     image: kkisilevsky/alpine-jq
+    #     namespace: "{{inputs.parameters.namespace}}"
+    #     command: [sh, -c]
+    #     args:
+    #       - "echo '{{inputs.parameters.namespace}}'
+    #       && echo '{{inputs.parameters.instance}}'
+    #       && echo '{{inputs.parameters.modules_json}}'"
+    #     volumeMounts:
+    #     - name: workdir
+    #       mountPath: /mnt/vol
