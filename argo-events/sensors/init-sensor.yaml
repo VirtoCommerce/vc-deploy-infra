@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: webhook
+  name: init-sensor
 spec:
   template:
     serviceAccountName: argo-events-sa
