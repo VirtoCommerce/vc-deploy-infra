@@ -65,7 +65,7 @@ spec:
         command: [sh, -c]
         args:
           - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/app_name.txt
-          && echo '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace' > /tmp/app_namespace.txt"
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace' > /tmp/app_namespace.txt"
       outputs:
         parameters:
           - name: app_name
