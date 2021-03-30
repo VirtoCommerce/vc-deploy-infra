@@ -28,7 +28,7 @@ spec:
             - name: instance
               value: "{{steps.parse.outputs.parameters.instance}}"
             - name: modules.json
-              value: "{{steps.parse.outputs.parameters.modules.json}}"
+              value: "{{steps.parse.outputs.parameters.modules_json}}"
 
     - name: parser
       inputs:
@@ -40,7 +40,7 @@ spec:
         args:
           - "echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.namespace' > /tmp/namespace.txt
           && echo -n '{{inputs.parameters.json}}' | jq -r 'metadata.labels.instance' > /tmp/instance.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r 'data.modules.json' > /tmp/modules.json"
+          && echo -n '{{inputs.parameters.json}}' | jq -r 'data.modules_json' > /tmp/modules_json.txt"
       outputs:
         parameters:
           - name: namespace
@@ -49,20 +49,20 @@ spec:
           - name: instance
             valueFrom:
               path: /tmp/instance.txt
-          - name: modules.json
+          - name: modules_json
             valueFrom:
-              path: /tmp/modules.json
+              path: /tmp/modules_json.txt
 
     - name: install-modules
       inputs:
         parameters:
           - name: namespace
           - name: instance
-          - name: modules.json
+          - name: modules_json
       container:
         image: kkisilevsky/alpine-jq
         command: [sh, -c]
         args:
           - "echo '{{inputs.parameters.namespace}}'
           && echo '{{inputs.parameters.instance}}'
-          && echo '{{inputs.parameters.modules.json}}'"
+          && echo '{{inputs.parameters.modules_json}}'"
