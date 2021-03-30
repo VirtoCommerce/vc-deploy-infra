@@ -50,7 +50,7 @@ spec:
             value: managed
     platform-configmap-update:
       namespace: develop
-      group: core
+      #group: core
       version: v1
       resource: configmaps
       eventTypes:
