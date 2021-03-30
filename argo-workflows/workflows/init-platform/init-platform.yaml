@@ -7,6 +7,10 @@ spec:
     parameters:
       - name: resource
         value: "JSON"
+  volumes:
+  - name: workdir
+    persistentVolumeClaim:
+      claimName: {{steps.parse.outputs.parameters.instance}}-modules-volume
   templates:
     - name: init-platform
       inputs:
@@ -66,3 +70,6 @@ spec:
           - "echo '{{inputs.parameters.namespace}}'
           && echo '{{inputs.parameters.instance}}'
           && echo '{{inputs.parameters.modules_json}}'"
+        volumeMounts:
+        - name: workdir
+          mountPath: /mnt/vol
