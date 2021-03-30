@@ -27,7 +27,7 @@ spec:
               value: "{{steps.parse.outputs.parameters.namespace}}"
             - name: instance
               value: "{{steps.parse.outputs.parameters.instance}}"
-            - name: modules.json
+            - name: modules_json
               value: "{{steps.parse.outputs.parameters.modules_json}}"
 
     - name: parser
