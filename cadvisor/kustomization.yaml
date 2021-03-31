@@ -4,6 +4,5 @@ resources:
 - ./base/clusterrole.yaml
 - ./base/clusterrolebinding.yaml
 - ./base/daemonset.yaml
-- ./base/namespace.yaml
 - ./base/podsecuritypolicy.yaml
 - ./base/serviceaccount.yaml
