@@ -3,7 +3,8 @@ kind: Kustomization
 resources:
 - ./base/clusterrole.yaml
 - ./base/clusterrolebinding.yaml
-- ./base/daemonset.yaml
+#- ./base/daemonset.yaml
+- ./base/deployment.yaml
 - ./base/podsecuritypolicy.yaml
 - ./base/serviceaccount.yaml
 - ./monitoring/service.yaml

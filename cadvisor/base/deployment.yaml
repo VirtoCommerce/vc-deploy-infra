@@ -1,5 +1,5 @@
 apiVersion: apps/v1 # for Kubernetes versions before 1.9.0 use apps/v1beta2
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: cadvisor
   namespace: cadvisor
@@ -15,6 +15,8 @@ spec:
         name: cadvisor
     spec:
       serviceAccountName: cadvisor
+      nodeSelector:
+        rnd: test
       containers:
       - name: cadvisor
         image: k8s.gcr.io/cadvisor:v0.30.2
@@ -23,7 +25,7 @@ spec:
           - --max_housekeeping_interval=15s
           - --event_storage_event_limit=default=0
           - --event_storage_age_limit=default=0
-          - --disable_metrics=percpu,hugetlb,tcp,udp,advtcp # enable only diskIO, cpu, memory, network, disk, process, sched
+          - --disable_metrics=percpu,hugetlb,tcp,udp,advtcp,network # enable only diskIO, cpu, memory, network, disk, process, sched
           - --docker_only                                         # only show stats for docker containers
           - --store_container_labels=false
           - --whitelisted_container_labels=io.kubernetes.container.name, io.kubernetes.pod.name,io.kubernetes.pod.namespace
