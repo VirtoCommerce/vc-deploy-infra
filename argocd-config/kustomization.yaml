@@ -32,6 +32,6 @@ resources:
 - base/argo-workflows.yaml
 - base/argo-events.yaml
 - base/rbac-develop.yaml
-#- base/cadvisor.yaml
+- base/cadvisor.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
