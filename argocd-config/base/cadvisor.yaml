@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cadvisor
+  namespace: cadvisor
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/virtocommerce/vc-deploy-infra
+    targetRevision: master
+    path: cadvisor
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cadvisor
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false

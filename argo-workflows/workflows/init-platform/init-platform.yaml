@@ -70,7 +70,7 @@ spec:
           kind: Job
           metadata:
             generateName: install-modules-
-            namespace: "{{inputs.parameters.namespace}}"
+            namespace: {{inputs.parameters.namespace}}
           spec:
             template:
               metadata:
