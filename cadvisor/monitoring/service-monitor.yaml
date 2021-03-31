@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cadvisor-metrics
+  namespace: cadvisor
+  labels:
+    name: cadvisor-metrics
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cadvisor-metrics
+  endpoints:
+  - port: http

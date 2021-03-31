@@ -6,3 +6,5 @@ resources:
 - ./base/daemonset.yaml
 - ./base/podsecuritypolicy.yaml
 - ./base/serviceaccount.yaml
+- ./monitoring/service.yaml
+- ./monitoring/service-monitor.yaml
