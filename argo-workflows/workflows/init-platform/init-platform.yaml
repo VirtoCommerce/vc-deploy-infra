@@ -93,21 +93,3 @@ spec:
                   persistentVolumeClaim:
                     claimName: "{{inputs.parameters.instance}}-modules-volume"
                 restartPolicy: Never
-            
-    # - name: install-modules
-    #   inputs:
-    #     parameters:
-    #       - name: namespace
-    #       - name: instance
-    #       - name: modules_json
-    #   container:
-    #     image: kkisilevsky/alpine-jq
-    #     namespace: "{{inputs.parameters.namespace}}"
-    #     command: [sh, -c]
-    #     args:
-    #       - "echo '{{inputs.parameters.namespace}}'
-    #       && echo '{{inputs.parameters.instance}}'
-    #       && echo '{{inputs.parameters.modules_json}}'"
-    #     volumeMounts:
-    #     - name: workdir
-    #       mountPath: /mnt/vol
