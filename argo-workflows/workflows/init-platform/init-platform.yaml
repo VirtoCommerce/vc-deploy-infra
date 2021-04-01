@@ -69,17 +69,29 @@ spec:
           apiVersion: batch/v1
           kind: Job
           metadata:
-            generateName: pi-job-
+            generateName: modules-installer-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
             template:
               metadata:
-                name: pi
+                name: modules-installer
               spec:
                 containers:
-                - name: pi
-                  image: perl
-                  command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+                - name: modules-installer
+                  image: kkisilevsky/alpine-jq
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - "echo -n '{{inputs.parameters.modules_json}}'"
+                  volumeMounts:
+                  - name: modules-volume
+                    mountPath: /mnt/modules
+                    readOnly: false
+                volumes:
+                - name: modules-volume
+                  persistentVolumeClaim:
+                    claimName: "{{inputs.parameters.instance}}-modules-volume"
                 restartPolicy: Never
             backoffLimit: 2
       # resource:
