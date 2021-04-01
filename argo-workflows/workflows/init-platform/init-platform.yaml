@@ -78,12 +78,16 @@ spec:
               spec:
                 containers:
                 - name: modules-installer
-                  image: kkisilevsky/alpine-jq
+                  image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
+                   env:
+                    - name: MODULES_CONFIG
+                      value: "{{inputs.parameters.modules_json}}"
                   command:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "echo -n '{{inputs.parameters.modules_json}}'"
+                    - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
+                    && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
                 restartPolicy: Never
             backoffLimit: 2
       # resource:
