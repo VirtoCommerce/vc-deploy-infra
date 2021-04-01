@@ -84,14 +84,6 @@ spec:
                     - "-c"
                   args:
                     - "echo -n '{{inputs.parameters.modules_json}}'"
-                  volumeMounts:
-                  - name: modules-volume
-                    mountPath: /mnt/modules
-                    readOnly: false
-                volumes:
-                - name: modules-volume
-                  persistentVolumeClaim:
-                    claimName: "{{inputs.parameters.instance}}-modules-volume"
                 restartPolicy: Never
             backoffLimit: 2
       # resource:
