@@ -87,7 +87,7 @@ spec:
                     - "-c"
                   args:
                     - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
-                    && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
+                    && python3 install-modules.py \"{{inputs.parameters.modules_json}}\" /mnt/Modules/*"
                   volumeMounts:
                   - name: modules-volume
                     mountPath: /mnt/Modules
