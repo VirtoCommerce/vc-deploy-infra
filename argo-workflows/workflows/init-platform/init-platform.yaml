@@ -81,13 +81,16 @@ spec:
                   image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
                   env:
                   - name: MODULES_CONFIG
-                    value: "TEST"
+                    valueFrom:
+                      configMapKeyRef:
+                        name: {{inputs.parameters.instance}}-modules-cm
+                        key: modules_json
                   command:
                     - "/bin/sh"
                     - "-c"
                   args:
                     - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
-                    && python3 install-modules.py \"{{inputs.parameters.modules_json}}\" /mnt/Modules/*"
+                    && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
                   volumeMounts:
                   - name: modules-volume
                     mountPath: /mnt/Modules
