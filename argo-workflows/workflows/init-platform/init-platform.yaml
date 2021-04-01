@@ -63,16 +63,31 @@ spec:
           - name: namespace
           - name: instance
           - name: modules_json
-      container:
-        image: kkisilevsky/alpine-jq
-        command: [sh, -c]
-        args:
-          - "echo -n '{{inputs.parameters.namespace}}' 
-          && echo -n '{{inputs.parameters.instance}}'
-          && echo -n '{{inputs.parameters.modules_json}}'"
-      # resource:
-      #   action: create
-      #   manifest: |
+      # container:
+      #   image: kkisilevsky/alpine-jq
+      #   command: [sh, -c]
+      #   args:
+      #     - "echo -n '{{inputs.parameters.namespace}}' 
+      #     && echo -n '{{inputs.parameters.instance}}'
+      #     && echo -n '{{inputs.parameters.modules_json}}'"
+      resource:
+        action: create
+        manifest: |               #put your kubernetes spec here
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: pi-job-
+          spec:
+            template:
+              metadata:
+                name: pi
+              spec:
+                containers:
+                - name: pi
+                  image: perl
+                  command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+                restartPolicy: Never
+            backoffLimit: 4
       #     apiVersion: batch/v1
       #     kind: Job
       #     metadata:
