@@ -95,6 +95,14 @@ spec:
                   - name: modules-volume
                     mountPath: /mnt/Modules
                     readOnly: false
+                - name: kubectl-rollout
+                  image: bitnami/kubectl
+                  command:
+                    - "bin/bash"
+                    - "-c"
+                  args:
+                    - "echo Job Started $(date +%Y-%m-%d-%H-%M-%S)
+                    && kubectl rollout restart deployment {{inputs.parameters.instance}}-platform -n {{inputs.parameters.namespace}}"
                 volumes:
                 - name: modules-volume
                   persistentVolumeClaim:
