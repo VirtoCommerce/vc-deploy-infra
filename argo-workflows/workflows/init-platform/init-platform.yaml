@@ -63,13 +63,6 @@ spec:
           - name: namespace
           - name: instance
           - name: modules_json
-      # container:
-      #   image: kkisilevsky/alpine-jq
-      #   command: [sh, -c]
-      #   args:
-      #     - "echo -n '{{inputs.parameters.namespace}}' 
-      #     && echo -n '{{inputs.parameters.instance}}'
-      #     && echo -n '{{inputs.parameters.modules_json}}'"
       resource:
         action: create
         manifest: |               #put your kubernetes spec here
@@ -77,6 +70,7 @@ spec:
           kind: Job
           metadata:
             generateName: pi-job-
+            namespace: "{{inputs.parameters.namespace}}"
           spec:
             template:
               metadata:
@@ -87,26 +81,7 @@ spec:
                   image: perl
                   command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
                 restartPolicy: Never
-            backoffLimit: 4
-      #     apiVersion: batch/v1
-      #     kind: Job
-      #     metadata:
-      #       generateName: installer-
-      #     spec:
-      #       template:
-      #         metadata:
-      #           name: installer
-      #         spec:
-      #           containers:
-      #           - name: installer
-      #             image: kkisilevsky/alpine-jq
-      #             name: installer
-      #             command:
-      #               - "/bin/sh"
-      #               - "-c"
-      #             args:
-      #               - "echo -n '{{inputs.parameters.modules_json}}"
-      #           restartPolicy: Never
+            backoffLimit: 2
       # resource:
       #   action: create
       #   manifest: |
