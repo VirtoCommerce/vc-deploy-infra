@@ -83,7 +83,7 @@ spec:
                     - "/bin/sh"
                     - "-c"
                   args:
-                    - "echo '{{inputs.parameters.modules_json}}' > /mnt/modules/json.txt"
+                    - "echo -n '{{inputs.parameters.modules_json}}' > /mnt/modules/json.txt"
                   volumeMounts:
                   - name: modules-volume
                     mountPath: /mnt/modules

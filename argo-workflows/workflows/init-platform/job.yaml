@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: modules-updater-
+  namespace: develop
+spec:
+  template:
+    metadata:
+      name: install-modules
+    spec:
+      containers:
+      - name: install-modules
+        image: kkisilevsky/alpine-jq
+        command:
+          - "/bin/sh"
+          - "-c"
+        args:
+          - "echo 'hi' > /mnt/modules/json.txt"
+        volumeMounts:
+        - name: modules-volume
+          mountPath: /mnt/modules
+          readOnly: false
+      volumes:
+      - name: modules-volume
+        persistentVolumeClaim:
+          claimName: "sandbox-modules-volume"
+      restartPolicy: Never
