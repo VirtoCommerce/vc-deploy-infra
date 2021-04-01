@@ -16,7 +16,7 @@ resources:
 - base/redis.yaml
 - base/apps-config.yaml
 - base/reloader.yaml
-- base/nfs-provisioner.yaml
+# base/nfs-provisioner.yaml
 #- base/vault.yaml
 - base/monitoring.yaml
 - base/traefik.yaml
@@ -32,6 +32,6 @@ resources:
 - base/argo-workflows.yaml
 - base/argo-events.yaml
 - base/rbac-develop.yaml
-- base/cadvisor.yaml
+#- base/cadvisor.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
