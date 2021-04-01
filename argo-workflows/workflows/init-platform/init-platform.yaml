@@ -109,33 +109,3 @@ spec:
                     claimName: "{{inputs.parameters.instance}}-modules-volume"
                 restartPolicy: Never
             backoffLimit: 2
-      # resource:
-      #   action: create
-      #   manifest: |
-      #     apiVersion: batch/v1
-      #     kind: Job
-      #     metadata:
-      #       generateName: install-modules-
-      #       namespace: "{{inputs.parameters.namespace}}"
-      #     spec:
-      #       template:
-      #         metadata:
-      #           name: install-modules
-      #         spec:
-      #           containers:
-      #           - name: install-modules
-      #             image: kkisilevsky/alpine-jq
-      #             command:
-      #               - "/bin/sh"
-      #               - "-c"
-      #             args:
-      #               - "echo -n '{{inputs.parameters.modules_json}}' > /mnt/modules/json.txt"
-      #             volumeMounts:
-      #             - name: modules-volume
-      #               mountPath: /mnt/modules
-      #               readOnly: false
-      #           volumes:
-      #           - name: modules-volume
-      #             persistentVolumeClaim:
-      #               claimName: "{{inputs.parameters.instance}}-modules-volume"
-      #           restartPolicy: Never
