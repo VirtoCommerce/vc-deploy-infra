@@ -23,7 +23,7 @@ spec:
             parameters:
             - name: json
               value: "{{inputs.parameters.resource}}"
-      - - name: install-modules
+      - - name: installer-modules
           template: install-modules 
           arguments:
             parameters:
