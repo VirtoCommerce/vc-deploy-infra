@@ -88,6 +88,14 @@ spec:
                   args:
                     - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
                     && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
+                  volumeMounts:
+                  - name: modules-volume
+                    mountPath: /mnt/Modules
+                    readOnly: false
+                volumes:
+                - name: modules-volume
+                  persistentVolumeClaim:
+                    claimName: "{{inputs.parameters.instance}}-modules-volume"
                 restartPolicy: Never
             backoffLimit: 2
       # resource:
