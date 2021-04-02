@@ -48,4 +48,4 @@ spec:
         - --repo-server-timeout-seconds
         - "180"
         - --app-resync
-        - "3600"
+        - "180"
