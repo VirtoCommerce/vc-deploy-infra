@@ -57,7 +57,6 @@ spec:
         - UPDATE
         - ADD
       filter:
-        afterStart: true
         labels:
           - key: init-platform
             operation: "=="
