@@ -55,7 +55,9 @@ spec:
       resource: configmaps
       eventTypes:
         - UPDATE
+        - ADD
       filter:
+        afterStart: true
         labels:
           - key: init-platform
             operation: "=="
