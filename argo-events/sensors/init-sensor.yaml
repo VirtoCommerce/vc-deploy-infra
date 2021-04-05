@@ -14,7 +14,7 @@ spec:
       eventName: app-update
   triggers:
     - template:
-        conditions: "update-modules-cm && app-update" # && - AND / || - OR "test-dep || test-dep1"
+        conditions: "update-modules-cm && update-app" # && - AND / || - OR "test-dep || test-dep1"
         name: init-platform-trigger
         k8s:
           group: argoproj.io
