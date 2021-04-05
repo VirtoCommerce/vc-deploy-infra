@@ -68,12 +68,12 @@ spec:
       resource: applications
       eventTypes:
         - UPDATE
+        - ADD
       filter:
         labels:
           - key: workflow
             operation: "=="
             value: managed-test
-
 #        # fields provide listing options to K8s API to watch objects
 #        fields:
 #            # It's an extention of https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors/.
