@@ -9,9 +9,12 @@ spec:
     - name: update-modules-cm
       eventSourceName: resource
       eventName: platform-configmap-update
+    - name: update-app
+      eventSourceName: resource
+      eventName: app-update
   triggers:
     - template:
-        conditions: "update-modules-cm" # && - AND / || - OR "test-dep || test-dep1"
+        conditions: "update-modules-cm && app-update" # && - AND / || - OR "test-dep || test-dep1"
         name: init-platform-trigger
         k8s:
           group: argoproj.io
