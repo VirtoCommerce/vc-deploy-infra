@@ -40,7 +40,7 @@ spec:
   template:
     metadata:
       annotations:
-        linkerd.io/inject: enabled
+        linkerd.io/inject: ingress
       {{- with .Values.deployment.podAnnotations }}
       {{- toYaml . | nindent 8 }}
       {{- end }}
