@@ -15,7 +15,8 @@ deployment:
   # Additional deployment annotations (e.g. for jaeger-operator sidecar injection)
   annotations: {}
   # Additional pod annotations (e.g. for mesh injection or prometheus scraping)
-  podAnnotations: {}
+  podAnnotations:
+    linkerd.io/inject: ingress
   # Additional Pod labels (e.g. for filtering Pod by custom labels)
   podLabels: {}
   # Additional containers (e.g. for metric offloading sidecars)
@@ -57,7 +58,7 @@ podDisruptionBudget:
 # Use ingressClass. Ignored if Traefik version < 2.3 / kubernetes < 1.18.x
 ingressClass:
   # true is not unit-testable yet, pending https://github.com/rancher/helm-unittest/pull/12
-  enabled: false
+  enabled: true
   isDefaultClass: false
 
 # Activate Pilot integration
@@ -96,6 +97,7 @@ providers:
     enabled: true
     namespaces: []
       # - "default"
+    #ip: "40.75.107.198"
     # IP used for Kubernetes Ingress endpoints
     publishedService:
       enabled: true
@@ -175,13 +177,21 @@ globalArguments:
 # All available options available on https://docs.traefik.io/reference/static-configuration/cli/
 ## Use curly braces to pass values: `helm install --set="additionalArguments={--providers.kubernetesingress.ingressclass=traefik-internal,--log.level=DEBUG}"`
 additionalArguments:
-  - "--metrics.prometheus=true"
-#  - "--log.level=DEBUG"
+- "--providers.kubernetesingress.ingressclass=traefik-dev"
+# -
+# - "--metrics.prometheus=true"
+# - "--log.level=DEBUG"
 
 # Environment variables to be passed to Traefik's binary
-env: []
-# - name: SOME_VAR
-#   value: some-var-value
+# env:
+# - name: TRAEFIK_PROVIDERS_KUBERNETESCRD_INGRESSCLASS
+#   value: "traefik-first"
+# - name: TRAEFIK_PROVIDERS_KUBERNETESINGRESS_INGRESSCLASS
+#   value: "traefik-first"
+# - name: TRAEFIK_ENTRYPOINTS_WEBB_ADDRESS
+#   value: 40.75.107.198
+# - name: TRAEFIK_ENTRYPOINTS_WEBSECUREB_ADDRESS
+#   value: 40.75.107.198
 # - name: SOME_VAR_FROM_CONFIG_MAP
 #   valueFrom:
 #     configMapRef:
@@ -227,26 +237,26 @@ ports:
     protocol: TCP
   web:
     port: 8000
-    # hostPort: 8000
+    # hostPort: 18000
     expose: true
     exposedPort: 80
     # The port protocol (TCP/UDP)
     protocol: TCP
     # Use nodeport if set. This is useful if you have configured Traefik in a
     # LoadBalancer
-    # nodePort: 32080
+    nodePort: 30080
     # Port Redirections
     # Added in 2.2, you can make permanent redirects via entrypoints.
     # https://docs.traefik.io/routing/entrypoints/#redirection
     # redirectTo: websecure
   websecure:
     port: 8443
-    # hostPort: 8443
+    # hostPort: 18443
     expose: true
     exposedPort: 443
     # The port protocol (TCP/UDP)
     protocol: TCP
-    # nodePort: 32443
+    nodePort: 30443
     # Set TLS at the entrypoint
     # https://doc.traefik.io/traefik/routing/entrypoints/#tls
     tls:
@@ -259,6 +269,22 @@ ports:
       #   sans:
       #     - foo.example.com
       #     - bar.example.com
+  # webb:
+  #   port: 18000
+  #   expose: true
+  #   exposedPort: 801
+  #   protocol: TCP
+  # websecureb:
+  #   port: 18443
+  #   expose: true
+  #   exposedPort: 4431
+  #   protocol: TCP
+  #   tls:
+  #     enabled: false
+  #     # this is the name of a TLSOption definition
+  #     options: ""
+  #     certResolver: ""
+  #     domains: []
 
 # TLS Options are created as TLSOption CRDs
 # https://doc.traefik.io/traefik/https/tls/#tls-options
@@ -279,20 +305,22 @@ service:
   enabled: true
   type: LoadBalancer
   # Additional annotations (e.g. for cloud provider specific config)
-  annotations: {}
+  # annotations:
+  #   service.beta.kubernetes.io/azure-load-balancer-resource-group: mc_k8s-group-main_k8s-cluster-main_eastus2
   # Additional service labels (e.g. for filtering Service by custom labels)
   labels: {}
   # Additional entries here will be added to the service spec. Cannot contains
   # type, selector or ports entries.
-  spec: {}
+  spec:
     # externalTrafficPolicy: Cluster
-    # loadBalancerIP: "1.2.3.4"
-    # clusterIP: "2.3.4.5"
+    #loadBalancerIP: "52.179.220.177"
+    # #clusterIP: "2.3.4.5"
   loadBalancerSourceRanges: []
     # - 192.168.0.1/32
     # - 172.16.0.0/16
   externalIPs: []
-    # - 1.2.3.4
+    # - 40.75.107.198
+    # - 52.177.114.239
 
 ## Create HorizontalPodAutoscaler object.
 ##
@@ -360,19 +388,19 @@ resources: {}
   # limits:
   #   cpu: "300m"
   #   memory: "150Mi"
-affinity: {}
+affinity:
 # # This example pod anti-affinity forces the scheduler to put traefik pods
 # # on nodes where no other traefik pods are scheduled.
 # # It should be used when hostNetwork: true to prevent port conflicts
-#   podAntiAffinity:
-#     requiredDuringSchedulingIgnoredDuringExecution:
-#     - labelSelector:
-#         matchExpressions:
-#         - key: app
-#           operator: In
-#           values:
-#           - {{ template "traefik.name" . }}
-#       topologyKey: failure-domain.beta.kubernetes.io/zone
+  # podAntiAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #   - labelSelector:
+  #       matchExpressions:
+  #       - key: app
+  #         operator: In
+  #         values:
+  #         - {{ template "traefik.name" . }}
+  #     topologyKey: failure-domain.beta.kubernetes.io/zone
 nodeSelector: {}
 tolerations: []
 
