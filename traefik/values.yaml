@@ -358,7 +358,7 @@ persistence:
 # To prevent unschedulabel pods due to port collisions, if hostNetwork=true
 # and replicas>1, a pod anti-affinity is recommended and will be set if the
 # affinity is left as default.
-hostNetwork: true
+hostNetwork: false
 
 # Whether Role Based Access Control objects like roles and rolebindings should be created
 rbac:
