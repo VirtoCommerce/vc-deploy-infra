@@ -214,7 +214,7 @@ ports:
   # The name of this one can't be changed as it is used for the readiness and
   # liveness probes, but you can adjust its config to your liking
   traefik:
-    port: 9000
+    port: 9001
     # Use hostPort if set.
     # hostPort: 9000
     #
@@ -232,11 +232,11 @@ ports:
     # use `kubectl port-forward` or create a secure ingress
     expose: false
     # The exposed port for this service
-    exposedPort: 9000
+    exposedPort: 9001
     # The port protocol (TCP/UDP)
     protocol: TCP
   web:
-    port: 8000
+    port: 8001
     # hostPort: 18000
     expose: true
     exposedPort: 80
@@ -250,7 +250,7 @@ ports:
     # https://docs.traefik.io/routing/entrypoints/#redirection
     # redirectTo: websecure
   websecure:
-    port: 8443
+    port: 8143
     # hostPort: 18443
     expose: true
     exposedPort: 443

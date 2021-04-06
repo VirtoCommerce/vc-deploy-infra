@@ -10,6 +10,6 @@ spec:
     targetRevision: HEAD
     path: traefik
   destination:
-    server: 'https://k8s-8b6b145d.hcp.eastus2.azmk8s.io:443'
+    server: https://kubernetes.default.svc
     namespace: default 
   syncPolicy: {}
