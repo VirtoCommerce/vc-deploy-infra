@@ -14,8 +14,6 @@ spec:
         value: 'true'
       - name: providers.kubernetesIngress.publishedService.enabled
         value: 'true'
-      - name: deployment.annotations
-        value: 'linkerd.io/inject: ingress'
     chart: traefik 
   destination:
     server: 'https://kubernetes.default.svc'
