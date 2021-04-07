@@ -39,8 +39,6 @@ spec:
       {{- end }}
   template:
     metadata:
-      annotations:
-        linkerd.io/inject: ingress
       {{- with .Values.deployment.podAnnotations }}
       {{- toYaml . | nindent 8 }}
       {{- end }}
