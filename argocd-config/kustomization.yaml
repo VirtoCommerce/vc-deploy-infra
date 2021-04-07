@@ -33,7 +33,7 @@ resources:
 - base/argo-events.yaml
 #- base/rbac-develop.yaml
 - base/linkerd.yaml
-- bsae/service-monitor.yaml
+- base/service-monitor.yaml
 #- base/cadvisor.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
