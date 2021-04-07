@@ -63,5 +63,5 @@ resources:
     - ./resources/prometheus-serviceMonitorKubeControllerManager.yaml
     - ./resources/prometheus-serviceMonitorKubeScheduler.yaml
     - ./resources/prometheus-serviceMonitorKubelet.yaml
-    - ./resources/grafana-ui/grafana-issuer.yaml
+    - ./resources/grafana-ui/grafana-ingress.yaml
     - ./dashboards/ceph-dashboard.yaml
