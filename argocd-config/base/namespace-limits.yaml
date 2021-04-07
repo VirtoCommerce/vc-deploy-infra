@@ -12,7 +12,7 @@ spec:
     max:
       memory: 3Gi
     min:
-      memory: 64Mi
+      memory: 10Mi
     type: Container
 ---
 apiVersion: v1
