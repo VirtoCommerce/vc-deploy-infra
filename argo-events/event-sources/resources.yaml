@@ -61,10 +61,10 @@ spec:
           - key: init-platform
             operation: "="
             value: workflow
-      fields:
-         - key: metadata.name
-           operation: "=="
-           value: ".+modules-cm"
+        fields:
+          - key: metadata.name
+            operation: "=="
+            value: ".+modules-cm"
     # app-update:
     #   namespace: argocd
     #   group: argoproj.io
