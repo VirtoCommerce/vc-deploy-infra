@@ -55,16 +55,17 @@ spec:
       resource: configmaps
       eventTypes:
         - UPDATE
+        - ADD
       filter:
         afterStart: true
         labels:
           - key: init-platform
             operation: "=="
             value: workflow
-        fields:
-          - key: metadata.name
-            operation: "=="
-            value: ".+modules-cm"
+        # fields:
+        #   - key: metadata.name
+        #     operation: "=="
+        #     value: ".+modules-cm"
     # app-update:
     #   namespace: argocd
     #   group: argoproj.io
