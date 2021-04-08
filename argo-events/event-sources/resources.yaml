@@ -59,7 +59,7 @@ spec:
       filter:
         labels:
           - key: init-platform
-            operation: "=="
+            operation: "="
             value: workflow  
     app-update:
       namespace: argocd
@@ -72,7 +72,7 @@ spec:
       filter:
         labels:
           - key: workflow
-            operation: "=="
+            operation: "="
             value: managed-test
 #        # fields provide listing options to K8s API to watch objects
 #        fields:
