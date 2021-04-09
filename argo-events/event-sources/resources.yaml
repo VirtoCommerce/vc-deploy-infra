@@ -49,8 +49,6 @@ spec:
             operation: "=="
             value: managed
     platform-configmap-update:
-      namespace: develop
-      #group: core
       version: v1
       resource: configmaps
       eventTypes:
@@ -60,6 +58,18 @@ spec:
         afterStart: true
         labels:
           - key: init-platform
+            operation: "=="
+            value: workflow
+    deployment-configmap-update:
+      version: v1
+      resource: configmaps
+      eventTypes:
+        - UPDATE
+        - ADD
+      filter:
+        afterStart: true
+        labels:
+          - key: init-storefront
             operation: "=="
             value: workflow
         # fields:
