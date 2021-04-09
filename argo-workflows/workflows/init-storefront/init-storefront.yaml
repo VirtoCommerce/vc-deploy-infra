@@ -61,6 +61,7 @@ spec:
             generateName: content-installer-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
+            parallelism: 1
             template:
               metadata:
                 name: content-installer

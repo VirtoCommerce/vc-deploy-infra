@@ -72,6 +72,7 @@ spec:
             generateName: modules-installer-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
+            parallelism: 1
             template:
               metadata:
                 name: modules-installer
