@@ -28,6 +28,7 @@ spec:
       cpu: 125m
       memory: 256Mi
     defaultRequest:
+      cpu: 30m
       memory: 64Mi
     max:
       memory: 3Gi
@@ -46,7 +47,8 @@ spec:
       cpu: 125m
       memory: 1024Mi
     defaultRequest:
-      memory: 512Mi
+      memory: 256Mi
+      cpu: 30m
     max:
       memory: 3Gi
     min:
