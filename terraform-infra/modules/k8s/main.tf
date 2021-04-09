@@ -48,22 +48,22 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     Environment = "Production"
   }
 }
-resource "azurerm_kubernetes_cluster_node_pool" "app" {
-  name                  = "applications"
-  enable_auto_scaling   = "false"
-  max_count             = "0"
-  min_count             = "0"
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
-  vm_size               = "Standard_E2ds_v4"
-  availability_zones    = ["1", "2", "3"]
-  node_count            = "4"
-  vnet_subnet_id        = var.subnet_default
-  max_pods              = var.max_pods
+# resource "azurerm_kubernetes_cluster_node_pool" "app" {
+#   name                  = "applications"
+#   enable_auto_scaling   = "false"
+#   max_count             = "0"
+#   min_count             = "0"
+#   kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
+#   vm_size               = "Standard_E2ds_v4"
+#   availability_zones    = ["1", "2", "3"]
+#   node_count            = "4"
+#   vnet_subnet_id        = var.subnet_default
+#   max_pods              = var.max_pods
 
-  tags = {
-    Environment = "Apps"
-  }
-}
+#   tags = {
+#     Environment = "Apps"
+#   }
+# }
 
 resource "azurerm_kubernetes_cluster_node_pool" "apps" {
   name                  = "apool"
