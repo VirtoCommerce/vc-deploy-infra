@@ -49,7 +49,7 @@ spec:
             operation: "=="
             value: managed
     platform-configmap-update:
-      group: "k8s.io"
+      namespace: develop
       version: v1
       resource: configmaps
       eventTypes:
@@ -62,7 +62,7 @@ spec:
             operation: "=="
             value: workflow
     deployment-configmap-update:
-      group: "k8s.io"
+      namespace: develop
       version: v1
       resource: configmaps
       eventTypes:
