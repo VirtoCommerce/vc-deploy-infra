@@ -8,4 +8,5 @@ resources:
 - workflows/curator/curator.yaml
 - workflows/db-remover/db-remover.yaml
 - workflows/init-platform/init-platform.yaml
+- workflows/init-storefront/init-storefront.yaml
 - webhook-template.yaml
