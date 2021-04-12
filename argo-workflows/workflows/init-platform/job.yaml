@@ -4,6 +4,7 @@ metadata:
   name: job1
   namespace: develop
 spec:
+  ttlSecondsAfterFinished: 10
   template:
     metadata:
       name: install-modules
