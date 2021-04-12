@@ -72,6 +72,8 @@ spec:
             generateName: modules-installer-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
+            successfulJobsHistoryLimit: 3
+            failedJobsHistoryLimit: 3
             template:
               metadata:
                 name: modules-installer
