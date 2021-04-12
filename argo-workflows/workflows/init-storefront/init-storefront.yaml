@@ -61,12 +61,11 @@ spec:
             generateName: content-installer-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
-            parallelism: 1
             template:
               metadata:
                 name: content-installer
               spec:
-                containers:
+                initContainers:
                 - name: content-installer
                   image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
                   envFrom:
@@ -83,6 +82,7 @@ spec:
                     - "python3 installer.py $ELECTRONICS_THEME_URL $ELECTRONICS_THEME_LOCATION
                     && python3 installer.py $B2B_THEME_URL $B2B_THEME_LOCATION
                     && python3 installer.py $ASSETS_URL $ASSETS_LOCATION"
+                containers:
                 - name: kubectl-rollout
                   image: bitnami/kubectl
                   command:
