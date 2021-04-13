@@ -128,6 +128,8 @@ spec:
               value: "{{steps.parse.outputs.parameters.namespace}}"
             - name: instance
               value: "{{steps.parse.outputs.parameters.instance}}"
+            - name: name
+              value: "{{steps.parse.outputs.parameters.name}}"
   
     - name: parser
       inputs:
@@ -138,7 +140,8 @@ spec:
         command: [sh, -c]
         args:
           - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.namespace' > /tmp/namespace.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt"
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/name.txt"
       outputs:
         parameters:
           - name: namespace
@@ -147,12 +150,16 @@ spec:
           - name: instance
             valueFrom:
               path: /tmp/instance.txt
+          - name: name
+            valueFrom:
+              path: /tmp/name.txt
 
     - name: install-content
       inputs:
         parameters:
           - name: namespace
           - name: instance
+          - name: name
       resource:
         action: create
         manifest: |               #put your kubernetes spec here
@@ -172,7 +179,7 @@ spec:
                   image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
                   envFrom:
                   - configMapRef:
-                      name: {{inputs.parameters.instance}}-test-deployment-config
+                      name: {{inputs.parameters.name}}
                   volumeMounts:
                     - mountPath: /mnt/cms-content
                       name: cms-content-data
