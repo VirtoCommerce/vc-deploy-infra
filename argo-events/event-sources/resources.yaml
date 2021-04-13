@@ -82,7 +82,7 @@ spec:
         labels:
           - key: workflow
             operation: "=="
-            value: generator
+            value: generator-platform
     test-deployment-configmap-update:
       namespace: develop
       version: v1
@@ -93,7 +93,7 @@ spec:
         labels:
           - key: workflow
             operation: "=="
-            value: generator
+            value: generator-storefront
         # fields:
         #   - key: metadata.name
         #     operation: "=="
