@@ -72,6 +72,28 @@ spec:
           - key: init-storefront
             operation: "=="
             value: workflow
+    test-platform-configmap-update:
+      namespace: develop
+      version: v1
+      resource: configmaps
+      eventTypes:
+        - ADD
+      filter:
+        labels:
+          - key: workflow
+            operation: "=="
+            value: generator
+    test-deployment-configmap-update:
+      namespace: develop
+      version: v1
+      resource: configmaps
+      eventTypes:
+        - ADD
+      filter:
+        labels:
+          - key: workflow
+            operation: "=="
+            value: generator
         # fields:
         #   - key: metadata.name
         #     operation: "=="
