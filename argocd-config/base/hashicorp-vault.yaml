@@ -14,6 +14,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: vault
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
   # ignoreDifferences:
   # - group: admissionregistration.k8s.io
   #   jsonPointers:
