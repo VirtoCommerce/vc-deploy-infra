@@ -34,6 +34,7 @@ resources:
 #- base/rbac-develop.yaml
 - base/linkerd.yaml
 - base/service-monitor.yaml
+- base/argo-rollouts.yaml
 #- base/cadvisor.yaml
 # - base/rook-ceph-operator.yaml
 # - base/rook-ceph-cluster.yaml
