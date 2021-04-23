@@ -49,17 +49,16 @@ spec:
             operation: "=="
             value: managed
     platform-configmap-update:
-      namespace: develop
+      namespace: dev
       version: v1
       resource: configmaps
       eventTypes:
-        - UPDATE
         - ADD
       filter:
         labels:
-          - key: init-platform
+          - key: workflow
             operation: "=="
-            value: workflow
+            value: generator-platform
     deployment-configmap-update:
       namespace: develop
       version: v1

@@ -23,8 +23,8 @@ spec:
       eventName: test-deployment-configmap-update
   triggers:
     - template:
-        conditions: "update-modules-cm && app-sync" # && - AND / || - OR "test-dep || test-dep1"
-        name: init-platform-trigger
+        conditions: "update-modules-cm" # && - AND / || - OR "test-dep || test-dep1"
+        name: update-platform-trigger
         k8s:
           group: argoproj.io
           version: v1alpha1
@@ -35,15 +35,15 @@ spec:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                generateName: init-platform-
+                generateName: update-platform-
               spec:
-                entrypoint: init-platform
+                entrypoint: update-platform
                 arguments:
                   parameters:
                   - name: resource
                     value: "JSON"
                 workflowTemplateRef:
-                  name: init-platform-template
+                  name: update-platform-template
           parameters:
             - src:
                 dependencyName: update-modules-cm

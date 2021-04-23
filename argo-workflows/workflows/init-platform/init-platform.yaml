@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: init-platform-template
+  name: update-platform-template
 spec:
   arguments:
     parameters:
@@ -12,7 +12,7 @@ spec:
     persistentVolumeClaim:
       claimName: "{{steps.parse.outputs.parameters.instance}}-modules-volume"
   templates:
-    - name: init-platform
+    - name: update-platform
       inputs:
         parameters:
           - name: resource
@@ -23,16 +23,16 @@ spec:
             parameters:
             - name: json
               value: "{{inputs.parameters.resource}}"
-      - - name: installer-modules
-          template: install-modules 
+      - - name: updater-modules
+          template: update-modules 
           arguments:
             parameters:
             - name: namespace
               value: "{{steps.parse.outputs.parameters.namespace}}"
             - name: instance
               value: "{{steps.parse.outputs.parameters.instance}}"
-            - name: modules_json
-              value: "{{steps.parse.outputs.parameters.modules_json}}"
+            - name: name
+              value: "{{steps.parse.outputs.parameters.name}}"
 
     - name: parser
       inputs:
@@ -44,7 +44,7 @@ spec:
         args:
           - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.namespace' > /tmp/namespace.txt
           && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r '.data.modules_json' > /tmp/modules_json.txt"
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/name.txt"
       outputs:
         parameters:
           - name: namespace
@@ -53,23 +53,23 @@ spec:
           - name: instance
             valueFrom:
               path: /tmp/instance.txt
-          - name: modules_json
+          - name: name
             valueFrom:
-              path: /tmp/modules_json.txt
+              path: /tmp/name.txt
 
-    - name: install-modules
+    - name: update-modules
       inputs:
         parameters:
           - name: namespace
           - name: instance
-          - name: modules_json
+          - name: name
       resource:
         action: create
         manifest: |               #put your kubernetes spec here
           apiVersion: batch/v1
           kind: Job
           metadata:
-            generateName: modules-installer-job-
+            generateName: modules-updater-job-
             namespace: "{{inputs.parameters.namespace}}"
           spec:
             ttlSecondsAfterFinished: 10
@@ -84,8 +84,8 @@ spec:
                   - name: MODULES_CONFIG
                     valueFrom:
                       configMapKeyRef:
-                        name: {{inputs.parameters.instance}}-modules-cm
-                        key: modules_json
+                        name: {{inputs.parameters.name}}
+                        key: modules.json
                   command:
                     - "/bin/sh"
                     - "-c"
