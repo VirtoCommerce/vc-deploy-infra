@@ -13,4 +13,4 @@ spec:
   source:
     repoURL: 'https://kedacore.github.io/charts'
     targetRevision: 2.2.0
-    chart: kedacore/keda
+    chart: keda
