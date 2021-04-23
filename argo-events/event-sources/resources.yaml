@@ -48,17 +48,17 @@ spec:
           - key: workflow
             operation: "=="
             value: managed
-    platform-configmap-update:
-      namespace: dev
-      version: v1
-      resource: configmaps
-      eventTypes:
-        - ADD
-      filter:
-        labels:
-          - key: workflow
-            operation: "=="
-            value: generator-platform
+    # platform-configmap-update:
+    #   namespace: dev
+    #   version: v1
+    #   resource: configmaps
+    #   eventTypes:
+    #     - ADD
+    #   filter:
+    #     labels:
+    #       - key: workflow
+    #         operation: "=="
+    #         value: generator-platform
     deployment-configmap-update:
       namespace: develop
       version: v1
