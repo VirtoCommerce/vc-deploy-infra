@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keda
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"    
+spec:
+  destination:
+    namespace: keda
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: 'https://kedacore.github.io/charts'
+    targetRevision: 2.2.1
+    chart: kedacore/keda
