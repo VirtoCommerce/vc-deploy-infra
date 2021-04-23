@@ -118,6 +118,12 @@ spec:
         parameters:
           - name: app_name
           - name: app_namespace
+      retryStrategy:
+        limit: "30"
+        backoff:
+          duration: "10s"       # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: "1"
+          maxDuration: "5m"
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
