@@ -14,22 +14,14 @@ spec:
         parameters:
           - name: label
       steps:
-      - - name: get-environmnets
-          template: get-environmnet
+      - - name: rollout-promote
+          template: rollout-promoter
           arguments:
             parameters:
             - name: label
               value: "{{inputs.parameters.label}}"
-      # - - name: create-database
-      #     template: create-database-template
-      #     arguments:
-      #       parameters:
-      #       - name: app_name
-      #         value: "{{steps.parse.outputs.parameters.app_name}}"
-      #       - name: app_namespace
-      #         value: "{{steps.parse.outputs.parameters.app_namespace}}"
 
-    - name: get-environmnet
+    - name: rollout-promoter
       inputs:
         parameters:
           - name: label
@@ -38,35 +30,11 @@ spec:
         command: [bin/bash, -c]
         args:
           - "kubectl get rollout -n dev -l template={{inputs.parameters.label}} | awk '{ print $1 }' | tail -n+2 > /tmp/rollouts
-          && cat /tmp/rollouts"
-      outputs:
-        parameters:
-          - name: list
+          && cat /tmp/rollouts
+          && argocd account list"
+        env:
+          - name: VC_CUSTOMER_DB_PASSWORD
             valueFrom:
-              path: /tmp/rollouts
-
-    # - name: create-database-template
-    #   inputs:
-    #     parameters:
-    #       - name: app_name
-    #       - name: app_namespace
-    #   container:
-    #     image: mcr.microsoft.com/mssql-tools
-    #     command:
-    #         - "/bin/sh"
-    #         - "-c"
-    #     args:
-    #       - "/opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] WITH PASSWORD = '$(VC_CUSTOMER_DB_PASSWORD)'\"
-    #       && /opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE USER [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] FROM LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user]\"
-    #       && /opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )\""
-    #     env: 
-    #       - name: VC_DBSERVER_MASTER_PASSWORD
-    #         valueFrom:
-    #           secretKeyRef:
-    #             name: vc-dbserver-password
-    #             key: password
-    #       - name: VC_CUSTOMER_DB_PASSWORD
-    #         valueFrom:
-    #           secretKeyRef:
-    #             name: vc-db-pass
-    #             key: password
+              secretKeyRef:
+                name: vc-db-pass
+                key: password
