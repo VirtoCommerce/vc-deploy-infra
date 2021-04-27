@@ -31,11 +31,11 @@ spec:
         args:
           - "kubectl get rollout -n dev -l template={{inputs.parameters.label}} | awk '{ print $1 }' | tail -n+2 > /tmp/rollouts
           && cat /tmp/rollouts
-          && argocd login argocd-server.argocd.svc.cluster.local:443 --insecure
-          && argocd account list"
+          && argocd login cd.govirto.com --username workflow --password $(ARGOCD_CLI_PASSWORD)
+          && argocd app wait saas-a"
         env:
-          - name: VC_CUSTOMER_DB_PASSWORD
+          - name: ARGOCD_CLI_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: vc-db-pass
+                name: argocli-pass
                 key: password
