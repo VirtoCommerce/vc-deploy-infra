@@ -9,4 +9,5 @@ resources:
 - workflows/db-remover/db-remover.yaml
 - workflows/init-platform/init-platform.yaml
 - workflows/init-storefront/init-storefront.yaml
+- workflows/rollouts/rollouts-promoting.yaml
 - webhook-template.yaml

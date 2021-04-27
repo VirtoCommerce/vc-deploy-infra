@@ -6,6 +6,7 @@ resources:
 - sensors/curator.yaml
 - sensors/init-sensor.yaml
 - sensors/db-remover.yaml
+- sensors/rollout-sensor.yaml
 - event-sources/webhooks.yaml
 - event-sources/resources.yaml
 - event-bus/native.yaml
