@@ -31,7 +31,7 @@ spec:
         args:
           - "kubectl get rollout -n dev -l template={{inputs.parameters.label}} | awk '{ print $1 }' | tail -n+2 > /tmp/rollouts
           && cat /tmp/rollouts
-          && argocd login argocd-server.argocd.svc.cluster.local:80
+          && argocd login argocd-server.argocd.svc.cluster.local:80 --insecure
           && argocd account list"
         env:
           - name: VC_CUSTOMER_DB_PASSWORD
