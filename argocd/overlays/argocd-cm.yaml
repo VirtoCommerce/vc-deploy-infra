@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
+  accounts.workflow: apiKey
+  accounts.workflow.enabled: 'true'
   admin.enabled: 'false'
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'false'
