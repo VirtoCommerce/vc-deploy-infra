@@ -10,4 +10,5 @@ resources:
 - workflows/init-platform/init-platform.yaml
 - workflows/init-storefront/init-storefront.yaml
 - workflows/rollouts/rollouts-promoting.yaml
+- workflows/rollouts/rbac.yaml
 - webhook-template.yaml

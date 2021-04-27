@@ -3,6 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: rollout-promoter
 spec:
+  serviceAccountName: sa-rollouts
   arguments:
     parameters:
       - name: label
@@ -14,7 +15,7 @@ spec:
           - name: label
       steps:
       - - name: get-environmnets
-          template: parser
+          template: get-environmnet
           arguments:
             parameters:
             - name: label
