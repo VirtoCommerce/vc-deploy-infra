@@ -24,6 +24,10 @@ spec:
       port: "12000"
       endpoint: /db-remover
       method: POST
+    saas-postsync:
+      port: "12000"
+      endpoint: /saas-postsync
+      method: POST
 
 #    example-foo:
 #      port: "12000"

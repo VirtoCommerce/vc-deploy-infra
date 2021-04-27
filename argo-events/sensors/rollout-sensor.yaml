@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: rollout-promoting
+spec:
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+    - name: saas-dep
+      eventSourceName: webhook
+      eventName: saas-postsync
+  triggers:
+    - template:
+        name: rollout-promoter-workflow-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: rollout-promoter-
+              spec:
+                entrypoint: rollout-promoter-template
+                arguments:
+                  parameters:
+                  - name: label
+                    value: "hello world"
+                workflowTemplateRef:
+                  name: rollout-promoter
+          parameters:
+            - src:
+                dependencyName: saas-dep
+                dataKey: body.label
+              dest: spec.arguments.parameters.0.value
