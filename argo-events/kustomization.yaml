@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- base/install.yaml
+- sensors/webhook-sensor.yaml
+- sensors/curator.yaml
+- sensors/init-sensor.yaml
+- sensors/db-remover.yaml
+- sensors/rollout-sensor.yaml
+- event-sources/webhooks.yaml
+- event-sources/resources.yaml
+- event-bus/native.yaml

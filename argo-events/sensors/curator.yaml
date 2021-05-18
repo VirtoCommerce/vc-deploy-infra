@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: curator
+spec:
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+    - name: test-dep
+      eventSourceName: webhook
+      eventName: curator
+  triggers:
+    - template:
+        name: cuarator-workflow-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: curator-
+              spec:
+                entrypoint: curator-template
+                arguments:
+                  parameters:
+                  - name: scope
+                    value: "hello world"
+                workflowTemplateRef:
+                  name: curator
+          parameters:
+            - src:
+                dependencyName: test-dep
+                dataKey: body.scope
+              dest: spec.arguments.parameters.0.value

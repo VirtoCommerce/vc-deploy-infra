@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: rollout-promoter
+spec:
+  serviceAccountName: sa-rollouts
+  arguments:
+    parameters:
+      - name: label
+        value: "hello world"
+  templates:
+    - name: rollout-promoter-template
+      inputs:
+        parameters:
+          - name: label
+      steps:
+      - - name: rollout-promote
+          template: rollout-promoter
+          arguments:
+            parameters:
+            - name: label
+              value: "{{inputs.parameters.label}}"
+
+    - name: rollout-promoter
+      inputs:
+        parameters:
+          - name: label
+      container:
+        image: kkisilevsky/argo-kubectl-rollouts:latest
+        command: [bin/bash, -c]
+        args:
+          - "kubectl get rollout -n dev -l template={{inputs.parameters.label}} | awk '{ print $1 }' | tail -n+2 > /tmp/rollouts
+          && cat /tmp/rollouts
+          && argocd login cd.govirto.com --username workflow --password '$(ARGOCD_CLI_PASSWORD)'
+          && while read p; do kubectl argo rollouts promote -n dev $p; argocd app wait $(echo $p | sed 's/-platform.*//g'); done < /tmp/rollouts"
+        env:
+          - name: ARGOCD_CLI_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: argocli-pass
+                key: password

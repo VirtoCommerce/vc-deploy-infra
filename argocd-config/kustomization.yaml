@@ -22,4 +22,5 @@ resources:
 - base/secrets.yaml
 - base/hashicorp-vault.yaml
 - base/argo-notifications.yaml
+- base/argo-rollouts.yaml
 #- base/wildcard-certs.yaml

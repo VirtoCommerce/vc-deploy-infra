@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: db-remover
+spec:
+  arguments:
+    parameters:
+      - name: db_name
+        value: hello world
+  templates:
+    - name: db-remover-template
+      inputs:
+        parameters:
+          - name: db_name
+      container:
+        image: mcr.microsoft.com/mssql-tools
+        command:
+          - "/opt/mssql-tools/bin/sqlcmd"
+          - "-S"
+          - "vc-dev-dbserver.database.windows.net"
+          - "-U"
+          - "virto@vc-dev-dbserver"
+          - "-P"
+          - "$(VC_DBSERVER_MASTER_PASSWORD)"
+          - "-q"
+          - "DROP DATABASE [$(DB)]"
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
+          - name: DB
+            value: "{{inputs.parameters.db_name}}"

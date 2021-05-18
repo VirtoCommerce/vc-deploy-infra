@@ -1,0 +1,214 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: update-platform-template
+spec:
+  arguments:
+    parameters:
+      - name: resource
+        value: "JSON"
+  volumes:
+  - name: workdir
+    persistentVolumeClaim:
+      claimName: "{{steps.parse.outputs.parameters.instance}}-modules-volume"
+  templates:
+    - name: update-platform
+      inputs:
+        parameters:
+          - name: resource
+      steps:
+      - - name: parse
+          template: parser
+          arguments:
+            parameters:
+            - name: json
+              value: "{{inputs.parameters.resource}}"
+      - - name: updater-modules
+          template: update-modules 
+          arguments:
+            parameters:
+            - name: namespace
+              value: "{{steps.parse.outputs.parameters.namespace}}"
+            - name: instance
+              value: "{{steps.parse.outputs.parameters.instance}}"
+            - name: name
+              value: "{{steps.parse.outputs.parameters.name}}"
+
+    - name: parser
+      inputs:
+        parameters:
+          - name: json
+      container:
+        image: kkisilevsky/alpine-jq
+        command: [sh, -c]
+        args:
+          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.namespace' > /tmp/namespace.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/name.txt"
+      outputs:
+        parameters:
+          - name: namespace
+            valueFrom:
+              path: /tmp/namespace.txt
+          - name: instance
+            valueFrom:
+              path: /tmp/instance.txt
+          - name: name
+            valueFrom:
+              path: /tmp/name.txt
+
+    - name: update-modules
+      inputs:
+        parameters:
+          - name: namespace
+          - name: instance
+          - name: name
+      resource:
+        action: create
+        manifest: |               #put your kubernetes spec here
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: modules-updater-job-
+            namespace: "{{inputs.parameters.namespace}}"
+          spec:
+            ttlSecondsAfterFinished: 10
+            template:
+              metadata:
+                name: modules-installer
+              spec:
+                containers:
+                - name: modules-installer
+                  image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
+                  env:
+                  - name: MODULES_CONFIG
+                    valueFrom:
+                      configMapKeyRef:
+                        name: {{inputs.parameters.name}}
+                        key: modules.json
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
+                    && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
+                  volumeMounts:
+                  - name: modules-volume
+                    mountPath: /mnt/Modules
+                    readOnly: false
+                volumes:
+                - name: modules-volume
+                  persistentVolumeClaim:
+                    claimName: "{{inputs.parameters.instance}}-modules-volume"
+                restartPolicy: Never
+            backoffLimit: 2
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: test-init-platform-template
+spec:
+  arguments:
+    parameters:
+      - name: resource
+        value: "JSON"
+  templates:
+    - name: test-init-platform
+      inputs:
+        parameters:
+          - name: resource
+      steps:
+      - - name: parse
+          template: parser
+          arguments:
+            parameters:
+            - name: json
+              value: "{{inputs.parameters.resource}}"
+      - - name: installer-modules
+          template: install-modules 
+          arguments:
+            parameters:
+            - name: namespace
+              value: "{{steps.parse.outputs.parameters.namespace}}"
+            - name: instance
+              value: "{{steps.parse.outputs.parameters.instance}}"
+            - name: name
+              value: "{{steps.parse.outputs.parameters.name}}"
+
+    - name: parser
+      inputs:
+        parameters:
+          - name: json
+      container:
+        image: kkisilevsky/alpine-jq
+        command: [sh, -c]
+        args:
+          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.namespace' > /tmp/namespace.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.labels.instance' > /tmp/instance.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/name.txt"
+      outputs:
+        parameters:
+          - name: namespace
+            valueFrom:
+              path: /tmp/namespace.txt
+          - name: instance
+            valueFrom:
+              path: /tmp/instance.txt
+          - name: name
+            valueFrom:
+              path: /tmp/name.txt
+
+    - name: install-modules
+      inputs:
+        parameters:
+          - name: namespace
+          - name: instance
+          - name: name
+      resource:
+        action: create
+        manifest: |               #put your kubernetes spec here
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: modules-installer-job-
+            namespace: "{{inputs.parameters.namespace}}"
+          spec:
+            ttlSecondsAfterFinished: 10
+            template:
+              metadata:
+                name: modules-installer
+              spec:
+                initContainers:
+                - name: modules-installer
+                  image: docker.pkg.github.com/virtocommerce/vc-deploy-containers/platform-installer:v3
+                  env:
+                  - name: MODULES_CONFIG
+                    valueFrom:
+                      configMapKeyRef:
+                        name: {{inputs.parameters.name}}
+                        key: modules.json
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - "echo START INIT $(date +%Y-%m-%d-%H-%M-%S)
+                    && python3 install-modules.py \"$MODULES_CONFIG\" /mnt/Modules/*"
+                  volumeMounts:
+                  - name: modules-volume
+                    mountPath: /mnt/Modules
+                    readOnly: false
+                containers:
+                - name: kubectl-rollout
+                  image: bitnami/kubectl
+                  command:
+                    - "bin/bash"
+                    - "-c"
+                  args:
+                    - "echo Job Started $(date +%Y-%m-%d-%H-%M-%S)
+                    && kubectl rollout restart deployment {{inputs.parameters.instance}}-platform -n {{inputs.parameters.namespace}}"
+                volumes:
+                - name: modules-volume
+                  persistentVolumeClaim:
+                    claimName: "{{inputs.parameters.instance}}-modules-volume"
+                restartPolicy: Never
+            backoffLimit: 2

@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: curator
+spec:
+  arguments:
+    parameters:
+      - name: scope
+        value: hello world
+  templates:
+    - name: curator-template
+      resource:
+        action: create
+        manifest: |
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: curator-
+          spec:
+            template:
+              metadata:
+                name: curator
+              spec:
+                containers:
+                - name: curator
+                  image: kkisilevsky/curator:v1
+                  name: curator
+                  env:
+                    - name: SCOPE
+                      value: "{{inputs.parameters.scope}}"
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - "envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /mnt/action_file.yml 
+                    && /usr/bin/curator --config /etc/config/config.yml /mnt/action_file.yml"
+                  volumeMounts:
+                  - name: config
+                    mountPath: /etc/config
+                    readOnly: false
+                volumes:
+                - name: config
+                  configMap:
+                    name: curator-config
+                restartPolicy: Never
+      inputs:
+        parameters:
+          - name: scope

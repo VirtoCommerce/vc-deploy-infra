@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-events
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/virtocommerce/vc-deploy-infra'
+    targetRevision: main
+    path: argo-events
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo
+  syncPolicy: {}
+  # ignoreDifferences:
+  #   - group: eventbus.argoproj.io
+  #     jsonPointers:
+  #     - /status
+  #     kind: EventBus 

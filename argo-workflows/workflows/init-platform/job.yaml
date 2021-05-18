@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job1
+  namespace: develop
+spec:
+  ttlSecondsAfterFinished: 10
+  template:
+    metadata:
+      name: install-modules
+    spec:
+      initContainers:
+      - name: init
+        image: kkisilevsky/alpine-jq
+        command:
+          - "/bin/sh"
+          - "-c"
+        args:
+          - "echo 'hi init'"
+      containers:
+      - name: install-modules
+        image: kkisilevsky/alpine-jq
+        command:
+          - "/bin/sh"
+          - "-c"
+        args:
+          - "echo 'hi'"
+      restartPolicy: Never

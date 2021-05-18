@@ -1,0 +1,132 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: init-sensor
+spec:
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+    - name: update-modules-cm
+      eventSourceName: resource
+      eventName: platform-configmap-update
+    - name: update-deployment-cm
+      eventSourceName: resource
+      eventName: deployment-configmap-update
+    - name: app-sync
+      eventSourceName: webhook
+      eventName: example
+    - name: test-update-modules-cm
+      eventSourceName: resource
+      eventName: test-platform-configmap-update
+    - name: test-update-deployment-cm
+      eventSourceName: resource
+      eventName: test-deployment-configmap-update
+  triggers:
+    - template:
+        conditions: "update-modules-cm" # && - AND / || - OR "test-dep || test-dep1"
+        name: update-platform-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: update-platform-
+              spec:
+                entrypoint: update-platform
+                arguments:
+                  parameters:
+                  - name: resource
+                    value: "JSON"
+                workflowTemplateRef:
+                  name: update-platform-template
+          parameters:
+            - src:
+                dependencyName: update-modules-cm
+                dataKey: body
+              dest: spec.arguments.parameters.0.value
+    - template:
+        conditions: "update-deployment-cm && app-sync" # && - AND / || - OR "test-dep || test-dep1"
+        name: init-storefront-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: init-storefront-
+              spec:
+                entrypoint: init-storefront
+                arguments:
+                  parameters:
+                  - name: resource
+                    value: "JSON"
+                workflowTemplateRef:
+                  name: init-storefront-template
+          parameters:
+            - src:
+                dependencyName: update-deployment-cm
+                dataKey: body
+              dest: spec.arguments.parameters.0.value
+    - template:
+        conditions: "test-update-modules-cm" # && - AND / || - OR "test-dep || test-dep1"
+        name: test-init-platform-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: init-platform-
+              spec:
+                entrypoint: test-init-platform
+                arguments:
+                  parameters:
+                  - name: resource
+                    value: "JSON"
+                workflowTemplateRef:
+                  name: test-init-platform-template
+          parameters:
+            - src:
+                dependencyName: test-update-modules-cm
+                dataKey: body
+              dest: spec.arguments.parameters.0.value
+    - template:
+        conditions: "test-update-deployment-cm" # && - AND / || - OR "test-dep || test-dep1"
+        name: test-init-storefront-trigger
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: init-storefront-
+              spec:
+                entrypoint: test-init-storefront
+                arguments:
+                  parameters:
+                  - name: resource
+                    value: "JSON"
+                workflowTemplateRef:
+                  name: test-init-storefront-template
+          parameters:
+            - src:
+                dependencyName: test-update-deployment-cm
+                dataKey: body
+              dest: spec.arguments.parameters.0.value

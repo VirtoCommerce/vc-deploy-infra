@@ -1,0 +1,203 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: workflow-template-submittable
+spec:
+  arguments:
+    parameters:
+      - name: resource
+        value: "JSON"
+  templates:
+    - name: creator
+      inputs:
+        parameters:
+          - name: resource
+      steps:
+      - - name: parse
+          template: parser
+          arguments:
+            parameters:
+            - name: json
+              value: "{{inputs.parameters.resource}}"
+      - - name: create-database
+          template: create-database-template
+          arguments:
+            parameters:
+            - name: app_name
+              value: "{{steps.parse.outputs.parameters.app_name}}"
+            - name: app_namespace
+              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+      - - name: init-db-user
+          template: init-db-user-template
+          arguments:
+            parameters:
+            - name: app_name
+              value: "{{steps.parse.outputs.parameters.app_name}}"
+            - name: app_namespace
+              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+
+    - name: remover
+      inputs:
+        parameters:
+          - name: resource
+      steps:
+      - - name: parse
+          template: parser
+          arguments:
+            parameters:
+            - name: json
+              value: "{{inputs.parameters.resource}}"
+      - - name: remove-database
+          template: remove-database-template
+          arguments:
+            parameters:
+            - name: app_name
+              value: "{{steps.parse.outputs.parameters.app_name}}"
+            - name: app_namespace
+              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+      - - name: clean-up-indexes
+          template: curator-template
+          arguments:
+            parameters:
+            - name: app_name
+              value: "{{steps.parse.outputs.parameters.app_name}}"
+            - name: app_namespace
+              value: "{{steps.parse.outputs.parameters.app_namespace}}"
+
+    - name: parser
+      resources:
+        requests:
+          memory: 256Mi
+          cpu: 100m
+      inputs:
+        parameters:
+          - name: json
+      container:
+        image: kkisilevsky/alpine-jq
+        command: [sh, -c]
+        args:
+          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/app_name.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace' > /tmp/app_namespace.txt"
+      outputs:
+        parameters:
+          - name: app_name
+            valueFrom:
+              path: /tmp/app_name.txt
+          - name: app_namespace       
+            valueFrom:
+              path: /tmp/app_namespace.txt
+
+    - name: create-database-template
+      inputs:
+        parameters:
+          - name: app_name
+          - name: app_namespace
+      container:
+        image: mcr.microsoft.com/mssql-tools
+        command:
+            - "/bin/sh"
+            - "-c"
+        args:
+          - "/opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] WITH PASSWORD = '$(VC_CUSTOMER_DB_PASSWORD)'\"
+          && /opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE USER [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] FROM LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user]\"
+          && /opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-dev-elasticpool] ) )\""
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
+          - name: VC_CUSTOMER_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-db-pass
+                key: password
+
+    - name: init-db-user-template
+      inputs:
+        parameters:
+          - name: app_name
+          - name: app_namespace
+      retryStrategy:
+        limit: "30"
+        backoff:
+          duration: "10s"       # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: "1"
+          maxDuration: "5m"
+      container:
+        image: mcr.microsoft.com/mssql-tools
+        command:
+            - "/bin/sh"
+            - "-c"
+        args:
+          - "/opt/mssql-tools/bin/sqlcmd -S vc-dev-dbserver.database.windows.net -U virto@vc-dev-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -d {{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}} -q \"CREATE USER [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] FROM LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user]; ALTER ROLE db_owner ADD MEMBER [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user];\""
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
+  
+    - name: remove-database-template
+      inputs:
+        parameters:
+          - name: app_name
+          - name: app_namespace
+      container:
+        image: mcr.microsoft.com/mssql-tools
+        command:
+          - "/opt/mssql-tools/bin/sqlcmd"
+          - "-S"
+          - "vc-dev-dbserver.database.windows.net"
+          - "-U"
+          - "virto@vc-dev-dbserver"
+          - "-P"
+          - "$(VC_DBSERVER_MASTER_PASSWORD)"
+          - "-q"
+          - "DROP DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}]"
+        env: 
+          - name: VC_DBSERVER_MASTER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vc-dbserver-password
+                key: password
+    
+    - name: curator-template
+      inputs:
+        parameters:
+          - name: app_name
+          - name: app_namespace
+      resource:
+        action: create
+        manifest: |
+          apiVersion: batch/v1
+          kind: Job
+          metadata:
+            generateName: curator-
+          spec:
+            template:
+              metadata:
+                name: curator
+              spec:
+                containers:
+                - name: curator
+                  image: kkisilevsky/curator:v1
+                  name: curator
+                  env:
+                    - name: SCOPE
+                      value: "{{inputs.parameters.app_name}}-platform{{inputs.parameters.app_namespace}}"
+                  command:
+                    - "/bin/sh"
+                    - "-c"
+                  args:
+                    - "envsubst '$${SCOPE}'< /etc/config/action_file.yml.template > /mnt/action_file.yml 
+                    && /usr/bin/curator --config /etc/config/config.yml /mnt/action_file.yml"
+                  volumeMounts:
+                  - name: config
+                    mountPath: /etc/config
+                    readOnly: false
+                volumes:
+                - name: config
+                  configMap:
+                    name: curator-config
+                restartPolicy: Never
