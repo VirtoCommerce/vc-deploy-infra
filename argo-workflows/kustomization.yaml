@@ -7,3 +7,23 @@ resources:
 - workflows/rollouts/rollouts-promoting.yaml
 - workflows/rollouts/rbac.yaml
 - webhook-template.yaml
+
+patches:
+- patch: |-
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value: 
+        agentpool: primary
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+- patch: |-
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value: 
+        agentpool: primary
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet

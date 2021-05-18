@@ -7,3 +7,23 @@ resources:
 - event-sources/webhooks.yaml
 - event-sources/resources.yaml
 - event-bus/native.yaml
+
+patches:
+- patch: |-
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value: 
+        agentpool: primary
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+- patch: |-
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value: 
+        agentpool: primary
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
