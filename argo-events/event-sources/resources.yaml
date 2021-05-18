@@ -3,7 +3,10 @@ kind: EventSource
 metadata:
   name: resource
 spec:
+  replicas: 2
   template:
+    nodeSelector:
+      agentpool: primary
     serviceAccountName: argo-events-sa # assign a service account with `get`, `list` and `watch` permissions on the resource being watched.
   resource:
     app-delete:

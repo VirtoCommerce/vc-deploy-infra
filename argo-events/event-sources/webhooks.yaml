@@ -3,6 +3,10 @@ kind: EventSource
 metadata:
   name: webhook
 spec:
+  replicas: 2
+  template:
+    nodeSelector:
+      agentpool: primary
   service:
     ports:
       - port: 12000

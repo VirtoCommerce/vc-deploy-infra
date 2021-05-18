@@ -3,7 +3,10 @@ kind: Sensor
 metadata:
   name: webhook
 spec:
+  replicas: 2
   template:
+    nodeSelector:
+      agentpool: primary
     serviceAccountName: argo-events-sa
   dependencies:
     - name: test-dep
