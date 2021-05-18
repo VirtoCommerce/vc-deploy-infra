@@ -75,3 +75,17 @@ metadata:
     name: vault
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argo-rollouts
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
