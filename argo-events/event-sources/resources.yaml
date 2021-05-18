@@ -48,51 +48,6 @@ spec:
           - key: workflow
             operation: "=="
             value: managed
-    platform-configmap-update:
-      namespace: dev
-      version: v1
-      resource: configmaps
-      eventTypes:
-        - ADD
-      filter:
-        labels:
-          - key: workflow
-            operation: "=="
-            value: generator-platform
-    deployment-configmap-update:
-      namespace: develop
-      version: v1
-      resource: configmaps
-      eventTypes:
-        - UPDATE
-        - ADD
-      filter:
-        labels:
-          - key: init-storefront
-            operation: "=="
-            value: workflow
-    test-platform-configmap-update:
-      namespace: develop
-      version: v1
-      resource: configmaps
-      eventTypes:
-        - ADD
-      filter:
-        labels:
-          - key: workflow
-            operation: "=="
-            value: generator-platform
-    test-deployment-configmap-update:
-      namespace: develop
-      version: v1
-      resource: configmaps
-      eventTypes:
-        - ADD
-      filter:
-        labels:
-          - key: workflow
-            operation: "=="
-            value: generator-storefront
         # fields:
         #   - key: metadata.name
         #     operation: "=="
