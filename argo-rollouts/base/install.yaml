@@ -14477,5 +14477,3 @@ spec:
       securityContext:
         runAsNonRoot: true
       serviceAccountName: argo-rollouts
-      nodeSelector:
-        agentpool: primary 
