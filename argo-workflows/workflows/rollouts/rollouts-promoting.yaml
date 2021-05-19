@@ -31,7 +31,7 @@ spec:
         args:
           - "kubectl get rollout -n dev -l template={{inputs.parameters.label}} | awk '{ print $1 }' | tail -n+2 > /tmp/rollouts
           && cat /tmp/rollouts
-          && argocd login cd.govirto.com --username workflow --password '$(ARGOCD_CLI_PASSWORD)'
+          && argocd login argo.govirto.com --username workflow --password '$(ARGOCD_CLI_PASSWORD)'
           && while read p; do kubectl argo rollouts promote -n dev $p; argocd app wait $(echo $p | sed 's/-platform.*//g'); done < /tmp/rollouts"
         env:
           - name: ARGOCD_CLI_PASSWORD
