@@ -6,6 +6,7 @@ resources:
 - ./argo-server-rbac
 - workflows/rollouts/rollouts-promoting.yaml
 - workflows/rollouts/rbac.yaml
+- workflows/curator/curator-configmap-template.yaml
 - webhook-template.yaml
 
 patches:
