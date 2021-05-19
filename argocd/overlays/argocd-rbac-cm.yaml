@@ -11,6 +11,7 @@ data:
     p, role:virto-developers, applications, get, tenant/*, allow
     p, role:virto-developers, applications, sync, tenant/*, allow 
     p, role:virto-developers, applications, delete, tenant/*, allow
+    p, workflow, applications, get, saas-tenant/*, allow
     p, role:virto-developers, applications, get, prod-tenant/*, allow
     p, role:virto-developers, applications, sync, prod-tenant/*, allow   
     p, role:virto-developers, clusters, get, *, allow
