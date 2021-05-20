@@ -3,6 +3,7 @@ kind: WorkflowTemplate
 metadata:
   name: workflow-template-submittable
 spec:
+  parallelism: 1
   arguments:
     parameters:
       - name: resource
