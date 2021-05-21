@@ -54,11 +54,11 @@ cluster:
   ##
   ## The number of master nodes should always be >= 3, otherwise cluster creation will fail
   ##
-  nodes: 3
+  nodes: 6
   ## Parameter to be passed as --cluster-replicas to the redis-cli --cluster create
   ## 1 means that we want a replica for every master created
   ##
-  replicas: 2
+  replicas: 1
 
   ## Configuration to access the Redis(TM) Cluster from outside the Kubernetes cluster
   ##
