@@ -585,10 +585,10 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: default
+  storageClass: rook-nfs-share-retain
   accessModes:
-    - ReadWriteOnce
-  size: 4Gi
+    - ReadWriteMany
+  size: 1Gi
   ## Persistent Volume selectors
   ## https://kubernetes.io/docs/concepts/storage/persistent-volumes/#selector
   ##
