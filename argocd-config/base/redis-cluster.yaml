@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis-cluster
+  name: redis
   namespace: argocd
   annotations:
     argocd.argoproj.io/manifest-generate-paths: .
@@ -10,11 +10,11 @@ spec:
   source:
     repoURL: https://github.com/virtocommerce/vc-deploy-infra
     targetRevision: main
-    path: redis-cluster
+    path: redis
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://aks-f783f1e0.hcp.westus.azmk8s.io:443'
     namespace: redis
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: true  
