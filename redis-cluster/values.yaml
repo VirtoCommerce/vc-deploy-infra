@@ -569,7 +569,7 @@ service:
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  enabled: true
+  enabled: false
   ## The path the volume will be mounted at, useful when using different
   ## Redis(TM) images.
   ##
