@@ -136,7 +136,6 @@ spec:
         args:
           - "curl --user elastic:$(VC_ELASTIC_PASSWORD) -X POST \"http://search-dev-es-http.elastic-system:9200/_security/role/{{inputs.parameters.app_name}}-{{inputs.parameters.app_namespace}}?pretty\" -H 'Content-Type: application/json' -d'
             {
-              \"cluster\": [\"all\"],
               \"indices\": [
                 {
                 \"names\": [ \"{{inputs.parameters.app_name}}-platform{{inputs.parameters.app_namespace}}-*\" ],
