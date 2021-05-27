@@ -144,6 +144,7 @@ spec:
                 }
               ]
             }'
+            && echo {{inputs.parameters.app_name}}-{{inputs.parameters.app_namespace}}-role && echo $(VC_ELASTIC_PASSWORD)
             &&
             curl --user elastic:$(VC_ELASTIC_PASSWORD) -X POST \"http://search-dev-es-http.elastic-system:9200/_security/user/{{inputs.parameters.app_name}}-{{inputs.parameters.app_namespace}}-user?pretty\" -H 'Content-Type: application/json' -d'
             {
