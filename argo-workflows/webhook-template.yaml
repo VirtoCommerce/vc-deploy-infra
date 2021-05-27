@@ -139,7 +139,7 @@ spec:
               \"cluster\": [\"all\"],
               \"indices\": [
                 {
-                \"names\": [ \"{{inputs.parameters.app_name}}-platform{{inputs.parameters.app_namespace}}\" ],
+                \"names\": [ \"{{inputs.parameters.app_name}}-platform{{inputs.parameters.app_namespace}}-*\" ],
                 \"privileges\": [\"all\"]
                 }
               ]
