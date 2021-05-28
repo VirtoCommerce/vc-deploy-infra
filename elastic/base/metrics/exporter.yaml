@@ -23,6 +23,9 @@ spec:
         - /bin/elasticsearch_exporter
         - --es.uri=http://elastic:virtodevpass@search-dev-es-http.elastic-system:9200
         - --es.all
+        - --es.indices
+        - --es.indices_settings
+        - --es.shards
         image: justwatch/elasticsearch_exporter:1.1.0
         securityContext:
           capabilities:
