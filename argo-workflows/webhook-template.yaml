@@ -110,7 +110,7 @@ spec:
         args:
           - "/opt/mssql-tools/bin/sqlcmd -S vc-prod-dbserver.database.windows.net -U virto@vc-prod-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] WITH PASSWORD = '$(VC_CUSTOMER_DB_PASSWORD)'\"
           && /opt/mssql-tools/bin/sqlcmd -S vc-prod-dbserver.database.windows.net -U virto@vc-prod-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE USER [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user] FROM LOGIN [{{inputs.parameters.app_name}}_{{inputs.parameters.app_namespace}}_user]\"
-          && /opt/mssql-tools/bin/sqlcmd -S vc-prod-dbserver.database.windows.net -U virto@vc-prod-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}] AS COPY OF [webstore-platform_source] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-prod-elasticpool] ) )\""
+          && /opt/mssql-tools/bin/sqlcmd -S vc-prod-dbserver.database.windows.net -U virto@vc-prod-dbserver -P '$(VC_DBSERVER_MASTER_PASSWORD)' -q \"CREATE DATABASE [{{inputs.parameters.app_name}}-platform_{{inputs.parameters.app_namespace}}] ( SERVICE_OBJECTIVE = ELASTIC_POOL ( name = [vc-prod-elasticpool] ) )\""
         env: 
           - name: VC_DBSERVER_MASTER_PASSWORD
             valueFrom:
