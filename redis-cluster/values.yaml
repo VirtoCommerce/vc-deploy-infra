@@ -261,7 +261,7 @@ redis:
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    agentpool: agentpool
+    agentpool: primary
 
   ## Tolerations for Redis(TM) pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -380,7 +380,7 @@ updateJob:
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    agentpool: agentpool
+    agentpool: primary
 
   ## Tolerations for update job pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
