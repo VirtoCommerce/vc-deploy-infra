@@ -5,7 +5,9 @@ resources:
 #  - rbac.yaml
   - elastic-deploy.yaml
   - kibana.yaml
-  - exporter.yaml
+  - metrics/exporter.yaml
+  - metrics/service-monitor.yaml
+  - metrics/service-metrics.yaml
   - curator-configmap.yaml
   - curator-cronjob.yaml
   - kibana-ingress.yaml
