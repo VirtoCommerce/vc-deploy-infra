@@ -36,7 +36,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: default
+        storageClassName: rook-nfs-share-delete
         resources:
           requests:
             storage: 4Gi
