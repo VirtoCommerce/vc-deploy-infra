@@ -28,7 +28,15 @@ spec:
     fsGroup: 2000
     runAsNonRoot: true
     runAsUser: 1000
+  retention: 30d
   serviceAccountName: prometheus-k8s
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   version: v2.11.0
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: rook-nfs-share-retain
+        resources:
+          requests:
+            storage: 10Gi
