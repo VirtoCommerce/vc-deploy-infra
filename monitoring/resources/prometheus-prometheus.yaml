@@ -36,7 +36,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: rook-nfs-share-retain
+        storageClassName: default
         resources:
           requests:
-            storage: 10Gi
+            storage: 4Gi
