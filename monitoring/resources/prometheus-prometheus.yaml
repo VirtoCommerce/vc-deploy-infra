@@ -35,8 +35,6 @@ spec:
   version: v2.11.0
   storage:
     volumeClaimTemplate:
-      accessModes:
-        - ReadWriteOnce
       spec:
         storageClassName: default
         resources:
