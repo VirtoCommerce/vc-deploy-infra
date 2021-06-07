@@ -35,8 +35,10 @@ spec:
   version: v2.11.0
   storage:
     volumeClaimTemplate:
+      accessModes:
+        - ReadWriteOnce
       spec:
-        storageClassName: rook-nfs-share-delete
+        storageClassName: default
         resources:
           requests:
             storage: 4Gi
