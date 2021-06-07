@@ -9,8 +9,11 @@ spec:
     tls:
       selfSignedCertificate:
         disabled: true
+  podDisruptionBudget:
+    spec:
+      minAvailable: 1
   nodeSets:
-  - count: 1
+  - count: 2
     name: master-nodes
     config:
       node.master: true
