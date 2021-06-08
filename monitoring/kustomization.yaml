@@ -65,5 +65,6 @@ resources:
     - ./resources/prometheus-serviceMonitorKubelet.yaml
     - ./resources/grafana/grafana-ingress.yaml
     - ./resources/grafana/grafana-plugins.yaml
+    - ./resources/grafana/grafana-pvc.yaml
     - ./resources/grafana/dashboards/argocd-dashboard.yaml
     - ./resources/grafana/dashboards/traefik-dashboard.yaml
