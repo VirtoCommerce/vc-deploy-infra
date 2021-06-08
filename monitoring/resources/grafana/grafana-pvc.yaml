@@ -4,8 +4,8 @@ metadata:
   name: grafana-volume
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: "rook-nfs-share-delete"
+      storage: 4Gi
+  storageClassName: "default"
