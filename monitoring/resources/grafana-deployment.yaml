@@ -126,6 +126,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/traefik
           name: traefik-grafana-dashboard
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/elastic
+          name: elastic-grafana-dashboard
+          readOnly: false
       nodeSelector:
         beta.kubernetes.io/os: linux
         agentpool: primary
@@ -219,5 +222,8 @@ spec:
         name: argocd-grafana-dashboard
       - configMap:
           name: traefik-grafana-dashboard
-        name: traefik-grafana-dashboard  
+        name: traefik-grafana-dashboard
+      - configMap:
+          name: elastic-grafana-dashboard
+        name: elastic-grafana-dashboard   
               
