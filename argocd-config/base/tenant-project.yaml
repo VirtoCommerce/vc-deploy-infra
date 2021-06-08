@@ -24,6 +24,9 @@ spec:
     kind: LimitRange
   - group: 'networking.k8s.io'
     kind: NetworkPolicy
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
   orphanedResources:
     warn: false
   roles:
