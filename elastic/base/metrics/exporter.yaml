@@ -18,6 +18,8 @@ spec:
       labels:
         app: elastic-exporter
     spec:
+      nodeSelector:
+        agentpool: primary
       containers:
       - command:
         - /bin/elasticsearch_exporter
