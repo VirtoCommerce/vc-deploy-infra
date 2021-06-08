@@ -135,6 +135,7 @@ spec:
       securityContext:
         # runAsNonRoot: true
         runAsUser: 472
+        allowPrivilegeEscalation: true
         # runAsGroup: 472
         # fsGroup: 472
       serviceAccountName: grafana
