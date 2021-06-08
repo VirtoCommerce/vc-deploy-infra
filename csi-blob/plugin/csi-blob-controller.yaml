@@ -16,8 +16,8 @@ spec:
     spec:
       hostNetwork: true
       serviceAccountName: csi-blob-controller-sa
-      nodeSelector:
-        kubernetes.io/os: linux  # add "kubernetes.io/role: master" to run controller on master node
+      # nodeSelector:
+      #   kubernetes.io/os: linux  # add "kubernetes.io/role: master" to run controller on master node
       priorityClassName: system-cluster-critical
       tolerations:
         - key: "node-role.kubernetes.io/master"
