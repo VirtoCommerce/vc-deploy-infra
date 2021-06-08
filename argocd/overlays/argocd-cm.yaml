@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
+  timeout.reconciliation: 3600s
   accounts.workflow: login
   accounts.workflow.enabled: 'true'
   admin.enabled: 'false'
