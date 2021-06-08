@@ -19,7 +19,7 @@ spec:
             memory: 2Gi
         env:
           - name: SERVER_BASEPATH
-            value: /app
+            value: ""
   http:
     tls:
       selfSignedCertificate:

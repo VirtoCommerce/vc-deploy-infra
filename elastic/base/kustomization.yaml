@@ -6,6 +6,9 @@ resources:
   - kibana-ui.yaml
 #  - rbac.yaml
   - elastic-deploy.yaml
+  - metrics/exporter.yaml
+  - metrics/service-monitor.yaml
+  - metrics/service-metrics.yaml
 #  - network.yaml  
 patchesStrategicMerge:
   - statefulset.yaml
