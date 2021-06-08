@@ -32,7 +32,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-application-controller
 spec:
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -54,4 +54,4 @@ spec:
         - "3600"
         env:
         - name: ARGOCD_CONTROLLER_REPLICAS
-          value: "3"
+          value: "2"
