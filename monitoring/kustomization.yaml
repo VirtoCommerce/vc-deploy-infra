@@ -68,3 +68,4 @@ resources:
     - ./resources/grafana/grafana-pvc.yaml
     - ./resources/grafana/dashboards/argocd-dashboard.yaml
     - ./resources/grafana/dashboards/traefik-dashboard.yaml
+    - ./resources/grafana/dashboards/elastic-dashboard.yaml
