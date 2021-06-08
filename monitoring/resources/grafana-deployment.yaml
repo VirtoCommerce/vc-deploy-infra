@@ -18,6 +18,8 @@ spec:
       containers:
       - image: grafana/grafana:7.1.5
         name: grafana
+        securityContext:
+          fsGroup: 0
         ports:
         - containerPort: 3000
           name: http
