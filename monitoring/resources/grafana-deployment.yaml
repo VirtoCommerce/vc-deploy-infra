@@ -18,8 +18,6 @@ spec:
       containers:
       - image: grafana/grafana:7.1.5
         name: grafana
-        securityContext:
-          fsGroup: 0
         ports:
         - containerPort: 3000
           name: http
@@ -135,8 +133,8 @@ spec:
         beta.kubernetes.io/os: linux
         agentpool: primary
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 65534
+        runAsNonRoot: false
+        #runAsUser: 65534
       serviceAccountName: grafana
       volumes:
       - name: grafana-storage
