@@ -49,3 +49,5 @@ spec:
         - argocd-redis-ha-haproxy:6379
         - --repo-server-timeout-seconds
         - "300"
+        - --app-resync
+        - "3600"
