@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - upstream/all-in-one.yaml
-  - kibana.yaml
-  - kibana-ui.yaml
+  # - kibana.yaml
+  # - kibana-ui.yaml
 #  - rbac.yaml
   - elastic-deploy.yaml
   - metrics/exporter.yaml
