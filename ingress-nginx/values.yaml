@@ -575,7 +575,7 @@ controller:
       metricRelabelings: []
 
     prometheusRule:
-      enabled: true
+      enabled: false
       additionalLabels: {}
       # namespace: ""
       rules: []
