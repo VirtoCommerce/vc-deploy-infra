@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: 'https://github.com/virtocommerce/vc-deploy-infra'
     targetRevision: main
-    path: ingress-ngnix
+    path: ingress-nginx
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: nginx
