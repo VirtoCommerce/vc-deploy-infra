@@ -26,4 +26,5 @@ resources:
 - base/argo-workflows.yaml
 - base/argo-events.yaml
 - base/redis-cluster.yaml
+- base/nginx.yaml
 #- base/wildcard-certs.yaml
