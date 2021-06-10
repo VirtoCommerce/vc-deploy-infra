@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.operator.name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.operator.name }}
+    name: {{ .Values.operator.name }}
+    app.kubernetes.io/name: {{ .Values.operator.name }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/component: operator
+    app.kubernetes.io/part-of: {{ .Values.operator.name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ tpl .Values.additionalLabels . | indent 4}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.operator.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.operator.name }}
+        {{- if .Values.podIdentity.activeDirectory.identity }}
+        aadpodidbinding: {{ .Values.podIdentity.activeDirectory.identity }}
+        {{- end }}
+        {{- if .Values.podLabels.keda }}
+        {{- toYaml .Values.podLabels.keda | nindent 8}}
+        {{- end }}
+      {{- if .Values.podAnnotations.keda }}
+      annotations:
+      {{- toYaml .Values.podAnnotations.keda | nindent 8}}
+      {{- end }}
+    spec:
+      {{- if .Values.priorityClassName }}
+      priorityClassName: {{ .Values.priorityClassName | quote }}
+      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Values.operator.name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.keda.repository }}:{{ .Values.image.keda.tag | default .Chart.AppVersion }}"
+          command:
+          - "/keda"
+          args:
+          - --enable-leader-election
+          - "--zap-log-level={{ .Values.logging.operator.level }}"
+          - "--zap-encoder={{ .Values.logging.operator.format }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 25
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 20
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          env:
+            - name: WATCH_NAMESPACE
+              value: {{ .Values.watchNamespace | quote }}
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: {{ .Values.operator.name }}
+            {{- if .Values.http.timeout }}
+            - name: KEDA_HTTP_DEFAULT_TIMEOUT
+              value: {{ .Values.http.timeout | quote }}
+            {{- end }}
+            {{- if .Values.env }}
+            {{- toYaml .Values.env | nindent 12 -}}
+            {{- end }}
+          volumeMounts:
+          {{- if .Values.grpcTLSCertsSecret }}
+          - name: grpc-certs
+            mountPath: /grpccerts
+          {{- end }}
+          {{- if .Values.hashiCorpVaultTLS }}
+          - name: hashicorp-vault-certs
+            mountPath: /hashicorp-vaultcerts
+          {{- end }}
+          {{- if .Values.volumes.keda.extraVolumeMounts }}
+          {{- toYaml .Values.volumes.keda.extraVolumeMounts | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      {{- if .Values.grpcTLSCertsSecret }}
+      - name: grpc-certs
+        secret:
+          secretName: {{ .Values.grpcTLSCertsSecret }}
+      {{- end }}
+      {{- if .Values.hashiCorpVaultTLS }}
+      - name: hashicorp-vault-certs
+        secret:
+          secretName: {{ .Values.hashiCorpVaultTLS }}
+      {{- end }}
+      {{- if .Values.volumes.keda.extraVolumes }}
+      {{- toYaml .Values.volumes.keda.extraVolumes | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
