@@ -40,4 +40,4 @@ spec:
         storageClassName: default
         resources:
           requests:
-            storage: 8Gi
+            storage: 32Gi
