@@ -9,6 +9,9 @@ spec:
   destinations:
   - namespace: saas
     server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
   namespaceResourceBlacklist:
   - group: ''
     kind: ResourceQuota
