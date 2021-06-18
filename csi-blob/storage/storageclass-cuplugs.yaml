@@ -1,10 +1,11 @@
----
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: cuplugs
+  name: blob-cuplugs
 provisioner: blob.csi.azure.com
 parameters:
-  skuName: Premium_LRS
-reclaimPolicy: Retain  # if set as "Delete" container would be removed after pvc deletion
+  resourceGroup: cloud-platform
+  storageAccount: cuplugsblob  # cross subscription is not supported
+  containerName: virtocomposer
+reclaimPolicy: Retain  # If set as "Delete" container would be removed after pvc deletion
 volumeBindingMode: Immediate
