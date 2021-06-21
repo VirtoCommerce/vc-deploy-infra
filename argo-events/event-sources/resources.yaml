@@ -3,7 +3,7 @@ kind: EventSource
 metadata:
   name: resource
 spec:
-  replicas: 2
+  replicas: 1
   template:
     nodeSelector:
       agentpool: primary
