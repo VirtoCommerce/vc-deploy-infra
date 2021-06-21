@@ -122,7 +122,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: argo-events-sa
-  namespace: argo-events
+  namespace: argo
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -274,13 +274,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: argo-events-sa
-  namespace: argo-events
+  namespace: argo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eventbus-controller
-  namespace: argo-events
+  namespace: argo
 spec:
   replicas: 2
   selector:
@@ -327,7 +327,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eventsource-controller
-  namespace: argo-events
+  namespace: argo
 spec:
   replicas: 2
   selector:
@@ -372,7 +372,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sensor-controller
-  namespace: argo-events
+  namespace: argo
 spec:
   replicas: 2
   selector:
