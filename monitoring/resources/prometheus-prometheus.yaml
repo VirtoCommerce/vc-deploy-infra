@@ -33,7 +33,7 @@ spec:
   serviceAccountName: prometheus-k8s
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
-  version: 2.27.1
+  version: v2.28.0
   storage:
     volumeClaimTemplate:
       spec:
