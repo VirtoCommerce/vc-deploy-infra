@@ -17,10 +17,9 @@ spec:
     agentpool: primary
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
-  replicas: 1
+  replicas: 2
   resources:
     requests:
-      cpu: 50m
       memory: 400Mi
   ruleSelector:
     matchLabels:
