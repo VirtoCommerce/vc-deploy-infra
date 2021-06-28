@@ -2,28 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/component: exporter
-    app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 2.1.0
+    app: kube-state-metrics
   name: kube-state-metrics
   namespace: monitoring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/component: exporter
-      app.kubernetes.io/name: kube-state-metrics
-      app.kubernetes.io/part-of: kube-prometheus
+      app: kube-state-metrics
   template:
     metadata:
       annotations:
         kubectl.kubernetes.io/default-container: kube-state-metrics
       labels:
-        app.kubernetes.io/component: exporter
-        app.kubernetes.io/name: kube-state-metrics
-        app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 2.1.0
+        app: kube-state-metrics
     spec:
       containers:
       - args:
