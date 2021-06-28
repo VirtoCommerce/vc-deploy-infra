@@ -66,6 +66,7 @@ spec:
             memory: 150Mi
       nodeSelector:
         kubernetes.io/os: linux
+        agentpool: primary
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
