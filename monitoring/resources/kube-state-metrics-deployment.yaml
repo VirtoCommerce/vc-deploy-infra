@@ -78,4 +78,5 @@ spec:
           runAsUser: 65532
       nodeSelector:
         kubernetes.io/os: linux
+        agentpool: primary
       serviceAccountName: kube-state-metrics
