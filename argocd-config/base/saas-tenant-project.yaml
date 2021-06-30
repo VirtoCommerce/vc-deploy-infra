@@ -30,3 +30,5 @@ spec:
     jwtTokens:
     - iat: 1601536110
       id: saas-token
+    - iat: 1625051345
+      id: saas-token2
