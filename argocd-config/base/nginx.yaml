@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .  
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/virtocommerce/vc-deploy-infra'
+    targetRevision: master
+    path: ingress-nginx
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: nginx
+  syncPolicy: {}
