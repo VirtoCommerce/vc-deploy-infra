@@ -250,7 +250,7 @@ controller:
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    agentpool: primary
+    agentpool: agentpool
 
   ## Liveness and readiness probe values
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
@@ -530,7 +530,7 @@ controller:
       priorityClassName: ""
       podAnnotations: {}
       nodeSelector:
-        agentpool: primary
+        agentpool: agentpool
       tolerations: []
       runAsUser: 2000
 
@@ -708,7 +708,7 @@ defaultBackend:
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    agentpool: primary
+    agentpool: agentpool
 
   ## Annotations to be added to default backend pods
   ##
