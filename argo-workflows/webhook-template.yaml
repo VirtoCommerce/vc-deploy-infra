@@ -88,16 +88,22 @@ spec:
         image: ghcr.io/virtocommerce/alpine-jq
         command: [sh, -c]
         args:
-          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/app_name.txt
-          && echo -n '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace' > /tmp/app_namespace.txt"
+          - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /mnt/out/app_name.txt
+          && echo -n '{{inputs.parameters.json}}' | jq -r '.spec.destination.namespace' > /mnt/out/app_namespace.txt"
+        volumeMounts:
+          - name: out
+            mountPath: /mnt/out
+      volumes:
+        - name: out
+          emptyDir: { } 
       outputs:
         parameters:
           - name: app_name
             valueFrom:
-              path: /tmp/app_name.txt
+              path: /mnt/out/app_name.txt
           - name: app_namespace       
             valueFrom:
-              path: /tmp/app_namespace.txt
+              path: /mnt/out/app_namespace.txt
 
     - name: create-database-template
       inputs:
