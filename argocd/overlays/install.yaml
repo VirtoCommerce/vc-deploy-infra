@@ -80,26 +80,26 @@ spec:
       nodeSelector:
         agentpool: primary
       
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app.kubernetes.io/component: redis
-    app.kubernetes.io/name: argocd-redis-ha-haproxy
-    app.kubernetes.io/part-of: argocd
-  name: argocd-redis-ha-haproxy
-spec:
-  replicas: 3
-  revisionHistoryLimit: 1
-  template:
-    metadata:
-      labels:
-          app.kubernetes.io/name: argocd-redis-ha-haproxy
-      name: argocd-redis-ha-haproxy
-    spec:
-      nodeSelector:
-        agentpool: primary
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     app.kubernetes.io/component: redis
+#     app.kubernetes.io/name: argocd-redis-ha-haproxy
+#     app.kubernetes.io/part-of: argocd
+#   name: argocd-redis-ha-haproxy
+# spec:
+#   replicas: 3
+#   revisionHistoryLimit: 1
+#   template:
+#     metadata:
+#       labels:
+#           app.kubernetes.io/name: argocd-redis-ha-haproxy
+#       name: argocd-redis-ha-haproxy
+#     spec:
+#       nodeSelector:
+#         agentpool: primary
 ---
 apiVersion: apps/v1
 kind: Deployment
