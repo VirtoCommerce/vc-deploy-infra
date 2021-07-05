@@ -2,3 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: workflow-controller-configmap
+data:
+  containerRuntimeExecutors: |
+    - name: k8sapi
+      selector:
+        matchLabels:
+          workflows.argoproj.io/container-runtime-executor: k8sapi
+  containerRuntimeExecutor: k8sapi
