@@ -3953,6 +3953,8 @@ spec:
         - "10"
         - --redis
         - argocd-redis-ha-haproxy:6379
+        - --repo-server-timeout-seconds
+        - "180"
         env:
         - name: ARGOCD_RECONCILIATION_TIMEOUT
           valueFrom:
