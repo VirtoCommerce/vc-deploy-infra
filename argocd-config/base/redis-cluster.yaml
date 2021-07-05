@@ -4,7 +4,7 @@ metadata:
   name: redis-cluster
   namespace: argocd
   annotations:
-    argocd.argoproj.io/manifest-generate-paths: .
+    argocd.argoproj.io/manifest-generate-paths: /redis-cluster
 spec:
   project: default
   source:

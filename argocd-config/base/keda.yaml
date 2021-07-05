@@ -4,7 +4,7 @@ metadata:
   name: keda
   namespace: argocd
   annotations:
-    argocd.argoproj.io/manifest-generate-paths: .  
+    argocd.argoproj.io/manifest-generate-paths: /keda  
 spec:
   project: default
   source:

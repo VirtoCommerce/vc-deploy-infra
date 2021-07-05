@@ -4,7 +4,7 @@ metadata:
   name: redis
   namespace: argocd
   annotations:
-    argocd.argoproj.io/manifest-generate-paths: .
+    argocd.argoproj.io/manifest-generate-paths: /redis
 spec:
   project: default
   source:
