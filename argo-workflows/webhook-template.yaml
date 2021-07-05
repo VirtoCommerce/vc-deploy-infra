@@ -85,7 +85,7 @@ spec:
         parameters:
           - name: json
       container:
-        image: kkisilevsky/alpine-jq
+        image: ghcr.io/virtocommerce/alpine-jq
         command: [sh, -c]
         args:
           - "echo -n '{{inputs.parameters.json}}' | jq -r '.metadata.name' > /tmp/app_name.txt
