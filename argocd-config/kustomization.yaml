@@ -23,8 +23,8 @@ resources:
 - base/hashicorp-vault.yaml
 - base/argo-notifications.yaml
 - base/argo-rollouts.yaml
-- base/argo-workflows.yaml
-- base/argo-events.yaml
+# - base/argo-workflows.yaml
+# - base/argo-events.yaml
 - base/redis-cluster.yaml
 - base/nginx.yaml
 - base/keda.yaml
