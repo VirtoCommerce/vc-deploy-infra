@@ -18,7 +18,7 @@ resources:
 - base/rook-nfs-system.yaml
 - base/tenant-project.yaml
 - base/csi-blob.yaml
-- base/secret-generator.yaml
+#- base/secret-generator.yaml
 - base/secrets.yaml
 - base/hashicorp-vault.yaml
 - base/argo-notifications.yaml
