@@ -282,7 +282,7 @@ metadata:
   name: eventbus-controller
   namespace: argo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: eventbus-controller
@@ -329,7 +329,7 @@ metadata:
   name: eventsource-controller
   namespace: argo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: eventsource-controller
@@ -374,7 +374,7 @@ metadata:
   name: sensor-controller
   namespace: argo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: sensor-controller
