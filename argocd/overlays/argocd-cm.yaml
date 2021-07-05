@@ -7,6 +7,7 @@ metadata:
   name: argocd-cm
 data:
   timeout.reconciliation: 3600s
+  reposerver.parallelism.limit: '50'
   accounts.workflow: login
   accounts.workflow.enabled: 'true'
   admin.enabled: 'false'
