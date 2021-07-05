@@ -234,12 +234,12 @@ spec:
           metadata:
             generateName: curator-
           spec:
-            successfulJobsHistoryLimit: 3
-            failedJobsHistoryLimit: 3
             template:
               metadata:
                 name: curator
               spec:
+                successfulJobsHistoryLimit: 3
+                failedJobsHistoryLimit: 3
                 containers:
                 - name: curator
                   image: kkisilevsky/curator:v1
