@@ -3737,6 +3737,8 @@ spec:
               key: timeout.reconciliation
               name: argocd-cm
               optional: true
+        - name: ARGOCD_EXEC_TIMEOUT
+          value: "180"
         image: quay.io/argoproj/argocd:latest
         imagePullPolicy: Always
         livenessProbe:

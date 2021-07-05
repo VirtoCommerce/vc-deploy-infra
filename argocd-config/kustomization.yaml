@@ -14,7 +14,7 @@ resources:
 - base/apps-config.yaml
 - base/reloader.yaml
 - base/monitoring.yaml
-- base/traefik.yaml
+#- base/traefik.yaml
 - base/rook-nfs-system.yaml
 - base/tenant-project.yaml
 - base/csi-blob.yaml
