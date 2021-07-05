@@ -3700,7 +3700,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-repo-server
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-repo-server
@@ -3739,6 +3739,8 @@ spec:
               optional: true
         - name: ARGOCD_EXEC_TIMEOUT
           value: "180"
+        - name: ARGOCD_GIT_ATTEMPTS_COUNT
+          value: "5"
         image: quay.io/argoproj/argocd:latest
         imagePullPolicy: Always
         livenessProbe:
