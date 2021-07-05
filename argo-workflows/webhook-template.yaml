@@ -3,6 +3,8 @@ kind: WorkflowTemplate
 metadata:
   name: workflow-template-submittable
 spec:
+  imagePullSecrets:
+  - name: dockerconfigjson-github-com
   parallelism: 1
   arguments:
     parameters:
