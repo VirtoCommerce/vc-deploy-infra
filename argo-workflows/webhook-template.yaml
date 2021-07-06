@@ -262,6 +262,7 @@ spec:
           metadata:
             generateName: curator-
           spec:
+            backoffLimit: 5
             template:
               metadata:
                 name: curator
@@ -288,4 +289,3 @@ spec:
                   configMap:
                     name: curator-config
                 restartPolicy: OnFailure
-                backoffLimit: 5
