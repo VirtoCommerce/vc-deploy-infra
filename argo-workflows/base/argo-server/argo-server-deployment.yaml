@@ -12,6 +12,16 @@ spec:
       labels:
         app: argo-server
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - argo-server
+            topologyKey: failure-domain.beta.kubernetes.io/zone
       serviceAccountName: argo-server
       containers:
         - name: argo-server
@@ -40,4 +50,4 @@ spec:
       securityContext:
         runAsNonRoot: true
       nodeSelector:
-        kubernetes.io/os: linux
+        agentpool: primary
