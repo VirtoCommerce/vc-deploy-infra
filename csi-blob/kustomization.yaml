@@ -8,3 +8,4 @@ resources:
     - ./storage/storageclass-blob-premium-dynamic.yaml
     - ./storage/storageclass-dynamic.yaml
     - ./storage/storageclass-cuplugs.yaml
+    - ./storage/srorageclass-saas.yaml

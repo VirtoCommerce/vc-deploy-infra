@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: blob-saas
+provisioner: blob.csi.azure.com
+parameters:
+  skuName: Premium_LRS
+  csi.storage.k8s.io/provisioner-secret-name: azure-config-file
+  csi.storage.k8s.io/provisioner-secret-namespace: default
+  csi.storage.k8s.io/node-stage-secret-name: azure-config-file
+  csi.storage.k8s.io/node-stage-secret-namespace: default
+reclaimPolicy: Delete
