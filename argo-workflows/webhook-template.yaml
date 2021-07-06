@@ -84,6 +84,13 @@ spec:
       inputs:
         parameters:
           - name: json
+      retryStrategy:
+        limit: 10
+        retryPolicy: "Always"
+        backoff:
+          duration: "5"      # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "2m"
       container:
         image: ghcr.io/virtocommerce/alpine-jq
         command: [sh, -c]
@@ -110,6 +117,13 @@ spec:
         parameters:
           - name: app_name
           - name: app_namespace
+      retryStrategy:
+        limit: 10
+        retryPolicy: "Always"
+        backoff:
+          duration: "5"      # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "2m"
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
@@ -136,6 +150,13 @@ spec:
         parameters:
           - name: app_name
           - name: app_namespace
+      retryStrategy:
+        limit: 10
+        retryPolicy: "Always"
+        backoff:
+          duration: "5"      # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "2m"
       container:
         image: curlimages/curl:7.77.0
         command:
@@ -177,12 +198,12 @@ spec:
           - name: app_name
           - name: app_namespace
       retryStrategy:
-        limit: "30"
-        # retryPolicy: "Always"
+        limit: "10"
+        retryPolicy: "Always"
         backoff:
-          duration: "10s"       # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
-          factor: "1"
-          maxDuration: "5m"
+          duration: "5s"       # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: "2"
+          maxDuration: "3m"
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
@@ -202,6 +223,13 @@ spec:
         parameters:
           - name: app_name
           - name: app_namespace
+      retryStrategy:
+        limit: 10
+        retryPolicy: "Always"
+        backoff:
+          duration: "5"      # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "2m"
       container:
         image: mcr.microsoft.com/mssql-tools
         command:
@@ -259,4 +287,5 @@ spec:
                 - name: config
                   configMap:
                     name: curator-config
-                restartPolicy: Never
+                restartPolicy: OnFailure
+                backoffLimit: 5

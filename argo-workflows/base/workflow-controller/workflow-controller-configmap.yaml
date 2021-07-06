@@ -9,3 +9,5 @@ data:
         matchLabels:
           workflows.argoproj.io/container-runtime-executor: k8sapi
   containerRuntimeExecutor: k8sapi
+  parallelism: 2
+  namespaceParallelism: "2"
