@@ -43,14 +43,6 @@ metadata:
   apiVersion: v1
   kind: Namespace
   metadata:
-    name: traefik
-    annotations:
-      argocd.argoproj.io/sync-wave: "-1"
-      scheduler.alpha.kubernetes.io/node-selector: agentpool=primary
----
-  apiVersion: v1
-  kind: Namespace
-  metadata:
     name: monitoring
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
