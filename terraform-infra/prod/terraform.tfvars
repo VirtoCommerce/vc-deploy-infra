@@ -1,8 +1,0 @@
-service_principal_client_id     = "0549f105-1c28-4a3a-95a5-8132d09a8b64"
-service_principal_client_secret = "IPXJMzQ.1iG9A23BIviUAUdearYxKU6jLC"
-ad_tenant_id                    = "bc03e660-5e3a-45c4-bf5c-b75489f78923"
-ad_object_id                    = "d1de67d4-8536-4a12-b22d-ae3545be199e"
-db_password                     = "HGf#&2f212!3ef"
-dns_prefix                      = "k8s"
-tenant_id                       = "bc03e660-5e3a-45c4-bf5c-b75489f78923"
-subscription_id                 = "a6522b3e-cc34-41c8-bf38-a5ff3080186a"
