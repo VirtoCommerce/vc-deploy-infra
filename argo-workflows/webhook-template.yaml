@@ -238,7 +238,7 @@ spec:
       container:
         image: curlimages/curl:7.77.0
         command:
-          - "/bin/sh"
+          - "/bin/bash"
           - "-c"
         args:
           - "for ((i = 1 ; i <= 10 ; i++)); do curl -H \"Wakeup: true\" -I https://{{inputs.parameters.app_name}}.saas.govirto.com; done"
