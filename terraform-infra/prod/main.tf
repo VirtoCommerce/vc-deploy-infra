@@ -48,12 +48,12 @@ module "k8s" {
   client_secret       = var.service_principal_client_secret
   resource_group_name = azurerm_resource_group.k8s.name
   location            = azurerm_resource_group.k8s.location
-  max_count           = "3"
-  min_count           = "3"
+  max_count           = "4"
+  min_count           = "4"
   vm_size             = "Standard_D2ds_v4"
   subnet_default      = module.network.subnet1
   dns_prefix          = var.dns_prefix
-  node_count          = "3"
+  node_count          = "4"
   max_pods            = "120"
   subnet_2            = module.network.subnet2
 }

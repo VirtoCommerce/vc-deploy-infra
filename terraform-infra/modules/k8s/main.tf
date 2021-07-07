@@ -14,9 +14,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
   default_node_pool {
     name                = "primary"
-    enable_auto_scaling = "true"
-    max_count           = var.max_count
-    min_count           = var.min_count
+    enable_auto_scaling = "false"
     vm_size             = var.vm_size
     availability_zones  = ["1", "2", "3"]
     node_count          = var.node_count
@@ -48,22 +46,23 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     Environment = "Production"
   }
 }
-# resource "azurerm_kubernetes_cluster_node_pool" "app" {
-#   name                  = "applications"
-#   enable_auto_scaling   = "false"
-#   max_count             = "0"
-#   min_count             = "0"
-#   kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
-#   vm_size               = "Standard_E2ds_v4"
-#   availability_zones    = ["1", "2", "3"]
-#   node_count            = "4"
-#   vnet_subnet_id        = var.subnet_default
-#   max_pods              = var.max_pods
 
-#   tags = {
-#     Environment = "Apps"
-#   }
-# }
+resource "azurerm_kubernetes_cluster_node_pool" "trial-apps" {
+  name                  = "trial"
+  enable_auto_scaling   = "true"
+  max_count             = "6"
+  min_count             = "1"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.k8s.id
+  vm_size               = "Standard_B2ms"
+  availability_zones    = ["1", "2", "3"]
+  node_count            = "1"
+  vnet_subnet_id        = var.subnet_default
+  max_pods              = var.max_pods
+
+  tags = {
+    Environment = "Trial"
+  }
+}
 
 resource "azurerm_kubernetes_cluster_node_pool" "apps" {
   name                  = "apool"
