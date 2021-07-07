@@ -241,7 +241,7 @@ spec:
             - "/bin/sh"
             - "-c"
         args:
-          - "curl https://{{inputs.parameters.app_name}}.saas.govirto.com"
+          - "curl -H \"Wakeup: true\" -I https://{{inputs.parameters.app_name}}.saas.govirto.com"
   
     - name: remove-database-template
       inputs:
