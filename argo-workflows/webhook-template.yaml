@@ -244,9 +244,8 @@ spec:
           - name: COUNTER
             value: "0"
         args:
-          - "curl -X POST https://{{inputs.parameters.app_name}}.saas.govirto.com"
-       # args:
-       #   - "while [ \"$COUNTER\" -le 29 ]; do curl https://{{inputs.parameters.app_name}}.saas.govirto.com && COUNTER=$(( COUNTER + 1 )); done"
+          - "curl -X POST https://{{inputs.parameters.app_name}}.saas.govirto.com
+          && while [ \"$COUNTER\" -le 19 ]; do curl https://{{inputs.parameters.app_name}}.saas.govirto.com && COUNTER=$(( COUNTER + 1 )); done"
   
     - name: remove-database-template
       inputs:
