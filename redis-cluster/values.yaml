@@ -569,7 +569,7 @@ service:
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  enabled: false
+  enabled: true
   ## The path the volume will be mounted at, useful when using different
   ## Redis(TM) images.
   ##
@@ -585,9 +585,9 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: rook-nfs-share-retain
+  storageClass: default
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   size: 1Gi
   ## Persistent Volume selectors
   ## https://kubernetes.io/docs/concepts/storage/persistent-volumes/#selector
