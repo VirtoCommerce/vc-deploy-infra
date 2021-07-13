@@ -19,12 +19,12 @@ resources:
 # base/nfs-provisioner.yaml
 #- base/vault.yaml
 - base/monitoring.yaml
-- base/traefik.yaml
+# - base/traefik.yaml
 - base/rook-nfs-system.yaml
 - base/csi-blob.yaml
 - base/secret-generator.yaml
 - base/vault-dev.yaml
-- base/traefik-dev.yaml
+# - base/traefik-dev.yaml
 #- base/monitoring-2.yaml
 - base/wildcard-cert-dev.yaml
 - base/fluentd.yaml
