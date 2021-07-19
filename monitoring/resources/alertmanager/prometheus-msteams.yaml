@@ -1,0 +1,112 @@
+---
+# Source: prometheus-msteams/templates/configMapConfig.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-msteams-config
+data:
+  connectors.yaml: |
+    connectors:
+      alertmanager: https://virto365.webhook.office.com/webhookb2/64134d35-983b-43d1-b492-88a7b8523513@bc03e660-5e3a-45c4-bf5c-b75489f78923/IncomingWebhook/f00978f093134d11bbb6b8d47b846400/4a4fa9ae-993d-41cc-b048-2d619fd8c3b9
+    connectors_with_custom_templates:
+---
+# Source: prometheus-msteams/templates/configMapTemplate.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: prometheus-msteams-card-template
+binaryData:
+  card.tmpl: |-
+    e3sgZGVmaW5lICJ0ZWFtcy5jYXJkIiB9fQp7CiAgIkB0eXBlIjogIk1lc3NhZ2VDYXJkIiwKICAiQGNvbnRleHQiOiAiaHR0cDovL3NjaGVtYS5vcmcvZXh0ZW5zaW9ucyIsCiAgInRoZW1lQ29sb3IiOiAie3stIGlmIGVxIC5TdGF0dXMgInJlc29sdmVkIiAtfX0yREM3MkQKICAgICAgICAgICAgICAgICB7ey0gZWxzZSBpZiBlcSAuU3RhdHVzICJmaXJpbmciIC19fQogICAgICAgICAgICAgICAgICAgIHt7LSBpZiBlcSAuQ29tbW9uTGFiZWxzLnNldmVyaXR5ICJjcml0aWNhbCIgLX19OEMxQTFBCiAgICAgICAgICAgICAgICAgICAge3stIGVsc2UgaWYgZXEgLkNvbW1vbkxhYmVscy5zZXZlcml0eSAid2FybmluZyIgLX19RkZBNTAwCiAgICAgICAgICAgICAgICAgICAge3stIGVsc2UgLX19ODA4MDgwe3stIGVuZCAtfX0KICAgICAgICAgICAgICAgICB7ey0gZWxzZSAtfX04MDgwODB7ey0gZW5kIC19fSIsCiAgInN1bW1hcnkiOiAie3stIGlmIGVxIC5Db21tb25Bbm5vdGF0aW9ucy5zdW1tYXJ5ICIiIC19fQogICAgICAgICAgICAgICAgICB7ey0gaWYgZXEgLkNvbW1vbkFubm90YXRpb25zLm1lc3NhZ2UgIiIgLX19CiAgICAgICAgICAgICAgICAgICAge3stIGpzIC5Db21tb25MYWJlbHMuY2x1c3RlciB8IHJlUmVwbGFjZUFsbCAiXyIgIiAiIHwgcmVSZXBsYWNlQWxsIGBcXCdgICInIiAtfX0KICAgICAgICAgICAgICAgICAge3stIGVsc2UgLX19CiAgICAgICAgICAgICAgICAgICAge3stIGpzIC5Db21tb25Bbm5vdGF0aW9ucy5tZXNzYWdlIHwgcmVSZXBsYWNlQWxsICJfIiAiICIgfCByZVJlcGxhY2VBbGwgYFxcJ2AgIiciIC19fQogICAgICAgICAgICAgICAgICB7ey0gZW5kIC19fQogICAgICAgICAgICAgIHt7LSBlbHNlIC19fQogICAgICAgICAgICAgICAgICB7ey0ganMgLkNvbW1vbkFubm90YXRpb25zLnN1bW1hcnkgfCByZVJlcGxhY2VBbGwgIl8iICIgIiB8IHJlUmVwbGFjZUFsbCBgXFwnYCAiJyIgLX19CiAgICAgICAgICAgICAge3stIGVuZCAtfX0iLAogICJ0aXRsZSI6ICJQcm9tZXRoZXVzIEFsZXJ0ICh7eyAuU3RhdHVzIH19KSIsCiAgInNlY3Rpb25zIjogWyB7eyRleHRlcm5hbFVybCA6PSAuRXh0ZXJuYWxVUkx9fQogIHt7LSByYW5nZSAkaW5kZXgsICRhbGVydCA6PSAuQWxlcnRzIH19e3stIGlmICRpbmRleCB9fSx7ey0gZW5kIH19CiAgICB7CiAgICAgICJhY3Rpdml0eVRpdGxlIjogIlt7eyBqcyAkYWxlcnQuQW5ub3RhdGlvbnMuZGVzY3JpcHRpb24gfCAgcmVSZXBsYWNlQWxsICJfIiAiICIgfCByZVJlcGxhY2VBbGwgYFxcJ2AgIiciIH19XSh7eyAkZXh0ZXJuYWxVcmwgfX0pIiwKICAgICAgImZhY3RzIjogWwogICAgICAgIHt7LSByYW5nZSAka2V5LCAkdmFsdWUgOj0gJGFsZXJ0LkFubm90YXRpb25zIH19CiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAie3sgJGtleSB9fSIsCiAgICAgICAgICAidmFsdWUiOiAie3sganMgJHZhbHVlIHwgcmVSZXBsYWNlQWxsICJfIiAiICIgfCByZVJlcGxhY2VBbGwgYFxcJ2AgIiciIH19IgogICAgICAgIH0sCiAgICAgICAge3stIGVuZCAtfX0KICAgICAgICB7eyRjIDo9IGNvdW50ZXJ9fXt7IHJhbmdlICRrZXksICR2YWx1ZSA6PSAkYWxlcnQuTGFiZWxzIH19e3tpZiBjYWxsICRjfX0se3sgZW5kIH19CiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAie3sgJGtleSB9fSIsCiAgICAgICAgICAidmFsdWUiOiAie3sganMgJHZhbHVlIHwgcmVSZXBsYWNlQWxsICJfIiAiICIgfCByZVJlcGxhY2VBbGwgYFxcJ2AgIiciIH19IgogICAgICAgIH0KICAgICAgICB7ey0gZW5kIH19CiAgICAgIF0sCiAgICAgICJtYXJrZG93biI6IHRydWUKICAgIH0KICAgIHt7LSBlbmQgfX0KICBdCn0Ke3sgZW5kIH19
+---
+# Source: prometheus-msteams/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-msteams
+  labels:
+    app: prometheus-msteams
+    chart: prometheus-msteams-1.3.0
+    release: prometheus-msteams/
+    heritage: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 2000
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: prometheus-msteams
+    release: prometheus-msteams/
+---
+# Source: prometheus-msteams/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-msteams
+  labels:
+    app: prometheus-msteams
+    chart: prometheus-msteams-1.3.0
+    release: prometheus-msteams/
+    heritage: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-msteams
+      release: prometheus-msteams/
+  template:
+    metadata:
+      labels:
+        app: prometheus-msteams
+        release: prometheus-msteams/
+      annotations:
+        checksum/config: 776c43f6a67411a83a9e46e52134179c4e3bc0e166cfddf0c9d23d49c5d4815f
+        checksum/msteams-card-templates: bdb897cee46c49e45f5bf761546aeb1fe5a3f9279b0251c50b70dbb4b324fb9f
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: prometheus-msteams-config
+        - name: card-template-volume
+          configMap:
+            name: prometheus-msteams-card-template
+      containers:
+        - name: prometheus-msteams
+          image: "quay.io/prometheusmsteams/prometheus-msteams:v1.5.0"
+          imagePullPolicy: Always
+          env:
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+            - name: card-template-volume
+              mountPath: /etc/template
+          args:
+            - -config-file=/etc/config/connectors.yaml
+            - -template-file=/etc/template/card.tmpl
+          ports:
+          - name: http
+            containerPort: 2000
+            protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /config
+              port: http
+            initialDelaySeconds: 1
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /config
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            limits:
+              cpu: 10m
+              memory: 32Mi
+            requests:
+              cpu: 1m
+              memory: 8Mi
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000

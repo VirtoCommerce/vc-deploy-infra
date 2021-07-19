@@ -70,3 +70,4 @@ resources:
     - ./resources/grafana/dashboards/traefik-dashboard.yaml
     - ./resources/grafana/dashboards/elastic-dashboard.yaml
     - ./resources/grafana/dashboards/nginx-dashboard.yaml
+    - ./resources/alertmanager/prometheus-msteams.yaml
