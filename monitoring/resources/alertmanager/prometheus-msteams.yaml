@@ -64,6 +64,8 @@ spec:
         checksum/config: 776c43f6a67411a83a9e46e52134179c4e3bc0e166cfddf0c9d23d49c5d4815f
         checksum/msteams-card-templates: bdb897cee46c49e45f5bf761546aeb1fe5a3f9279b0251c50b70dbb4b324fb9f
     spec:
+      nodeSelector:
+        agentpool: primary
       volumes:
         - name: config-volume
           configMap:
