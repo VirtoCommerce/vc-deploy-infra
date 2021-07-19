@@ -27,7 +27,7 @@ metadata:
   labels:
     app: prometheus-msteams
     chart: prometheus-msteams-1.3.0
-    release: prometheus-msteams/
+    release: prometheus-msteams
     heritage: Helm
 spec:
   type: ClusterIP
@@ -37,7 +37,7 @@ spec:
       protocol: TCP
   selector:
     app: prometheus-msteams
-    release: prometheus-msteams/
+    release: prometheus-msteams
 ---
 # Source: prometheus-msteams/templates/deployment.yaml
 apiVersion: apps/v1
@@ -47,19 +47,19 @@ metadata:
   labels:
     app: prometheus-msteams
     chart: prometheus-msteams-1.3.0
-    release: prometheus-msteams/
+    release: prometheus-msteams
     heritage: Helm
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: prometheus-msteams
-      release: prometheus-msteams/
+      release: prometheus-msteams
   template:
     metadata:
       labels:
         app: prometheus-msteams
-        release: prometheus-msteams/
+        release: prometheus-msteams
       annotations:
         checksum/config: 776c43f6a67411a83a9e46e52134179c4e3bc0e166cfddf0c9d23d49c5d4815f
         checksum/msteams-card-templates: bdb897cee46c49e45f5bf761546aeb1fe5a3f9279b0251c50b70dbb4b324fb9f
