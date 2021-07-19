@@ -7,7 +7,7 @@ metadata:
 data:
   connectors.yaml: |
     connectors:
-      alertmanager: https://virto365.webhook.office.com/webhookb2/64134d35-983b-43d1-b492-88a7b8523513@bc03e660-5e3a-45c4-bf5c-b75489f78923/IncomingWebhook/f00978f093134d11bbb6b8d47b846400/4a4fa9ae-993d-41cc-b048-2d619fd8c3b9
+      alertmanager: adsh
     connectors_with_custom_templates:
 ---
 # Source: prometheus-msteams/templates/configMapTemplate.yaml
