@@ -8,7 +8,6 @@ data:
   connectors.yaml: |
     connectors:
       alertmanager: adsh
-    connectors_with_custom_templates:
 ---
 # Source: prometheus-msteams/templates/configMapTemplate.yaml
 apiVersion: v1
