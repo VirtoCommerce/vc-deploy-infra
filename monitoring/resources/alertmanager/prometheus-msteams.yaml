@@ -8,6 +8,7 @@ data:
   connectors.yaml: |
     connectors:
       alertmanager: adsh
+    connectors_with_custom_templates:
 ---
 # Source: prometheus-msteams/templates/configMapTemplate.yaml
 apiVersion: v1
@@ -66,9 +67,9 @@ spec:
       nodeSelector:
         agentpool: primary
       volumes:
-        - name: config-volume
-          configMap:
-            name: prometheus-msteams-config
+        # - name: config-volume
+        #   configMap:
+        #     name: prometheus-msteams-config
         - name: card-template-volume
           configMap:
             name: prometheus-msteams-card-template
@@ -78,12 +79,12 @@ spec:
           imagePullPolicy: Always
           env:
           volumeMounts:
-            - name: config-volume
-              mountPath: /etc/config
+            # - name: config-volume
+            #   mountPath: /etc/config
             - name: card-template-volume
               mountPath: /etc/template
           args:
-            - -config-file=/etc/config/connectors.yaml
+            # - -config-file=/etc/config/connectors.yaml
             - -template-file=/etc/template/card.tmpl
           ports:
           - name: http
